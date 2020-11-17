@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".giaodien.TrangTimKiem.TimKiemActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/edtTimKiem"
+            android:hint="Tìm Phim...."
+            android:ems="13"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageButton
+            android:id="@+id/btnTim"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:onClick="search_by_name"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/purple_500"
+            android:src="@drawable/ic_action_search"
+            tools:src="@drawable/ic_action_search" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylerPhim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
