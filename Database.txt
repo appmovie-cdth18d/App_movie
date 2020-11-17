@@ -1,0 +1,27 @@
+TrangThaiPhim: IDtrangthai, loaitrangthai.(vd: phim đang chiếu, phim sắp chiếu)
+
+TheLoaiPhim: IDLoai, Tentheloai, trang thai(vd: Hành động, tình cảm, kinh dị,...)
+
+DinhDangPhim:IDDinhdang, Tendinhdang, trangthai (vd: 2D, 3D, 4D, 4DMAX,...)
+
+Phim: IdPhim, Tenphim, Diem, Mota, trailer, <TheLoai>, Daodien, Dienvien, ThoiLuong, Quocgia, <TrangThaiPhim>, <Dinhdangphim>
+
+Account: IDAccount, TenTK, MatKhau, Email, SDT, DiaChi,TrangThai
+
+Rap:IDRap, TenRap, Trang Thai
+
+Phong: IDPhong, TenPhong, <Rap>, TrangThai
+
+LoaiGHe: IDLoaiGhe, TenLoaighe, Gia, TrangThai (vd:ghế thường, ghế vip, ghế đôi,...)
+
+Ghe: IDGhe, Soghe, <Phong>, <LoaiGHe>, <Gia>,TrangThai
+
+Gia: IdGia, Loaigia, MenhGia. (vd: ghe_thuong=60.000, ghe_vip=80.000,ghe_doi=100.000 ).
+
+Ve: IDve, <IDaccount>,<IdPhim>, <IDRap>, <IDPhong>, <IDghe>, <IDLichchieu>, Tongtien.
+
+LichChieu: IdPhim, IdRap, thoigianbatdau, thoigianketthuc, TrangThaiPhim.
+
+BinhLuan: IDBinhLuan, <IDAccount>, Noidung, Ngaydang, TrangThai
+
+TinTuc: IDTinTuc, Tieude, Noidung, HinhAnh, NgayDang, TrangThai
