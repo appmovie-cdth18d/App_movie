@@ -1,38 +1,71 @@
 package com.example.app.giaodien.TrangTimKiem;
 
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.app.MainActivity;
 import com.example.app.Model.Phim;
 import com.example.app.R;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class fragment_TrangTimKiem extends Fragment {
+public class TrangTimKiem extends AppCompatActivity {
     private EditText edtTim;
     private ImageButton btnTimKiem;
     private RecyclerView recyclerPhim;
     private TimKiemAdapter timKiemAdapter;
     private List<Phim> lstPhim;
-    View v;
-    public fragment_TrangTimKiem() {
-    }
+    private NavigationView nav;
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_timkiem);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawable_timkiem);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_timkiem);
+        setSupportActionBar(toolbar);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        nav = (NavigationView) findViewById(R.id.navView_timkiem);
+        nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                Intent t;
+                switch (id) {
+                    case R.id.home:
+                        t = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(t);
+                        break;
+                    case R.id.tim:
+                        break;
+                    default:
+                        return true;
+                }
+                return false;
+            }
+        });
+        edtTim = (EditText) findViewById(R.id.edtTimKiem);
+        btnTimKiem = (ImageButton) findViewById(R.id.btnTim);
         lstPhim = new ArrayList<>();
         lstPhim.add(new Phim(R.mipmap.movie_0, "Ròm", "Phim Hành Động"));
         lstPhim.add(new Phim(R.mipmap.movie_1, "Đại Dịch Xác Sống", "Phim Kinh Dị"));
@@ -44,25 +77,11 @@ public class fragment_TrangTimKiem extends Fragment {
         lstPhim.add(new Phim(R.mipmap.movie_7, "Tí Hon Hậu Đậu", "Phim Hoạt Hình"));
         lstPhim.add(new Phim(R.mipmap.movie_8, "Tay Đấm Mỹ", "Phim Hành Động"));
         lstPhim.add(new Phim(R.mipmap.movie_9, "Sóng Thần", "Phim Hành Động"));
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_timkiem, container, false);
-        edtTim = (EditText) v.findViewById(R.id.edtTimKiem);
-        btnTimKiem = (ImageButton) v.findViewById(R.id.btnTim);
-
-        recyclerPhim = (RecyclerView) v.findViewById(R.id.recylerPhim);
+        recyclerPhim = (RecyclerView) findViewById(R.id.recylerPhim);
         timKiemAdapter = new TimKiemAdapter(lstPhim, recyclerPhim);
 
         recyclerPhim.setAdapter(timKiemAdapter);
-        recyclerPhim.setLayoutManager(new LinearLayoutManager(getContext()));
-        return v;
-    }
-
-    public void Init() {
-
+        recyclerPhim.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void search_by_name(View v) {
@@ -76,6 +95,6 @@ public class fragment_TrangTimKiem extends Fragment {
         }
         timKiemAdapter = new TimKiemAdapter(result, recyclerPhim);
         recyclerPhim.setAdapter(timKiemAdapter);
-        recyclerPhim.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerPhim.setLayoutManager(new LinearLayoutManager(this));
     }
 }

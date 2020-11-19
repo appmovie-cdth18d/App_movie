@@ -2,13 +2,12 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawable_main"
+    android:id="@+id/drawable_timkiem"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity"
+    tools:context=".giaodien.TrangTimKiem.TrangTimKiem"
     tools:openDrawer="start">
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +25,7 @@
                 android:theme="@style/AppTheme.AppBarOverlay">
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar_main"
+                    android:id="@+id/toolbar_timkiem"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_scrollFlags="scroll|enterAlways"
@@ -36,21 +35,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayout"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"/>
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/pagePhim"
+                    <EditText
+                        android:id="@+id/edtTimKiem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:ems="13"
+                        android:hint="Tìm Phim...." />
+
+                    <ImageButton
+                        android:id="@+id/btnTim"
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:backgroundTint="@color/purple_500"
+                        android:onClick="search_by_name"
+                        android:src="@drawable/ic_action_search"
+                        tools:src="@drawable/ic_action_search" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recylerPhim"
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent" />
+                    android:layout_height="match_parent" />
             </LinearLayout>
         </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navView_main"
+        android:id="@+id/navView_timkiem"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
