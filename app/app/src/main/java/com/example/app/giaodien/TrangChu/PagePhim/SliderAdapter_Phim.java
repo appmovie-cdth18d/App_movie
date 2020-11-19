@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.app.Phim;
+import com.example.app.Model.Phim;
 import com.example.app.R;
 
 import java.util.List;

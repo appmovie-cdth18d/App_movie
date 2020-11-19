@@ -1,42 +1,38 @@
 package com.example.app.giaodien.TrangTimKiem;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
-import com.example.app.Phim;
+import com.example.app.Model.Phim;
 import com.example.app.R;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-public class TimKiemActivity extends AppCompatActivity {
+public class fragment_TrangTimKiem extends Fragment {
     private EditText edtTim;
     private ImageButton btnTimKiem;
     private RecyclerView recyclerPhim;
     private TimKiemAdapter timKiemAdapter;
     private List<Phim> lstPhim;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timkiem);
-        Init();
+    View v;
+    public fragment_TrangTimKiem() {
     }
 
-    public void Init() {
-        edtTim = (EditText) findViewById(R.id.edtTimKiem);
-        btnTimKiem = (ImageButton) findViewById(R.id.btnTim);
-
-        recyclerPhim = (RecyclerView) findViewById(R.id.recylerPhim);
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         lstPhim = new ArrayList<>();
         lstPhim.add(new Phim(R.mipmap.movie_0, "Ròm", "Phim Hành Động"));
         lstPhim.add(new Phim(R.mipmap.movie_1, "Đại Dịch Xác Sống", "Phim Kinh Dị"));
@@ -48,11 +44,25 @@ public class TimKiemActivity extends AppCompatActivity {
         lstPhim.add(new Phim(R.mipmap.movie_7, "Tí Hon Hậu Đậu", "Phim Hoạt Hình"));
         lstPhim.add(new Phim(R.mipmap.movie_8, "Tay Đấm Mỹ", "Phim Hành Động"));
         lstPhim.add(new Phim(R.mipmap.movie_9, "Sóng Thần", "Phim Hành Động"));
+    }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        v = inflater.inflate(R.layout.fragment_timkiem, container, false);
+        edtTim = (EditText) v.findViewById(R.id.edtTimKiem);
+        btnTimKiem = (ImageButton) v.findViewById(R.id.btnTim);
+
+        recyclerPhim = (RecyclerView) v.findViewById(R.id.recylerPhim);
         timKiemAdapter = new TimKiemAdapter(lstPhim, recyclerPhim);
 
         recyclerPhim.setAdapter(timKiemAdapter);
-        recyclerPhim.setLayoutManager(new LinearLayoutManager(this));
+        recyclerPhim.setLayoutManager(new LinearLayoutManager(getContext()));
+        return v;
+    }
+
+    public void Init() {
+
     }
 
     public void search_by_name(View v) {
@@ -66,6 +76,6 @@ public class TimKiemActivity extends AppCompatActivity {
         }
         timKiemAdapter = new TimKiemAdapter(result, recyclerPhim);
         recyclerPhim.setAdapter(timKiemAdapter);
-        recyclerPhim.setLayoutManager(new LinearLayoutManager(this));
+        recyclerPhim.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 }

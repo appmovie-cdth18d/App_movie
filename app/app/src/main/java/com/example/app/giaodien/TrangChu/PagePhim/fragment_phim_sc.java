@@ -14,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.app.Phim;
+import com.example.app.Model.Phim;
 import com.example.app.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.app.Model;
 
 public class Phim {
     private int ID = 0;
