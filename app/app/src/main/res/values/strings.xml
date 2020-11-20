@@ -5,9 +5,71 @@
 
     <string name="open">Open</string>
     <string name="close">Close</string>
-
     <!-- title tabLayout-->
     <string name="dang_chieu">PHIM ĐANG CHIẾU</string>
     <string name="sap_chieu">PHIM SẮP CHIẾU</string>
+
+    <string name="th_nh_vi_n">Thành Viên</string>
+    <string name="v_thanh_t_n">Võ Thanh Tấn</string>
+    <string name="th_ng_tin_th_nh_vi_n">Thông Tin Thành Viên</string>
+    <string name="thay_m_t_kh_u">Thay Mật Khẩu</string>
+    <string name="th_qu_t_ng_voucher">Thẻ Quà Tặng | Voucher</string>
+    <string name="l_ch_s_giao_d_ch">Lịch Sử Giao Dịch</string>
+    <string name="hinhdaidien">HinhDaiDien</string>
+    <string name="n">Nữ</string>
+    <string name="s_a_th_ng_tin">Sửa Thông Tin</string>
+    <string name="nam">Nam</string>
+    <string name="th_ng_tin_kh_ch_h_ng">Thông Tin Khách Hàng</string>
+    <string name="h_t_n">Họ Tên</string>
+    <string name="s_i_n_tho_i">Số Điện Thoại</string>
+    <string name="email">Email</string>
+    <string name="t_n_ng_nh_p">Tên Đăng Nhập</string>
+    <string name="btnquaylailichsugiaodich">btnQuayLaiLichSuGiaoDich</string>
+    <string name="ti_u">Tiêu đề</string>
+    <string name="th_lo_i">Thể loại</string>
+    <string name="g5">G5</string>
+    <string name="gh_tr_ng">Ghế Trống</string>
+    <string name="gh_t">Ghế Đã Đặt</string>
+    <string name="t_n_phim">Tên Phim</string>
+    <string name="g4">G4</string>
+    <string name="gi">Giá</string>
+    <string name="t_v">Đặt Vé</string>
+    <string name="g3">G3</string>
+    <string name="g2">G2</string>
+    <string name="f5">F5</string>
+    <string name="f3">F3</string>
+    <string name="f4">F4</string>
+    <string name="a4">A4</string>
+    <string name="r_p_chi_u_phim_kh_b_nh">Rạp Chiếu Phim Khá Bảnh</string>
+    <string name="s_gi_chi_u_phim">Số Giờ Chiếu Phim</string>
+    <string name="btnquaylaichonghe">btnQuayLaiChonGhe</string>
+    <string name="g1">G1</string>
+    <string name="a3">A3</string>
+    <string name="quaylaidatve">QuayLaiDatVe</string>
+    <string name="cn">CN</string>
+    <string name="th_7">Thứ 7</string>
+    <string name="th_6">Thứ 6</string>
+    <string name="th_5">Thứ 5</string>
+    <string name="th_4">Thứ 4</string>
+    <string name="th_3">Thứ 3</string>
+    <string name="nh_d_ng_phim">Định Dạng Phim</string>
+    <string name="_09_00">09:00</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_10_00">09:00</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="t7">T7</string>
+    <string name="_8">8</string>
+    <string name="_11_00">09:00</string>
+    <string name="_12_00">09:00</string>
+    <string name="_13_00">09:00</string>
+    <string name="_14_00">09:00</string>
+    <string name="_15_00">09:00</string>
+    <string name="_10">10</string>
+    <string name="_13_01_2000">13/01/2000</string>
+    <string name="quaylaithongtinkhachhang">QuayLaiThongTinKhachHang</string>
+    <string name="m_n_h_nh">Màn Hình</string>
 
 </resources>

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
         <activity android:name=".giaodien.TrangTimKiem.TrangTimKiem"></activity>
+        <activity android:name=".giaodien.ThongTinKhachHang.ThongTinKhachHang"></activity>
+        <activity android:name=".giaodien.DatVeVaThanhToan.DatVeActivity"></activity>
+        <activity android:name=".giaodien.DatVeVaThanhToan.ChonGheActivity"></activity>
+        <activity android:name=".giaodien.DatVeVaThanhToan.ThanhToanActivity"></activity>
+        <activity android:name=".giaodien.ThongTinKhachHang.SuaThongTin"></activity>
+        <activity android:name=".giaodien.ThongTinKhachHang.GiaoDich"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

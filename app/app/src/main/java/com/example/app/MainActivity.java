@@ -11,15 +11,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangChu.PageAdapter;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
+    ///////////////
     NavigationView nav;
     ActionBarDrawerToggle toggle;
     DrawerLayout drawerLayout;
+    ////////////////
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /**/
         drawerLayout = (DrawerLayout) findViewById(R.id.drawable_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
@@ -49,12 +53,17 @@ public class MainActivity extends AppCompatActivity {
                         t = new Intent(getApplicationContext(), TrangTimKiem.class);
                         startActivity(t);
                         break;
+                    case R.id.canhan:
+                        t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
+                        startActivity(t);
                     default:
                         return true;
                 }
                 return false;
             }
         });
+        /**/
+
 
         //Ánh xạ dữ liệu
         tabLayout = (TabLayout)findViewById(R.id.tabLayout);
