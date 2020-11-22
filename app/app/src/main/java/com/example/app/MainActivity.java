@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.app.giaodien.DatVeVaThanhToan.ChonGheActivity;
+import com.example.app.giaodien.DatVeVaThanhToan.DatVeActivity;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangChu.PageAdapter;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
@@ -55,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
+                        startActivity(t);
+                    case R.id.ve:
+                        t = new Intent(getApplicationContext(), DatVeActivity.class);
                         startActivity(t);
                     default:
                         return true;

@@ -9,11 +9,10 @@
     tools:context=".giaodien.ThongTinKhachHang.ThongTinKhachHang"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:orientation="vertical">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -39,6 +38,7 @@
                 android:id="@+id/toolbar_title_khachhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
                 android:text="Thông Tin Khách Hàng"
                 android:textColor="@android:color/white"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
@@ -79,9 +79,10 @@
         android:layout_width="413dp"
         android:layout_height="53dp"
         android:layout_marginTop="19dp"
-        android:drawableEnd="@drawable/phai_foreground"
+
         android:onClick="Thongtin"
         android:text="@string/th_ng_tin_th_nh_vi_n"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,8 +94,9 @@
         android:layout_width="409dp"
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
-        android:drawableEnd="@drawable/phai_foreground"
+
         android:text="@string/thay_m_t_kh_u"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnThongtin" />
@@ -104,8 +106,9 @@
         android:layout_width="411dp"
         android:layout_height="55dp"
         android:layout_marginTop="2dp"
-        android:drawableEnd="@drawable/phai_foreground"
+
         android:text="@string/th_qu_t_ng_voucher"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,9 +118,10 @@
         android:layout_width="410dp"
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
-        android:drawableEnd="@drawable/phai_foreground"
+
         android:onClick="LichSu"
         android:text="@string/l_ch_s_giao_d_ch"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

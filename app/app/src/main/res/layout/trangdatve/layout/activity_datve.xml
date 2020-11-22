@@ -1,49 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".giaodien.DatVeVaThanhToan.DatVeActivity">
+    tools:context=".giaodien.DatVeVaThanhToan.DatVeActivity"
+    android:id="@+id/drawer_datve"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:layoutDirection = "rtl">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#F3F1F1"
         android:orientation="vertical"
+        android:layoutDirection="ltr"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#2196f3"
-            tools:ignore="MissingConstraints"
-            tools:targetApi="lollipop">
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            android:layoutDirection="rtl"
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            tools:ignore="MissingConstraints">
 
-            <LinearLayout
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_datve"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+                app:popupTheme="@style/AppTheme.popUpOverlay"
+                >
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/toolbar_title_datve"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="200dp"
+                        android:textSize="24sp"
+                        android:text="Đặt Vé"
+                        android:textColor="@android:color/white"
+                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                        android:layout_gravity="center" />
 
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="100dp"
-                    android:layout_height="58dp"
-                    android:background="#2196f3"
-                    android:contentDescription="@string/quaylaidatve"
-                    app:srcCompat="?attr/homeAsUpIndicator" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <TextView
-                    android:id="@+id/datve"
-                    android:layout_width="100dp"
-                    android:layout_height="57dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/t_v"
-                    android:textSize="30sp" />
-            </LinearLayout>
-        </Toolbar>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
             android:id="@+id/dinhdangphim"
@@ -311,5 +320,12 @@
                 </HorizontalScrollView>
         </LinearLayout>
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView_datve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_head"
+        app:menu="@menu/navitem" />
+</androidx.drawerlayout.widget.DrawerLayout>

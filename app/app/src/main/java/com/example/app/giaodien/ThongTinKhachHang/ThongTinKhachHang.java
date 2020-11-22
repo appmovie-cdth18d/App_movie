@@ -47,16 +47,15 @@ public class ThongTinKhachHang extends AppCompatActivity {
                 Intent t;
                 switch (id) {
                     case R.id.home:
-
-                        break;
+                        t = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(t);
+                        return true;
                     case R.id.tim:
                         t = new Intent(getApplicationContext(), TrangTimKiem.class);
                         startActivity(t);
-                        break;
+                        return true;
                     case R.id.canhan:
-                        t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
-                        startActivity(t);
-                    default:
+
                         return true;
                 }
                 return false;
