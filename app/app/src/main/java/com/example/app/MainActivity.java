@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.example.app.giaodien.DatVeVaThanhToan.ChonGheActivity;
 import com.example.app.giaodien.DatVeVaThanhToan.DatVeActivity;
+import com.example.app.giaodien.ThongTinKhachHang.GiaoDich;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangChu.PageAdapter;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 Intent t;
+                Intent ve;
                 switch (id) {
                     case R.id.home:
 
@@ -58,9 +60,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
                         startActivity(t);
+                        break;
                     case R.id.ve:
-                        t = new Intent(getApplicationContext(), DatVeActivity.class);
-                        startActivity(t);
+                        ve = new Intent(getApplicationContext(), GiaoDich.class);
+                        startActivity(ve);
+                        break;
                     default:
                         return true;
                 }

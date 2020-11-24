@@ -340,6 +340,318 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Vé
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_ve')}}" class="nav-link">
+                  
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/them_ve') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_ve') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Thể Loại Phim
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_theloai')}}" class="nav-link">
+                  
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/them_theloai') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_theloai') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Ghế
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_ghe')}}" class="nav-link">
+                  
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/them_ghe') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_ghe') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Danh Sách Vé
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_dsve')}}" class="nav-link">
+                  
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/them_dsve') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_dsve') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Thông Tin Bình Luận
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_binhluan')}}" class="nav-link">
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_binhluan') }}" class="nav-link">       
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Loại Ghế
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_loaighe')}}" class="nav-link">
+                  
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/them_loaighe') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_loaighe') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Giá
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_gia')}}" class="nav-link">
+                  
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/them_gia') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_gia') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Định Dạng Phim
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_dinhdangphim')}}" class="nav-link">
+                  
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/them_dinhdangphim') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_dinhdangphim') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Trạng Thái Phim
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_trangthai')}}" class="nav-link">
+                  
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/them_trangthai') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_trangthai') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
+          <!--tables-thong-tin-khach-hang-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Suất Chiếu
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('data/data_suatchieu')}}" class="nav-link">
+                  
+                  <p>Dữ Liệu Bảng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/them_suatchieu') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ asset('data/sua_suatchieu') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <!--endtables-->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

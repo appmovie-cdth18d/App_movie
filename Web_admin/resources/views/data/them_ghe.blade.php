@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Thêm Khách Hàng</h1>
+            <h1>Thêm Ghế</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Khách Hàng</a></li>
-              <li class="breadcrumb-item active">Thêm Khách Hàng</li>
+              <li class="breadcrumb-item"><a href="#">Rạp</a></li>
+              <li class="breadcrumb-item active">Thêm Rạp</li>
             </ol>
           </div>
         </div>
