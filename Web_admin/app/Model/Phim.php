@@ -12,6 +12,7 @@ class Phim extends Model
     
     protected $fillable = [
     	'Tenphim',
+        'Hinhanh',
 		'Diem',
 		'Mota',
 		'Trailer',

@@ -19,7 +19,7 @@ class CreateTaiKhoansTable extends Migration
             $table->string('Matkhau',16);
             $table->string('Email')->unique();
             $table->date('Ngaysinh');
-            $table->integer('Phai')->unsigned();
+            $table->string('Phai',5);
             $table->string('SDT',10)->unique();
             $table->string('Diachi');
             $table->timestamps();

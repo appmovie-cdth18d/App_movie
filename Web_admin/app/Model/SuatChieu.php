@@ -12,12 +12,16 @@ class SuatChieu extends Model
 
     protected $fillable = [
     	'GioChieu',
-		'Trangthai',
 		'lichchieu_id'
+        'phim_id'
     ];
 
     protected function lichchieu()
 	{
 		$this->belongsTo('Model\LichChieu','lichchieu_id');
 	}
+    protected function phim()
+    {
+        $this->belongsTo('Model\Phim','phim_id');
+    }
 }
