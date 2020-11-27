@@ -17,6 +17,7 @@ class Phim extends Model
 		'Mota',
 		'Trailer',
 		'ThoiLuong',
+        'daodien_id',
 		'dinhdang_id',
 		'trangthai_id',
 		'Theloai_id'
@@ -24,6 +25,10 @@ class Phim extends Model
 
     public function binhluans(){
         return $this->hasMany('Model\BinhLuan','phim_id','id');
+    }
+
+    public function daodien(){
+        return $this->belongsto('Model\DaoDien','daodien_id','id');
     }
 
     protected function lichchieus()

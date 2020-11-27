@@ -17,6 +17,11 @@ class DatabaseSeeder extends Seeder
         $this->call(RapDatabaseSeeder::class);
         $this->call(LoaiGheDatabaseSeeder::class);
         $this->call(GheDatabaseSeeder::class);
+
+        $this->call(RapDatabaseSeeder::class);
+        $this->call(LoaiGheDatabaseSeeder::class);
+        $this->call(GheDatabaseSeeder::class);
+
         $this->call(PhimDatabaseSeeder::class);
         $this->call(TaikhoanDatabaseSeeder::class);
         $this->call(BinhluanDatabaseSeeder::class);
@@ -28,6 +33,47 @@ class DatabaseSeeder extends Seeder
     }
 }
 
+class DaoDienDatabaseSeeder extends Seeder
+{
+	public function run() {
+		DB::table('daodien')->insert([
+			['Tendaodien'=>'Victor Vũ','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam'],
+			['Tendaodien'=>'Trần Anh Hùng','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam'],
+			['Tendaodien'=>'Vũ Ngọc Đăng','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam'],
+			['Tendaodien'=>'Nguyễn Quang Dũng','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam'],
+			['Tendaodien'=>'Charlie Nguyễn','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam']
+		]);
+	}
+}
+class DienVienDatabaseSeeder extends Seeder
+{
+	public function run() {
+		DB::table('dienvien')->insert([
+			['Tendienvien'=>'Nguyễn Văn A','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam'],
+			['Tendienvien'=>'Nguyễn Văn B','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam'],
+			['Tendienvien'=>'Nguyễn Văn C','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam'],
+			['Tendienvien'=>'Nguyễn Văn D','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam'],
+			['Tendienvien'=>'Nguyễn Văn E','Ngaysinh'=>'1975-25-11','Gioitinh'=>'Nam']
+		]);
+	}
+}
+class DS_DienVienDatabaseSeeder extends Seeder
+{
+	public function run() {
+		DB::table('ds_dienvien')->insert([
+			['dienvien_id'=>'1','phim_id'=>'1',],
+			['dienvien_id'=>'2','phim_id'=>'1',],
+			['dienvien_id'=>'3','phim_id'=>'2',],
+			['dienvien_id'=>'4','phim_id'=>'2',],
+			['dienvien_id'=>'1','phim_id'=>'3',],
+			['dienvien_id'=>'3','phim_id'=>'3',],
+			['dienvien_id'=>'2','phim_id'=>'4',],
+			['dienvien_id'=>'4','phim_id'=>'4',],
+			['dienvien_id'=>'3','phim_id'=>'5',],
+			['dienvien_id'=>'5','phim_id'=>'5',]
+		]);
+	}
+}
 class TheLoaiPhimDatabaseSeeder extends Seeder
 {
 	public function run() {
@@ -79,7 +125,7 @@ class RapDatabaseSeeder extends Seeder
 	public function run() {
 		DB::table('rap')->insert([
 			['Tenrap'=>'A1','hang'=>'6','cot'=>'5','chinhanh'=>'CGV Vincom Thủ Đức'],
-			['Tenrap'=>'A2','hang'=>'6','cot'=>'5','chinhanh'=>'CGV Vincom Thủ Đức']
+			['Tenrap'=>'B1','hang'=>'6','cot'=>'5','chinhanh'=>'CGV Vincom Thủ Đức']
 		]);
 	}
 }
@@ -166,11 +212,11 @@ class PhimDatabaseSeeder extends Seeder
 {
 	public function run() {
 		DB::table('phim')->insert([
-			['Tenphim'=>'aaaaaaa', 'Hinhanh'=>'dwdwvve','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1','trangthai_id'=>'1','theloai_id'=>'1'],
-			['Tenphim'=>'bbbbb', 'Hinhanh'=>'cdcveeewc','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1','trangthai_id'=>'1','theloai_id'=>'1'],
-			['Tenphim'=>'ccccc', 'Hinhanh'=>'cdcewd','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1','trangthai_id'=>'2','theloai_id'=>'1'],
-			['Tenphim'=>'dddddd', 'Hinhanh'=>'vdvv','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1','trangthai_id'=>'1','theloai_id'=>'1'],
-			['Tenphim'=>'eeeee', 'Hinhanh'=>'fewfwf','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1','trangthai_id'=>'2','theloai_id'=>'1']
+			['Tenphim'=>'aaaaaaa', 'Hinhanh'=>'dwdwvve','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1', 'daodien_id'=>'1','trangthai_id'=>'1','theloai_id'=>'1'],
+			['Tenphim'=>'bbbbb', 'Hinhanh'=>'cdcveeewc','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1','daodien_id'=>'2','trangthai_id'=>'1','theloai_id'=>'1'],
+			['Tenphim'=>'ccccc', 'Hinhanh'=>'cdcewd','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1','daodien_id'=>'3','trangthai_id'=>'2','theloai_id'=>'1'],
+			['Tenphim'=>'dddddd', 'Hinhanh'=>'vdvv','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1','daodien_id'=>'4','trangthai_id'=>'1','theloai_id'=>'1'],
+			['Tenphim'=>'eeeee', 'Hinhanh'=>'fewfwf','Diem'=>'7','Mota'=>'aaaa','Trailer'=>'aaaaa','ThoiLuong'=>'45:00','dinhdang_id'=>'1','daodien_id'=>'5','trangthai_id'=>'2','theloai_id'=>'1']
 		]);
 	}
 }
@@ -178,9 +224,9 @@ class TaikhoanDatabaseSeeder extends Seeder
 {
 	public function run() {
 		DB::table('taikhoan')->insert([
-			['Ten_TK'=>'admin','matkhau'=>'123','Email'=>'admin@gmail.com','Ngaysinh'=>'2000-02-19','Phai'=>'nam','SDT'=>'0123456789','Diachi'=>'null'],
-			['Ten_TK'=>'tan','matkhau'=>'123','Email'=>'tan@gmail.com','Ngaysinh'=>'2000-02-19','Phai'=>'nam','SDT'=>'1536823460','Diachi'=>'null'],
-			['Ten_TK'=>'thong','matkhau'=>'123','Email'=>'thong@gmail.com','Ngaysinh'=>'2000-02-19','Phai'=>'nam','SDT'=>'1425783590','Diachi'=>'null']
+			['HoTen'=>'Nguyễn Thành Tâm','Ten_TK'=>'admin','matkhau'=>'123','Email'=>'admin@gmail.com','Ngaysinh'=>'2000-02-19','Phai'=>'nam','SDT'=>'0123456789','Diachi'=>'null'],
+			['HoTen'=>'Võ Thanh Tấn','Ten_TK'=>'tan','matkhau'=>'123','Email'=>'tan@gmail.com','Ngaysinh'=>'2000-02-19','Phai'=>'nam','SDT'=>'1536823460','Diachi'=>'null'],
+			['HoTen'=>'Cao Minh Thông','Ten_TK'=>'thong','matkhau'=>'123','Email'=>'thong@gmail.com','Ngaysinh'=>'2000-02-19','Phai'=>'nam','SDT'=>'1425783590','Diachi'=>'null']
 		]);
 	}
 }
