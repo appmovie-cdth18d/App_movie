@@ -76,6 +76,7 @@ Route::group(['prefix'=>'gia'], function(){
     Route::get('/them_gia', function () {
     return view('data.Trang_Gia.them_gia');
     });
+<<<<<<< HEAD
 });
 Route::group(['prefix'=>'loaighe'], function(){
 
@@ -139,6 +140,83 @@ Route::group(['prefix'=>'trangthaiphim'], function(){
     return view('data.Trang_TrangThaiPhim.them_trangthaiphim');
     });
 });
+=======
+
+    Route::get('/sua_gia', function () {
+    return view('data.Trang_Gia.sua_gia');
+    });
+});
+Route::group(['prefix'=>'loaighe'], function(){
+
+    Route::get('/data_loaighe', function () {
+    return view('data.Trang_LoaiGhe.data_loaighe');
+    });
+
+    Route::get('/them_loaighe', function () {
+    return view('data.Trang_LoaiGhe.them_loaighe');
+    });
+
+    Route::get('/data/sua_loaighe', function () {
+    return view('data.Trang_LoaiGhe.sua_loaighe');
+    });
+});
+Route::group(['prefix'=>'phim'], function(){
+    
+    Route::get('/data_phim', function () {
+    return view('data.Trang_Phim.data_phim');
+    });
+    
+    Route::get('/them_phim', function () {
+    return view('data.Trang_Phim.them_phim');
+    });
+    
+    Route::get('/sua_phim', function () {
+    return view('data.Trang_Phim.sua_phim');
+    });
+});
+Route::group(['prefix'=>'theloaiphim'], function(){
+
+    Route::get('/data_theloaiphim', function () {
+    return view('data.Trang_TheLoaiPhim.data_theloaiphim');
+    });
+
+    Route::get('/them_theloaiphim', function () {
+    return view('data.Trang_TheLoaiPhim.them_theloaiphim');
+    });
+    
+    Route::get('/sua_theloaiphim', function () {
+    return view('data.Trang_TheLoaiPhim.sua_theloaiphim');
+    });
+});
+Route::group(['prefix'=>'dinhdangphim'], function(){
+
+    Route::get('/data_dinhdangphim', function () {
+    return view('data.Trang_DinhDangPhim.data_dinhdangphim');
+    });
+
+    Route::get('/them_dinhdangphim', function () {
+    return view('data.Trang_DinhDangPhim.them_dinhdangphim');
+    });
+    
+    Route::get('/sua_dinhdangphim', function () {
+    return view('data.Trang_DinhDangPhim.sua_dinhdangphim');
+    });
+});
+Route::group(['prefix'=>'trangthaiphim'], function(){
+
+    Route::get('/data_trangthaiphim', function () {
+    return view('data.Trang_TrangThaiPhim.data_trangthaiphim');
+    });
+
+    Route::get('/them_trangthaiphim', function () {
+    return view('data.Trang_TrangThaiPhim.them_trangthaiphim');
+    });
+    
+    Route::get('/sua_trangthaiphim', function () {
+    return view('data.Trang_TrangThaiPhim.sua_trangthaiphim');
+    });
+});
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
 Route::group(['prefix'=>'lichchieu'], function(){
 
     Route::get('/data_lichchieu', function () {

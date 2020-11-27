@@ -34,6 +34,7 @@
             </div>
             <div class="card-body">
               <div class="form-group">
+<<<<<<< HEAD
                 <label for="inputName">Tên Phim</label>
                 <input type="text" id="inputName" class="form-control">
               </div>
@@ -45,12 +46,26 @@
                 <label for="inputStatus">Đạo diễn</label>
                 <select class="form-control custom-select">
                   <option selected disabled>--Chọn đạo diễn--</option>
+=======
+                <label for="inputName">Project Name</label>
+                <input type="text" id="inputName" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputDescription">Project Description</label>
+                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="inputStatus">Status</label>
+                <select class="form-control custom-select">
+                  <option selected disabled>Select one</option>
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
                   <option>On Hold</option>
                   <option>Canceled</option>
                   <option>Success</option>
                 </select>
               </div>
               <div class="form-group">
+<<<<<<< HEAD
                 <label for="inputStatus">Thể loại</label>
                 <select class="form-control custom-select">
                   <option selected disabled>--Chọn thể loại--</option>
@@ -78,6 +93,15 @@
                 </select>
               </div>
               
+=======
+                <label for="inputClientCompany">Client Company</label>
+                <input type="text" id="inputClientCompany" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputProjectLeader">Project Leader</label>
+                <input type="text" id="inputProjectLeader" class="form-control">
+              </div>
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
             </div>
             <!-- /.card-body -->
           </div>
@@ -86,7 +110,11 @@
         <div class="col-md-6">
           <div class="card card-secondary">
             <div class="card-header">
+<<<<<<< HEAD
               <h3 class="card-title"></h3>
+=======
+              <h3 class="card-title">Budget</h3>
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -95,6 +123,7 @@
             </div>
             <div class="card-body">
               <div class="form-group">
+<<<<<<< HEAD
                 <label for="inputEstimatedBudget">Chọn Hình</label>
                 <input type="number" id="inputEstimatedBudget" class="form-control">
               </div>
@@ -104,6 +133,17 @@
               </div>
               <div class="form-group">
                 <label for="inputEstimatedDuration">Chọn Diễn Viên</label>
+=======
+                <label for="inputEstimatedBudget">Estimated budget</label>
+                <input type="number" id="inputEstimatedBudget" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputSpentBudget">Total amount spent</label>
+                <input type="number" id="inputSpentBudget" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputEstimatedDuration">Estimated project duration</label>
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
                 <input type="number" id="inputEstimatedDuration" class="form-control">
               </div>
             </div>
@@ -114,8 +154,13 @@
       </div>
       <div class="row">
         <div class="col-12">
+<<<<<<< HEAD
           <a href="#" class="btn btn-secondary">Hủy</a>
           <input type="submit" value="Thêm phim" class="btn btn-success float-right">
+=======
+          <a href="#" class="btn btn-secondary">Cancel</a>
+          <input type="submit" value="Create new Porject" class="btn btn-success float-right">
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
         </div>
       </div>
     </section>

@@ -3,7 +3,11 @@
     <a href="{{ URL::to('index') }}" class="brand-link">
       <img src="{{ asset('public/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
+<<<<<<< HEAD
       <span class="brand-text font-weight-light">T-Cinema</span>
+=======
+      <span class="brand-text font-weight-light">T-Cinima</span>
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
     </a>
 
     <!-- Sidebar -->
@@ -74,16 +78,35 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href=" {{ URL::to('phim/data_phim')}}" class="nav-link">
+=======
+                <a href=" {{ URL::to('data_phim')}}" class="nav-link">
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
                   
                   <p>Dữ Liệu Bảng</p>
                 </a>
               </li>
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href="{{ URL::to('phim/them_phim') }}" class="nav-link">
                   <p>Thêm</p>
                 </a>
               </li>
+=======
+                <a href="{{ URL::to('them_phim') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL::to('sua_phim') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
             </ul>
           </li>
           <!--endtables-->
@@ -225,15 +248,35 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href=" {{ URL::to('theloaiphim/data_theloaiphim')}}" class="nav-link">
+=======
+                <a href=" {{ URL::to('data_theloai')}}" class="nav-link">
+                  
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
                   <p>Dữ Liệu Bảng</p>
                 </a>
               </li>
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href="{{ URL::to('theloaiphim/them_theloaiphim') }}" class="nav-link">   
                   <p>Thêm</p>
                 </a>
               </li>
+=======
+                <a href="{{ URL::to('them_theloai') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL::to('sua_theloai') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
             </ul>
           </li>
           <!--endtables-->
@@ -362,16 +405,35 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href=" {{ URL::to('gia/data_gia')}}" class="nav-link">
+=======
+                <a href=" {{ URL::to('data_gia')}}" class="nav-link">
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
                   
                   <p>Dữ Liệu Bảng</p>
                 </a>
               </li>
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href="{{ URL::to('gia/them_gia') }}" class="nav-link">    
                   <p>Thêm</p>
                 </a>
               </li>
+=======
+                <a href="{{ URL::to('them_gia') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL::to('sua_gia') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
             </ul>
           </li>
           <!--endtables-->
@@ -386,16 +448,34 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href=" {{ URL::to('dinhdangphim/data_dinhdangphim')}}" class="nav-link">
+=======
+                <a href=" {{ URL::to('data_dinhdangphim')}}" class="nav-link">
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
                   
                   <p>Dữ Liệu Bảng</p>
                 </a>
               </li>
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href="{{ URL::to('dinhdangphim/them_dinhdangphim') }}" class="nav-link">
                   
                   <p>Thêm</p>
                 </a>
+=======
+                <a href="{{ URL::to('them_dinhdangphim') }}" class="nav-link">
+                  
+                  <p>Thêm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL::to('sua_dinhdangphim') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
 
             </ul>
           </li>
@@ -411,17 +491,34 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href=" {{ URL::to('trangthaiphim/data_trangthaiphim')}}" class="nav-link">
+=======
+                <a href=" {{ URL::to('data_trangthai')}}" class="nav-link">
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
                   
                   <p>Dữ Liệu Bảng</p>
                 </a>
               </li>
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href="{{ URL::to('trangthaiphim/them_trangthaiphim') }}" class="nav-link">
+=======
+                <a href="{{ URL::to('them_trangthai') }}" class="nav-link">
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
                   
                   <p>Thêm</p>
                 </a>
               </li>
+<<<<<<< HEAD
+=======
+              <li class="nav-item">
+                <a href="{{ URL::to('sua_trangthai') }}" class="nav-link">
+                  
+                  <p>Sửa</p>
+                </a>
+              </li>
+>>>>>>> 361299fb398bfc0b45336c48b340908ab01b0ea9
 
             </ul>
           </li>
