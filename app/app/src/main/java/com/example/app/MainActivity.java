@@ -10,97 +10,52 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
 import com.example.app.giaodien.DatVeVaThanhToan.ChonGheActivity;
 import com.example.app.giaodien.DatVeVaThanhToan.DatVeActivity;
-import com.example.app.giaodien.ThongTinKhachHang.GiaoDich;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangChu.PageAdapter;
+import com.example.app.giaodien.TrangChu.Trangchu;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
+import com.example.app.giaodien.dangky;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    ///////////////
-    NavigationView nav;
-    ActionBarDrawerToggle toggle;
-    DrawerLayout drawerLayout;
-    ////////////////
-    Toolbar toolbar;
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    PageAdapter pageAdapter;
-
+    EditText user;
+    EditText pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /**/
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawable_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_main);
-        setSupportActionBar(toolbar);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        nav = (NavigationView) findViewById(R.id.navView_main);
-        nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                Intent t;
-                Intent ve;
-                switch (id) {
-                    case R.id.home:
+        user = (EditText) findViewById(R.id.inputEmail);
+        pass = (EditText) findViewById(R.id.inputPassword);
 
-                        break;
-                    case R.id.tim:
-                        t = new Intent(getApplicationContext(), TrangTimKiem.class);
-                        startActivity(t);
-                        break;
-                    case R.id.canhan:
-                        t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
-                        startActivity(t);
-                        break;
-                    case R.id.ve:
-                        ve = new Intent(getApplicationContext(), GiaoDich.class);
-                        startActivity(ve);
-                        break;
-                    default:
-                        return true;
-                }
-                return false;
-            }
-        });
-        /**/
+    }
 
+    public void LOGIN(View view) {
+        Intent t = new Intent(this, Trangchu.class);
+        startActivity(t);
+        /*if (user.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Chưa nhập User", Toast.LENGTH_SHORT).show();
+        }
+        if (pass.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Chưa nhập PassWord", Toast.LENGTH_SHORT).show();
+        }
+        if (user.getText().toString().equals(pass.getText().toString())) {
+            Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+        }
+        else
+            Toast.makeText(getApplicationContext(), "Đăng nhập thất bại, vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
+    */
+    }
 
-        //Ánh xạ dữ liệu
-        tabLayout = (TabLayout)findViewById(R.id.tabLayout);
-        //tạo TabLayout
-        tabLayout.addTab(tabLayout.newTab().setText("Phim Dang Chieu"));
-        tabLayout.addTab(tabLayout.newTab().setText("Phim Sap Chieu"));
-
-        tabLayout.setTabGravity(tabLayout.GRAVITY_FILL);
-
-        viewPager = (ViewPager)findViewById(R.id.pagePhim);
-        pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pageAdapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
+    public void gotoRegister(View view) {
+        Intent intent = new Intent(MainActivity.this, dangky.class);
+        startActivity(intent);
     }
 }

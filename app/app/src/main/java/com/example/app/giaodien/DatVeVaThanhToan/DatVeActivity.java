@@ -27,7 +27,7 @@ public class DatVeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datve);
-        Intent t = getIntent();
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_datve);
         toolbar = (Toolbar) findViewById(R.id.toolbar_datve);
         setSupportActionBar(toolbar);
@@ -43,10 +43,6 @@ public class DatVeActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.home:
                         t = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(t);
-                        return true;
-                    case R.id.tim:
-                        t = new Intent(getApplicationContext(), TrangTimKiem.class);
                         startActivity(t);
                         return true;
                     case R.id.canhan:

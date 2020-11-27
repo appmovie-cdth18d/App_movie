@@ -30,16 +30,9 @@ public class Phim {
     }
 
     public Phim(int hinh, String ten, String theLoai) {
-        ID++;
         Hinh = hinh;
         Ten = ten;
         TheLoai = theLoai;
-    }
-    public Phim(Phim phim){
-        ID = phim.ID;
-        Hinh = phim.Hinh;
-        Ten = phim.Ten;
-        TheLoai = phim.TheLoai;
     }
 
 }

@@ -22,7 +22,6 @@
     <string name="th_ng_tin_kh_ch_h_ng">Thông Tin Khách Hàng</string>
     <string name="h_t_n">Họ Tên</string>
     <string name="s_i_n_tho_i">Số Điện Thoại</string>
-    <string name="email">Email</string>
     <string name="t_n_ng_nh_p">Tên Đăng Nhập</string>
     <string name="btnquaylailichsugiaodich">btnQuayLaiLichSuGiaoDich</string>
     <string name="ti_u">Tiêu đề</string>
@@ -71,5 +70,15 @@
     <string name="_13_01_2000">13/01/2000</string>
     <string name="quaylaithongtinkhachhang">QuayLaiThongTinKhachHang</string>
     <string name="m_n_h_nh">Màn Hình</string>
+    <string name="top_icon">TOP ICON</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirmpassword">Confirm Password</string>
 
+    <string name='signup'>SIGN UP</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="or">OR</string>
+    <string name="google_icon">google icon</string>
+    <string name="facebook_icon">facebook icon</string>
 </resources>

@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/home"
-        android:title="Trang Chủ"/>
-    <item
-        android:id="@+id/canhan"
-        android:title="Trang cá nhân"/>
-    <item
-        android:id="@+id/ve"
-        android:title="Vé"/>
-    <item
-        android:id="@+id/rap"
-        android:title="Rạp"/>
-    <item
-        android:id="@+id/tim"
-        android:title="Tim Kiem"/>
+    <group>
+        <item
+            android:id="@+id/home"
+            android:title="Trang Chủ" />
+        <item
+            android:id="@+id/canhan"
+            android:title="Trang cá nhân" />
+        <item
+            android:id="@+id/ve_phim"
+            android:title="Đặt vé theo phim" />
+        <item
+            android:id="@+id/ve_rap"
+            android:title="Đặt vé theo Rạp" />
+    </group>
     <item
         android:id="@+id/dangxuat"
-        android:title="Đăng Xuất"/>
+        android:title="Đăng Xuất" />
 </menu>

@@ -46,10 +46,6 @@ public class ThanhToanActivity extends AppCompatActivity {
                         t = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(t);
                         return true;
-                    case R.id.tim:
-                        t = new Intent(getApplicationContext(), TrangTimKiem.class);
-                        startActivity(t);
-                        return true;
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
                         startActivity(t);

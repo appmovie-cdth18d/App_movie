@@ -56,8 +56,6 @@ public class TrangTimKiem extends AppCompatActivity {
                         t = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(t);
                         break;
-                    case R.id.tim:
-                        break;
                     default:
                         return true;
                 }

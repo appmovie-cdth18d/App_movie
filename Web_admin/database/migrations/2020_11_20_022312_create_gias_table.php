@@ -15,7 +15,6 @@ class CreateGiasTable extends Migration
     {
         Schema::create('gia', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Tenloaigia');
             $table->float('giatien')->default(0);
             $table->timestamps();
             $table->softDeletes();
@@ -29,6 +28,6 @@ class CreateGiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gias');
+        Schema::dropIfExists('gia');
     }
 }

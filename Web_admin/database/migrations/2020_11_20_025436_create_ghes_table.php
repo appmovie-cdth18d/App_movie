@@ -17,6 +17,7 @@ class CreateGhesTable extends Migration
             $table->increments('id');
             $table->string('Soghe');
             $table->integer('Loaighe_id')->unsigned()->index();
+            $table->integer('Trangthai');
             $table->integer('rap_id')->unsigned()->index();
             $table->timestamps();
             $table->softDeletes();

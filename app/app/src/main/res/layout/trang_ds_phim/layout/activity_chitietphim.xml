@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D5D3DA"
+    tools:context=".ChitietphimActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbFiml"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#D5D3DA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/left"
+            android:onClick="back"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="10dp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phim"
+            android:textStyle="bold"
+            android:textColor="#F40D3C"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbFiml" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="275dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#FFFFFF">
+
+                <Button
+                    android:id="@+id/btnDatVe"
+                    android:layout_width="92dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/button"
+                    android:text="Đặt vé"
+                    android:textColor="#F9F8FA"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.946"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txtNoidung"
+                    android:layout_width="match_parent"
+                    android:layout_height="235dp"
+                    android:layout_margin="8dp"
+                    android:text="App Này Thịnh code"
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginVertical="15dp"
+                android:background="#FFFFFF">
+
+                <TextView
+                    android:id="@+id/txt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Kiểm duyệt"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="60dp"
+                    android:text="Khởi chiếu"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="90dp"
+                    android:text="Thể loại"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="53dp"
+                    android:layout_marginTop="120dp"
+                    android:text="Đạo diễn"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txt5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="49dp"
+                    android:layout_marginTop="150dp"
+                    android:text="Diễn viên"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txt6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="180dp"
+                    android:text="Thời lượng"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txt7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="210dp"
+                    android:text="Ngôn ngữ"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txtKiemDuyet"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="12dp"
+                    android:text="TextViewaaaaaaaaaaaaaaa"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txtKhoiChieu"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="61dp"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txtTheLoai"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="91dp"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txtDaoDien"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="121dp"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txtDienVien"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="152dp"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txtThoiLuong"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="182dp"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txtNgonNgu"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="212dp"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginVertical="1dp"
+                android:background="#FFFFFF">
+
+                <TextView
+                    android:id="@+id/txt8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Tin mới"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

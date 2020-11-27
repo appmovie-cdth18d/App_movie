@@ -44,13 +44,10 @@ public class ChonGheActivity extends AppCompatActivity {
                     case R.id.home:
 
                         break;
-                    case R.id.tim:
-                        t = new Intent(getApplicationContext(), TrangTimKiem.class);
-                        startActivity(t);
-                        break;
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
                         startActivity(t);
+                        break;
                     default:
                         return true;
                 }

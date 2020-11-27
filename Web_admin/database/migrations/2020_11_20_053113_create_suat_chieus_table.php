@@ -16,12 +16,13 @@ class CreateSuatChieusTable extends Migration
         Schema::create('suatchieu', function (Blueprint $table) {
             $table->increments('id');
             $table->time('GioChieu');
-            $table->integer('Trangthai')->unsigned();
+            $table->integer('phim_id')->unsigned()->index();
             $table->integer('lichchieu_id')->unsigned()->index();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('lichchieu_id')->references('id')->on('lichchieu');
+            $table->foreign('phim_id')->references('id')->on('phim');
         });
     }
 

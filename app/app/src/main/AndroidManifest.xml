@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -9,13 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
-        <activity android:name=".giaodien.TrangTimKiem.TrangTimKiem"></activity>
-        <activity android:name=".giaodien.ThongTinKhachHang.ThongTinKhachHang"></activity>
-        <activity android:name=".giaodien.DatVeVaThanhToan.DatVeActivity"></activity>
-        <activity android:name=".giaodien.DatVeVaThanhToan.ChonGheActivity"></activity>
-        <activity android:name=".giaodien.DatVeVaThanhToan.ThanhToanActivity"></activity>
-        <activity android:name=".giaodien.ThongTinKhachHang.SuaThongTin"></activity>
-        <activity android:name=".giaodien.ThongTinKhachHang.GiaoDich"></activity>
+        <activity android:name=".giaodien.DanhSachPhim.DanhsachphimActivity" />
+        <activity android:name=".giaodien.DanhSachPhim.ChitietphimActivity" />
+        <activity android:name=".giaodien.TrangChu.Trangchu"></activity>
+        <activity android:name=".giaodien.TrangTimKiem.TrangTimKiem" />
+        <activity android:name=".giaodien.ThongTinKhachHang.ThongTinKhachHang" />
+        <activity android:name=".giaodien.DatVeVaThanhToan.DatVeActivity" />
+        <activity android:name=".giaodien.DatVeVaThanhToan.ChonGheActivity" />
+        <activity android:name=".giaodien.DatVeVaThanhToan.ThanhToanActivity" />
+        <activity android:name=".giaodien.ThongTinKhachHang.SuaThongTin" />
+        <activity android:name=".giaodien.ThongTinKhachHang.GiaoDich" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

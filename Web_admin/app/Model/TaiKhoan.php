@@ -11,7 +11,8 @@ class TaiKhoan extends Model
     protected $dates = ['deleted_at'];
     
     protected $filable = [
-		'Ten_TK',
+		'HoTen',
+        'Ten_TK',
 		'Matkhau',
 		'Email',
 		'Ngaysinh',

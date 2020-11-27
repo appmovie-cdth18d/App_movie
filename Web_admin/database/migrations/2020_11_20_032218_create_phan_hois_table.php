@@ -16,6 +16,7 @@ class CreatePhanHoisTable extends Migration
         Schema::create('phanhoi', function (Blueprint $table) {
             $table->increments('id');
             $table->text('Noidung');
+            $table->date('Ngaydang');
             $table->integer('taikhoan_id')->unsigned()->index();
             $table->integer('binhluan_id')->unsigned()->index();
             $table->timestamps();

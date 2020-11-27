@@ -27,6 +27,6 @@ class CreateTheLoaiPhimsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('the_loai_phims');
+        Schema::dropIfExists('TheLoaiPhim');
     }
 }

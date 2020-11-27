@@ -13,6 +13,7 @@ class Ghe extends Model
     protected $fillable = [
     	'Soghe',
 		'Loaighe',
+		'Trangthai',
 		'rap_id'
     ];
 

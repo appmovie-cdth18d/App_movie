@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editHoten" />
 
     <EditText
-        android:id="@+id/editEmail"
+        android:id="@+id/editTextTextPersonName3"
         android:layout_width="372dp"
         android:layout_height="41dp"
         android:layout_marginStart="5dp"
@@ -92,42 +92,42 @@
         android:id="@+id/editNgay"
         android:layout_width="204dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/_13_01_2000"
         android:inputType="date"
+        app:layout_constraintEnd_toStartOf="@+id/radioNam"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
-    <RadioGroup
-        android:id="@+id/radio"
+    <RadioButton
+        android:id="@+id/radioNam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
-        android:checkedButton="@id/radioNam"
-        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/nam"
+        app:layout_constraintEnd_toStartOf="@+id/radioNu"
         app:layout_constraintStart_toEndOf="@+id/editNgay"
-        app:layout_constraintTop_toBottomOf="@+id/editEmail">
-        <RadioButton
-            android:id="@+id/radioNam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nam"
-            />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
-        <RadioButton
-            android:id="@+id/radioNu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/n" />
-    </RadioGroup>
-
+    <RadioButton
+        android:id="@+id/radioNu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="54dp"
+        android:text="@string/n"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioNam"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
     <Button
-        android:id="@+id/btnsuathongtin"
         android:layout_width="376dp"
         android:layout_height="50dp"
         android:layout_marginStart="5dp"

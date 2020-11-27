@@ -28,6 +28,6 @@ class CreateTrangThaiPhimsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trang_thai_phims');
+        Schema::dropIfExists('TrangThaiPhim');
     }
 }

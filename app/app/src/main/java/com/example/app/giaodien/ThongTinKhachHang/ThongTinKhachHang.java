@@ -50,10 +50,6 @@ public class ThongTinKhachHang extends AppCompatActivity {
                         t = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(t);
                         return true;
-                    case R.id.tim:
-                        t = new Intent(getApplicationContext(), TrangTimKiem.class);
-                        startActivity(t);
-                        return true;
                     case R.id.canhan:
 
                         return true;
