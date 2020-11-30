@@ -24,6 +24,7 @@ public class Trangchu extends AppCompatActivity {
     NavigationView nav;
     ActionBarDrawerToggle toggle;
     DrawerLayout drawerLayout;
+
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -64,6 +65,7 @@ public class Trangchu extends AppCompatActivity {
 
     }
     public void Menu(){
+
         setSupportActionBar(toolbar);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
