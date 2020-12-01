@@ -64,7 +64,6 @@ public class fragment_phim_dc extends Fragment {
                 page.setScaleY(0.85f + r * 0.15f);
             }
         });
-
         pager.setPageTransformer(compositePageTransformer);
         return v;
     }
