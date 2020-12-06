@@ -1,5 +1,7 @@
 package com.example.app.giaodien.TrangChu.PagePhim;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,61 +14,69 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.app.Model.Phim;
 import com.example.app.R;
+import com.example.app.giaodien.DanhSachPhim.ChitietphimActivity;
+import com.example.app.giaodien.TrangChu.ItemClickListener;
 
 import java.util.List;
 
 
 public class SliderAdapter_Phim extends RecyclerView.Adapter<SliderAdapter_Phim.SliderViewHolder> {
     private List<Phim> lstPhim;
-    private ViewPager2 viewPager2;
+    private Context context;
 
-    public SliderAdapter_Phim(List<Phim> lstPhim, ViewPager2 viewPager2) {
+    public SliderAdapter_Phim(List<Phim> lstPhim, Context context) {
         this.lstPhim = lstPhim;
-        this.viewPager2 = viewPager2;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public SliderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new SliderViewHolder(LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.item_slide_phim, parent, false
-             )
-        );
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View Item = layoutInflater.inflate(R.layout.item_slide_phim,parent,false);
+        return new SliderViewHolder(Item);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder holder, int position) {
-        holder.setImg(lstPhim.get(position));
-        holder.setTenPhim(lstPhim.get(position));
-        holder.setTheloaiPhim(lstPhim.get(position));
+        holder.img.setImageResource(lstPhim.get(position).getHinh());
+        holder.txtTen.setText(lstPhim.get(position).getTen());
+        holder.txtTheloai.setText(lstPhim.get(position).getTheLoai());
+
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
+                Intent t = new Intent(context, ChitietphimActivity.class);
+                t.putExtra("ten",lstPhim.get(position).getTen());
+                context.startActivity(t);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return lstPhim.size();
     }
 
-    class SliderViewHolder extends RecyclerView.ViewHolder {
+    class SliderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private ImageView img;
         private TextView txtTen, txtTheloai;
+        private ItemClickListener itemClickListener;
 
         public SliderViewHolder(@NonNull View itemView) {
             super(itemView);
             img = (ImageView) itemView.findViewById(R.id.img_phim);
             txtTen = (TextView) itemView.findViewById(R.id.txt_ten_phim);
             txtTheloai = (TextView) itemView.findViewById(R.id.txt_theloai_phim);
-        }
 
-        void setImg(Phim phim) {
-            img.setImageResource(phim.getHinh());
+            itemView.setOnClickListener(this);
         }
-
-        void setTenPhim(Phim phim) {
-            txtTen.setText(phim.getTen());
+        public void setItemClickListener(ItemClickListener itemClickListener){
+            this.itemClickListener = itemClickListener;
         }
-
-        void setTheloaiPhim(Phim phim) {
-            txtTheloai.setText(phim.getTheLoai());
+        @Override
+        public void onClick(View v) {
+            itemClickListener.onClick(v, getAdapterPosition(), false);
         }
     }
 }
