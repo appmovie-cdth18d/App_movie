@@ -77,6 +77,12 @@ public class Phim {
         this.loaidinhdang = loaidinhdang;
     }
 
+    public Phim(int hinh, String ten, String theLoai) {
+        Hinh = hinh;
+        Ten = ten;
+        TheLoai = theLoai;
+    }
+
     public Phim(int hinh, int diem, int trailer, String ten, String theLoai, String mota, String tendaodien, String tentrangthai, String loaidinhdang) {
         Hinh = hinh;
         this.diem = diem;
