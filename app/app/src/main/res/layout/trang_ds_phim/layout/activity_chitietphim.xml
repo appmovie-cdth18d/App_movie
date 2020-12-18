@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D5D3DA"
-    tools:context=".ChitietphimActivity">
+    tools:context=".giaodien.DanhSachPhim.ChitietphimActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbFiml"

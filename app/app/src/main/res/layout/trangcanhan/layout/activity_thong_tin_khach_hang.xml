@@ -101,18 +101,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnThongtin" />
 
-    <Button
-        android:id="@+id/btnTheQuaTang"
-        android:layout_width="411dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="2dp"
-
-        android:text="@string/th_qu_t_ng_voucher"
-        android:textAlignment="textStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnThaymatkhau" />
 
     <Button
         android:layout_width="410dp"
@@ -125,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTheQuaTang" />
+        app:layout_constraintTop_toBottomOf="@+id/btnThaymatkhau" />
 </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

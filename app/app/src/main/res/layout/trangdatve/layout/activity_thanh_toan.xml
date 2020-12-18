@@ -301,8 +301,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:background="@drawable/btn_datve"
-                    app:backgroundTint="#E81212"
+                    android:background="@drawable/round_bg"
                     android:text="Tôi Đồng Ý Và Tiếp Tục"
                     android:textSize="20sp"/>
             </LinearLayout>

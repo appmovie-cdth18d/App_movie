@@ -19,6 +19,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.app.MainActivity;
 import com.example.app.R;
+import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
+import com.example.app.giaodien.DatVeVaThanhToan.ChonGheActivity;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
 
@@ -47,11 +49,24 @@ public class ThongTinKhachHang extends AppCompatActivity {
                 Intent t;
                 switch (id) {
                     case R.id.home:
+                        drawerLayout.closeDrawer(nav);
+                        break;
+                    case R.id.canhan:
+                        t = new Intent(getApplicationContext(), ChonGheActivity.class);
+                        startActivity(t);
+                        drawerLayout.closeDrawer(nav);
+                        break;
+                    case R.id.ve_phim:
+                        t = new Intent(getApplicationContext(), DanhsachphimActivity.class);
+                        startActivity(t);
+                        drawerLayout.closeDrawer(nav);
+                        break;
+                    case R.id.dangxuat:
                         t = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(t);
-                        return true;
-                    case R.id.canhan:
-
+                        drawerLayout.closeDrawer(nav);
+                        break;
+                    default:
                         return true;
                 }
                 return false;
