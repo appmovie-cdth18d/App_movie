@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
+        <activity android:name=".giaodien.dangky" />
+        <activity android:name=".giaodien.ThongTinKhachHang.DoiMatKhauActivity"></activity>
         <activity android:name=".giaodien.DanhSachPhim.DanhsachphimActivity" />
         <activity android:name=".giaodien.DanhSachPhim.ChitietphimActivity" />
-        <activity android:name=".giaodien.TrangChu.Trangchu"></activity>
+        <activity android:name=".giaodien.TrangChu.Trangchu" />
         <activity android:name=".giaodien.TrangTimKiem.TrangTimKiem" />
         <activity android:name=".giaodien.ThongTinKhachHang.ThongTinKhachHang" />
         <activity android:name=".giaodien.DatVeVaThanhToan.DatVeActivity" />
@@ -27,6 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

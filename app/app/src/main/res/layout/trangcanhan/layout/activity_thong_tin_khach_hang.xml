@@ -94,7 +94,7 @@
         android:layout_width="409dp"
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
-
+        android:onClick="DoiMatKhau"
         android:text="@string/thay_m_t_kh_u"
         android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,6 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
+        android:layoutDirection = "ltr"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_head"
         app:menu="@menu/navitem" />

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.app.giaodien.TrangChu.PagePhim.fragment_phim_dc;
 import com.example.app.giaodien.TrangChu.PagePhim.fragment_phim_sc;
 
+
 public class PageAdapter extends FragmentStatePagerAdapter {
     int numPage;
 

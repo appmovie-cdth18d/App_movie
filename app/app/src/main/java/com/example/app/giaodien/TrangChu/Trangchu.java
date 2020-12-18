@@ -1,5 +1,11 @@
 package com.example.app.giaodien.TrangChu;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,13 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
+import com.example.app.MainActivity;
 import com.example.app.R;
+import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
 import com.example.app.giaodien.DatVeVaThanhToan.DatVeActivity;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
@@ -67,6 +69,7 @@ public class Trangchu extends AppCompatActivity {
     public void Menu(){
 
         setSupportActionBar(toolbar);
+        nav.bringToFront();
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -77,14 +80,23 @@ public class Trangchu extends AppCompatActivity {
                 Intent t;
                 switch (id) {
                     case R.id.home:
+                        drawerLayout.closeDrawer(nav);
                         break;
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
                         startActivity(t);
+                        drawerLayout.closeDrawer(nav);
                         break;
                     case R.id.ve_phim:
-                        t = new Intent(getApplicationContext(), DatVeActivity.class);
+                        t = new Intent(getApplicationContext(), DanhsachphimActivity.class);
                         startActivity(t);
+                        drawerLayout.closeDrawer(nav);
+                        break;
+                    case R.id.dangxuat:
+                        t = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(t);
+                        drawerLayout.closeDrawer(nav);
+                        break;
                     default:
                         return true;
                 }

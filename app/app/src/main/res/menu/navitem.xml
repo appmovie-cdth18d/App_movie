@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group>
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/home"
+            android:icon="@drawable/home_icon"
             android:title="Trang Chủ" />
         <item
             android:id="@+id/canhan"
+            android:icon="@drawable/person_icon"
             android:title="Trang cá nhân" />
-        <item
-            android:id="@+id/ve_phim"
-            android:title="Đặt vé theo phim" />
-        <item
-            android:id="@+id/ve_rap"
-            android:title="Đặt vé theo Rạp" />
     </group>
-    <item
-        android:id="@+id/dangxuat"
-        android:title="Đăng Xuất" />
+    <item android:title="Đặt vé">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/ve_phim"
+                    android:icon="@drawable/datve_icon"
+                    android:title="Đặt vé theo Phim" />
+                <item
+                    android:id="@+id/ve_rap"
+                    android:title="Đặt vé theo Rạp" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/dangxuat"
+                    android:icon="@drawable/logout_icon"
+                    android:title="Đăng Xuất" />
+            </group>
+        </menu>
+    </item>
 </menu>

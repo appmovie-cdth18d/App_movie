@@ -1,31 +1,26 @@
 package com.example.app.giaodien.TrangChu.PagePhim;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
 import com.example.app.Model.Phim;
 import com.example.app.R;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 
 public class fragment_phim_dc extends Fragment {
     private RecyclerView pager;
-    private LinkedList<Phim> lstPhim;
+    private List<Phim> lstPhim;
     private SliderAdapter_Phim sliderAdapterPhim;
     private Button datve;
     View v;
@@ -38,11 +33,11 @@ public class fragment_phim_dc extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lstPhim = new LinkedList<>();
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground, "Ròm", "Phim Hành Động"));
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground, "Đại Dịch Xác Sống", "Phim Kinh Dị"));
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground, "Cục Nợ Hóa Cục Cưng", "Phim Tình Cảm"));
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground, "Vì Sao Đưa Bạn Tới", "Phim Hoat Hình"));
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground, "Phi Vụ Hoàn Lương", "Phim Hành Động"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Ròm", "Phim Hành Động"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Đại Dịch Xác Sống", "Phim Kinh Dị"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Cục Nợ Hóa Cục Cưng", "Phim Tình Cảm"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Vì Sao Đưa Bạn Tới", "Phim Hoat Hình"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Phi Vụ Hoàn Lương", "Phim Hành Động"));
     }
 
     @Override

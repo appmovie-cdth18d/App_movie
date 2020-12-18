@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.app.Model.Ve;
 import com.example.app.R;
 
 import java.util.List;

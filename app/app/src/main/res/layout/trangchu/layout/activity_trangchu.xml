@@ -7,10 +7,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".giaodien.TrangChu.Trangchu"
-    tools:openDrawer="right">
+    tools:openDrawer="start">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -41,14 +40,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/txt_timkiem"
                     android:layout_width="350dp"
-                    android:hint="Tìm kiếm phim...."
-                    android:textSize="20sp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="20dp"
+                    android:background="#DFDDE1"
+                    android:hint="Tìm kiếm phim...."
+                    android:textSize="20sp" />
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tabLayout"
                         android:layout_marginTop="10dp"
@@ -67,7 +68,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView_main"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_head"

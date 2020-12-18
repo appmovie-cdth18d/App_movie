@@ -69,6 +69,10 @@ public class ThongTinKhachHang extends AppCompatActivity {
         this.startActivity(t);
     }
 
+    public void DoiMatKhau(View view) {
+        Intent t = new Intent(this, DoiMatKhauActivity.class);
+        this.startActivity(t);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

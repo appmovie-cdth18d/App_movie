@@ -1,26 +1,21 @@
 package com.example.app.giaodien.TrangChu.PagePhim;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
-import androidx.viewpager2.widget.ViewPager2;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.app.Model.Phim;
 import com.example.app.R;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 
 public class fragment_phim_sc extends Fragment {
@@ -37,11 +32,11 @@ public class fragment_phim_sc extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lstPhim = new LinkedList<>();
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground,"Quái Vật Săn Đêm","Phim Kinh Dị"));
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground,"Chiến Binh Hồi Sinh","Phim Khoa Học Viễn Tưỡng"));
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground,"Tí Hon Hậu Đậu","Phim Hoạt Hình"));
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground,"Tay Đấm Mỹ","Phim Hành Động"));
-        lstPhim.add(new Phim(R.drawable.ic_launcher_foreground,"Sóng Thần","Phim Hành Động"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Ròm", "Phim Hành Động"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Đại Dịch Xác Sống", "Phim Kinh Dị"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Cục Nợ Hóa Cục Cưng", "Phim Tình Cảm"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Vì Sao Đưa Bạn Tới", "Phim Hoat Hình"));
+        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Phi Vụ Hoàn Lương", "Phim Hành Động"));
     }
 
     @Nullable

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.app.giaodien.TrangChu.Trangchu;
+import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.example.app.giaodien.dangky;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void LOGIN(View view) {
-        Intent t = new Intent(this, Trangchu.class);
+        Intent t = new Intent(this, TrangTimKiem.class);
         startActivity(t);
         /*if (user.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Chưa nhập User", Toast.LENGTH_SHORT).show();
