@@ -1,13 +1,13 @@
 package com.example.app.Model;
 
 public class Ve {
-    private int hinhanhphim;
+    private String hinhanhphim;
     private String tenphim;
     private String rap;
     private String soghe;
     private int giave;
 
-    public Ve(int hinhanhphim, String tenphim, String rap, String soghe, int giave) {
+    public Ve(String hinhanhphim, String tenphim, String rap, String soghe, int giave) {
         this.setHinhanhphim(hinhanhphim);
         this.setTenphim(tenphim);
         this.setRap(rap);
@@ -15,11 +15,11 @@ public class Ve {
         this.setGiave(giave);
     }
 
-    public int getHinhanhphim() {
+    public String getHinhanhphim() {
         return hinhanhphim;
     }
 
-    public void setHinhanhphim(int hinhanhphim) {
+    public void setHinhanhphim(String hinhanhphim) {
         this.hinhanhphim = hinhanhphim;
     }
 

@@ -81,4 +81,9 @@
     <string name="or">OR</string>
     <string name="google_icon">google icon</string>
     <string name="facebook_icon">facebook icon</string>
+    <string name="i_m_t_kh_u">Đổi Mật Khẩu</string>
+    <string name="m_t_kh_u_hi_n_t_i">Mật khẩu hiện tại</string>
+    <string name="thay_i_m_t_kh_u">Thay đổi mật khẩu</string>
+    <string name="m_t_kh_u_m_i">Mật khẩu mới</string>
+    <string name="nh_p_l_i_m_t_kh_u_m_i">Nhập lại mật khẩu mới</string>
 </resources>

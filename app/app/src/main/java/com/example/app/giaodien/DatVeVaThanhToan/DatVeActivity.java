@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -12,6 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.app.MainActivity;
 import com.example.app.R;
 import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
@@ -19,16 +28,34 @@ import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.sql.Time;
+import java.util.ArrayList;
+
 public class DatVeActivity extends AppCompatActivity {
     NavigationView nav;
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    TextView rap1, rap2, tenphim_;
+    String tenphim, tenrap1,tenrap2;
+    String url = "http://192.168.64.2/WebAdmin/api/lichchieu";
+    private ArrayList<SuatChieu> list;
+    private ArrayList<SuatChieu> list2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datve);
-
+        list = new ArrayList();
+        list2 = new ArrayList<>();
+        rap1 = findViewById(R.id.txtrap1);
+        rap2 = findViewById(R.id.txtrap2);
+        tenphim_ = findViewById(R.id.toolbar_title_datve);
+        final GridView girdGio = (GridView) findViewById(R.id.gridGio);
+        final GridView girdGio2 = (GridView) findViewById(R.id.gridGio2);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_datve);
         toolbar = (Toolbar) findViewById(R.id.toolbar_datve);
         setSupportActionBar(toolbar);
@@ -66,6 +93,62 @@ public class DatVeActivity extends AppCompatActivity {
                 return false;
             }
         });
+            //API
+            RequestQueue requestQueue = Volley.newRequestQueue(DatVeActivity.this);
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jr = new JSONArray(response);
+                                JSONObject jb;
+                                int n = jr.length();
+                                String giochieu;
+                                int phim_id;
+                                int rap_id;
+                                Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+                                for (int i = 0; i < n; i++) {
+                                    jb = jr.getJSONObject(i);
+                                    tenphim = jb.getString("Tenphim");
+                                    if(jb.getInt("rap_id" )==1) {
+                                        if(jb.getInt("phim_id")==1) {
+                                            tenrap1 = jb.getString("Tenrap");
+                                            giochieu = jb.getString("GioChieu").toString();
+                                            phim_id = jb.getInt("phim_id");
+                                            rap_id = jb.getInt("rap_id");
+                                            list.add(new SuatChieu(giochieu, phim_id, rap_id));
+                                        }
+                                    } else if(jb.getInt("rap_id" )==2) {
+                                        if (jb.getInt("phim_id")==1){
+                                            tenrap2 = jb.getString("Tenrap");
+                                            giochieu = jb.getString("GioChieu").toString();
+                                            phim_id = jb.getInt("phim_id");
+                                            rap_id = jb.getInt("rap_id");
+                                            list2.add(new SuatChieu(giochieu, phim_id, rap_id));
+                                        }
+                                    }
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            tenphim_.setText(tenphim);
+                            rap1.setText(tenrap1);
+                            rap2.setText(tenrap2);
+                            girdGio.setAdapter(new SuatChieuGidAdapter(getApplicationContext(), list));
+                            girdGio2.setAdapter(new SuatChieuGidAdapter(getApplicationContext(), list2));
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+            );
+            requestQueue.add(stringRequest);
+            //
+
     }
 
     public void ChonGio(View view) {

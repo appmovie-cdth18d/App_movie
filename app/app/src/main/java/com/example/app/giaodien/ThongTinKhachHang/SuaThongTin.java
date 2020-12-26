@@ -2,6 +2,7 @@ package com.example.app.giaodien.ThongTinKhachHang;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +21,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.app.Model.khachhang;
 import com.example.app.R;
 
 import org.json.JSONArray;
@@ -33,9 +33,11 @@ import java.util.Map;
 public class SuaThongTin extends AppCompatActivity {
     Toolbar toolbar;
     EditText hoten, sdt,email, ngay, tendangnhap;
-    RadioButton nam, nu,namsua, nusua;
+    RadioButton nam, nu;
     Button suathongtin;
-    EditText hotensua, sdtsua,emailsua, ngaysua, tendangnhapsua;
+    int id;
+    String url="http://192.168.64.2/WebAdmin/api/taikhoan";
+    String urlUpdate = "http://192.168.64.2/WebAdmin/api/taikhoan/1";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,35 +52,68 @@ public class SuaThongTin extends AppCompatActivity {
         tendangnhap = (EditText) findViewById(R.id.edittextTendangnhap);
         nam = (RadioButton) findViewById(R.id.radioNam);
         nu = (RadioButton) findViewById(R.id.radioNu);
+        //API
 
-        LoadData();
+        RequestQueue requestQueue = Volley.newRequestQueue(SuaThongTin.this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jr = new JSONArray(response);
+                            JSONObject jb;
+                            int a = 0;
+                            id = a;
+                            int n = jr.length();
+                            for (int i = 0; i < n; i++) {
+                                if (a == i) {
+                                    jb = jr.getJSONObject(i);
+                                    String ho_ten = jb.getString("HoTen");
+                                    hoten.setText(ho_ten);
+                                    String SDT = jb.getString("SDT");
+                                    sdt.setText(SDT);
+                                    String Email = jb.getString("Email");
+                                    email.setText(Email);
+                                    String NgaySinh = jb.getString("Ngaysinh");
+                                    ngay.setText(NgaySinh);
+                                    String TenDangNhap = jb.getString("Ten_TK");
+                                    tendangnhap.setText(TenDangNhap);
+                                    String phai = jb.getString("Phai");
+                                    if (phai.equals("nam"))
+                                        nam.setChecked(true);
+                                    else nu.setChecked(true);
+                                    TaiKhoan taiKhoan = new TaiKhoan(id, hoten.getText().toString(),tendangnhap.getText().toString(),sdt.getText().toString(),jb.getString("DiaChi"),ngay.getText().toString(),jb.getString("Phai"));
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
+                    }
+                }
 
+        );
+        requestQueue.add(stringRequest);
+
+
+        //
         suathongtin = (Button) findViewById(R.id.btnsuathongtin);
         suathongtin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hotensua = (EditText) findViewById(R.id.editHoten);
-                sdtsua = (EditText) findViewById(R.id.editSDT);
-                emailsua = (EditText) findViewById(R.id.editEmail);
-                ngaysua = (EditText) findViewById(R.id.editNgay);
-                tendangnhapsua = (EditText) findViewById(R.id.edittextTendangnhap);
-                namsua = (RadioButton) findViewById(R.id.radioNam);
-                nusua = (RadioButton) findViewById(R.id.radioNu);
-                if(namsua.isChecked())
-                {
-                    hoten.setText(hotensua+"");
-                    sdt.setText(sdtsua+"");
-                    email.setText(emailsua+"");
-                    ngay.setText(ngaysua+"");
-                    tendangnhap.setText(tendangnhapsua+"");
-                    nam.setChecked(true);
-                } else {
-                    hoten.setText(hotensua+"");
-                    sdt.setText(sdtsua+"");
-                    email.setText(emailsua+"");
-                    ngay.setText(ngaysua+"");
-                    tendangnhap.setText(tendangnhapsua+"");
-                    nu.setChecked(true);
+                String hotenkhachhang = hoten.getText().toString().trim();
+                String tentaikhoan = tendangnhap.getText().toString().trim();
+                String sodienthoai = sdt.getText().toString().trim();
+                if(hotenkhachhang.matches("")||tentaikhoan.matches("")||sodienthoai.matches("")){
+                    Toast.makeText(getApplicationContext(),"Vui Lòng Nhập Đủ Thông Tin!", Toast.LENGTH_LONG).show();
+
+                }else {
+                    SuaThongTin(urlUpdate);
                 }
             }
         });
@@ -99,79 +134,45 @@ public class SuaThongTin extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void LoadData(){
-        RequestQueue requestQueue = Volley.newRequestQueue(SuaThongTin.this);
-        String url = "http://192.168.64.2/Admin/Admin/api/taikhoans?";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jr = new JSONArray(response);
-                            JSONObject jb;
-                            int a = 1;
-                            for (int i = 0; i < 5; i++) {
-                                if (a == i) {
-                                    jb = jr.getJSONObject(i);
-                                    String ho_ten = jb.getString("HoTen");
-                                    hoten.setText(ho_ten);
-                                    String SDT = jb.getString("SDT");
-                                    sdt.setText(SDT);
-                                    String Email = jb.getString("Email");
-                                    email.setText(Email);
-                                    String NgaySinh = jb.getString("Ngaysinh");
-                                    ngay.setText(NgaySinh);
-                                    String TenDangNhap = jb.getString("Ten_TK");
-                                    tendangnhap.setText(TenDangNhap);
-                                    String phai = jb.getString("Phai");
-                                    if (phai.equals("nam"))
-                                        nam.setChecked(true);
-                                    else nu.setChecked(true);
-                                }
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
 
-                    }
-                }
-
-        );
-        requestQueue.add(stringRequest);
-    }
-
-    private void SuaThongTin(String url)
+    private void SuaThongTin(String urlUpdate)
     {
         RequestQueue requestQueue = Volley.newRequestQueue(SuaThongTin.this);
-        StringRequest stringRequest = new StringRequest(Request.Method.PATCH, url,
+
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, urlUpdate,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response == "successful")
-                            Toast.makeText(SuaThongTin.this, "Update!", Toast.LENGTH_LONG).show();
-                        else Toast.makeText(SuaThongTin.this, "Error!", Toast.LENGTH_LONG).show();
+                        Intent inten = new Intent(SuaThongTin.this,ThongTinKhachHang.class);
+                        startActivity(inten);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(SuaThongTin.this, "Error!", Toast.LENGTH_LONG).show();
+                        Intent inten = new Intent(SuaThongTin.this,ThongTinKhachHang.class);
+                        startActivity(inten);
                     }
                 }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("Ten_TK", tendangnhap.getText().toString().trim());
-                params.put("HoTen",hoten.getText().toString().trim());
-                params.put("SDT", sdt.getText().toString().trim());
-                params.put("id", "1");
-                return super.getParams();
+                params.put("Ten_TK", tendangnhap.getText().toString());
+                params.put("HoTen", hoten.getText().toString());
+                params.put("Matkhau", sdt.getText().toString());
+                if (nam.isChecked()) {
+                    params.put("Phai", "Nam");
+                } else {
+                    params.put("Phai", "Nu");
+                }
+                params.put("NgaySinh", ngay.getText().toString());
+                return params;
+            }
+            @Override
+            public Priority getPriority() {
+                return Priority.HIGH;
             }
         };
+        requestQueue.add(stringRequest);
     }
 }

@@ -6,28 +6,92 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.app.Model.Ve;
 import com.example.app.R;
+import com.example.app.giaodien.DatVeVaThanhToan.DatVeActivity;
+import com.example.app.giaodien.DatVeVaThanhToan.SuatChieu;
+import com.example.app.giaodien.DatVeVaThanhToan.SuatChieuGidAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GiaoDich extends AppCompatActivity {
     Toolbar toolbar;
+    String url = "http://192.168.64.2/WebAdmin/api/ve";
+    private List<Ve> list;
+    int tongtien = 0;
+    TextView TongTienThang, TongTienNam;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giao_dich);
         Intent t = getIntent();
-        List<Ve> image_details = getListData();
+        list = new ArrayList<>();
         final ListView listView = (ListView) findViewById(R.id.listview);
-        listView.setAdapter(new CustomListAdapter(this, image_details));
+        TongTienThang = (TextView)  findViewById(R.id.txttongchitieuthang);
+        TongTienNam = (TextView) findViewById(R.id.txttongtientrongnam) ;
+        //API
+        RequestQueue requestQueue = Volley.newRequestQueue(GiaoDich.this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jr = new JSONArray(response);
+                            JSONObject jb;
+                            int n = jr.length();
+                            String hinhanhphim;
+                            String tenphim;
+                            String rap;
+                            String soghe;
+                            int giave;
+                            for (int i = 0; i < n; i++) {
+                                jb = jr.getJSONObject(i);
+                                hinhanhphim = jb.getString("Hinhanh").toString();
+                                tenphim = jb.getString("Tenphim").toString();
+                                rap = jb.getString("Tenrap").toString();
+                                soghe = jb.getString("Soghe").toString();
+                                giave = jb.getInt("Thanhtien");
+                                tongtien += giave;
+                                list.add(new Ve(hinhanhphim, tenphim, rap,soghe,giave));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        TongTienThang.setText(tongtien+"");
+                        TongTienNam.setText(tongtien+"");
+                        listView.setAdapter(new CustomListAdapter(GiaoDich.this, list));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        );
+        requestQueue.add(stringRequest);
+        //
+
 
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -43,20 +107,7 @@ public class GiaoDich extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    private  List<Ve> getListData() {
-        List<Ve> list = new ArrayList<Ve>();
-        Ve ConChimNon = new Ve(R.drawable.nam,"Con Chim Non", "Khá Bảnh","H11",75000);
-        Ve SieuNhanGao = new Ve(R.drawable.nam,"Siêu Nhân Gao", "Khá Bảnh","G11",75000);
-        Ve Friendzone = new Ve(R.drawable.nam,"Friendzone", "Khá Bảnh","F11",75000);
-        Ve Alibaba = new Ve(R.drawable.nam,"Alibaba", "Khá Bảnh","E11",75000);
-        Ve Shin = new Ve(R.drawable.nam,"Shin cậu bé bút chì", "Khá Bảnh","T11",75000);
-        list.add(ConChimNon);
-        list.add(SieuNhanGao);
-        list.add(Friendzone);
-        list.add(Alibaba);
-        list.add(Shin);
-        return list;
-    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_khachhang, menu);

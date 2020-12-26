@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:id="@+id/soghe"
+        android:id="@+id/giochieu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:backgroundTint="@color/nomo"/>
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:textSize="18sp"/>
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="8dp"
+    android:textSize="18sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

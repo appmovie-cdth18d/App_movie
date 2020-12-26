@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.app.Model.Ve;
 import com.example.app.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -63,7 +64,11 @@ public class CustomListAdapter extends BaseAdapter {
         holder.soghe.setText("Ghế: " + Ve.getSoghe());
         holder.giave.setText("Giá Vé: " + Ve.getGiave());
 
-        holder.flagView.setImageResource(Ve.getHinhanhphim());
+        Picasso.with(context)
+                .load("http://192.168.64.2/WebAdmin/"+ Ve.getHinhanhphim())
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_background)
+                .into(holder.flagView);
 
         return convertView;
     }

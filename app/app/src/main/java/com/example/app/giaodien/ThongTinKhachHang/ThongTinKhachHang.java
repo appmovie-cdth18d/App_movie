@@ -21,6 +21,7 @@ import com.example.app.MainActivity;
 import com.example.app.R;
 import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
 import com.example.app.giaodien.DatVeVaThanhToan.ChonGheActivity;
+import com.example.app.giaodien.DatVeVaThanhToan.DatVeActivity;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
 
@@ -52,7 +53,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
                         drawerLayout.closeDrawer(nav);
                         break;
                     case R.id.canhan:
-                        t = new Intent(getApplicationContext(), ChonGheActivity.class);
+                        t = new Intent(getApplicationContext(), DatVeActivity.class);
                         startActivity(t);
                         drawerLayout.closeDrawer(nav);
                         break;

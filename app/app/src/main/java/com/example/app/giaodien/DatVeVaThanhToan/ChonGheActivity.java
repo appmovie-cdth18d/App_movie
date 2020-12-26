@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -13,12 +14,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.app.MainActivity;
 import com.example.app.R;
 import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
+import com.example.app.giaodien.ThongTinKhachHang.SuaThongTin;
+import com.example.app.giaodien.ThongTinKhachHang.TaiKhoan;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +41,15 @@ public class ChonGheActivity extends AppCompatActivity {
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    String url = "http://192.168.64.2/WebAdmin/api/ghe";
+    private ArrayList<Ghe> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chon_ghe);
         Intent intent = getIntent();
-
+        list = new ArrayList<>();
+        final GridView gridView = (GridView) findViewById(R.id.gridView);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_chonghe);
         toolbar = (Toolbar) findViewById(R.id.toolbar_chonghe);
         setSupportActionBar(toolbar);
@@ -71,10 +87,50 @@ public class ChonGheActivity extends AppCompatActivity {
                 return false;
             }
         });
+        //API
+        RequestQueue requestQueue = Volley.newRequestQueue(ChonGheActivity.this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jr = new JSONArray(response);
+                            JSONObject jb;
+                            int n = jr.length();
+                            int Loaighe_id;
+                            int rap_id;
+                            int trangthai;
+                            Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+                            for (int i = 0; i < n; i++) {
+                                jb = jr.getJSONObject(i);
+                                if(jb.getInt("rap_id") == 1) {
+                                    String Soghe = jb.get("Soghe").toString();
+                                    Loaighe_id = jb.getInt("Loaighe_id");
+                                    rap_id = jb.getInt("rap_id");
+                                    trangthai = jb.getInt("Trangthai");
 
-        List<Ghe> image_details = getListData();
-        final GridView gridView = (GridView) findViewById(R.id.gridView);
-        gridView.setAdapter(new GidAdapter(this, image_details));
+                                    list.add(new Ghe(Soghe, Loaighe_id, rap_id, trangthai));
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        gridView.setAdapter(new GidAdapter(getApplicationContext(), list));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        );
+        requestQueue.add(stringRequest);
+        //
+
+
 
     }
 
@@ -99,21 +155,4 @@ public class ChonGheActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private  List<Ghe> getListData() {
-        List<Ghe> list = new ArrayList<Ghe>();
-        Ghe so1 = new Ghe("00", 3, 1,0);
-        Ghe so2 = new Ghe("01", 3, 1,0);
-        Ghe so3 = new Ghe("02", 3, 1,0);
-        Ghe so4 = new Ghe("03", 3, 1,0);
-        Ghe so5 = new Ghe("04", 3, 1,0);
-        Ghe so6 = new Ghe("05", 3, 1,0);
-
-        list.add(so1);
-        list.add(so2);
-        list.add(so3);
-        list.add(so4);
-        list.add(so5);
-        list.add(so6);
-        return list;
-    }
 }

@@ -11,4 +11,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#1C1C1C</color>
+    <color name="nomo">#EE7C6B</color>
 </resources>

@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="150dp"
                     android:layout_gravity="center"
-                    android:text="Đổi Mật Khẩu"
+                    android:text="@string/i_m_t_kh_u"
                     android:textSize="20sp"
                     android:textColor="@android:color/white" />
 
@@ -44,32 +44,36 @@
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Mật khẩu đăng nhập"
-    android:layout_marginTop="30dp"
-    android:textSize="20sp"/>
+
     <EditText
-        android:id="@+id/doimatkhau_matkhauhientai"
+        android:id="@+id/editmatkhauhientai"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Mật khẩu hiện tại"/>
+        android:layout_marginTop="100dp"
+        android:autofillHints=""
+        android:hint="@string/m_t_kh_u_hi_n_t_i"
+        android:inputType="textPassword" />
+
     <EditText
-        android:id="@+id/doimatkhau_matkhaumoi"
+        android:id="@+id/editmatkhaumoi"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Mật khẩu mới"/>
+        android:autofillHints=""
+        android:hint="@string/m_t_kh_u_m_i"
+        android:inputType="textPassword" />
+
     <EditText
-        android:id="@+id/doimatkhau_nhaplaimatkhaumoi"
+        android:id="@+id/editnhaplaimatkhaumoi"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Nhập lại mật khẩu mới"/>
+        android:autofillHints=""
+        android:hint="@string/nh_p_l_i_m_t_kh_u_m_i"
+        android:inputType="textPassword" />
     <Button
         android:id="@+id/btndoimatkhau"
         android:layout_width="300dp"
         android:layout_height="75dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="40dp"
-        android:text="Thay đổi mật khẩu"/>
+        android:text="@string/thay_i_m_t_kh_u"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

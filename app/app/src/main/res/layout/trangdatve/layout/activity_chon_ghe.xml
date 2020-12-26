@@ -17,12 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
+        android:layoutDirection = "ltr"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="0dp"
+            android:layoutDirection = "rtl"
             android:fitsSystemWindows="true"
             android:theme="@style/AppTheme.AppBarOverlay"
             tools:ignore="MissingConstraints">
@@ -69,7 +71,7 @@
         <GridView
             android:id="@+id/gridView"
             android:layout_width="wrap_content"
-            android:layout_height="390dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:numColumns="5"
@@ -154,6 +156,7 @@
     </LinearLayout>
 </ScrollView>
     <com.google.android.material.navigation.NavigationView
+        android:layoutDirection = "ltr"
         android:id="@+id/navView_chonghe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
