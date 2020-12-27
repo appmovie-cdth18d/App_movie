@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="20dp">
+    android:background="@color/white"
+    android:paddingTop="10dp">
     <ImageView
         android:id="@+id/imgPhim"
         android:layout_width="180dp"
@@ -23,7 +24,7 @@
             android:textSize="24sp"/>
 
         <TextView
-            android:id="@+id/txtTheloai"
+            android:id="@+id/txt_theloai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Thể loại"

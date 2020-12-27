@@ -4,6 +4,7 @@ package com.example.app.giaodien.TrangTimKiem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,32 +13,38 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.app.MainActivity;
 import com.example.app.Model.Phim;
 import com.example.app.R;
-import com.example.app.giaodien.DanhSachPhim.ChitietphimActivity;
 import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangChu.Trangchu;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TrangTimKiem extends AppCompatActivity {
-    private ListView lvPhim;
     private List<Phim> filter_phim;
-    private SearchView search;
-    private TimKiemAdapter timKiemAdapter;
     private List<Phim> lstPhim;
+
+    private RecyclerView recy_Phim;
+    private TimKiemAdapter timKiemAdapter;
+    private SearchView search;
+
     private NavigationView nav;
     private ActionBarDrawerToggle toggle;
     private DrawerLayout drawerLayout;
@@ -48,46 +55,61 @@ public class TrangTimKiem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timkiem);
 
-        Menu();
-        lstPhim = new ArrayList<>();
-        lstPhim.add(new Phim(1,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
-        lstPhim.add(new Phim(2,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
-        lstPhim.add(new Phim(3,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
-        lstPhim.add(new Phim(4,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
-        lstPhim.add(new Phim(5,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
-        filter_phim = new ArrayList<>();
-
-        lvPhim = (ListView) findViewById(R.id.list_Phim);
-        timKiemAdapter = new TimKiemAdapter(lstPhim,getApplicationContext(),R.layout.item_phim);
-        lvPhim.setAdapter(timKiemAdapter);
-        lvPhim.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(filter_phim.isEmpty()) Toast.makeText(TrangTimKiem.this, ""+lstPhim.get(position).getTen(), Toast.LENGTH_SHORT).show();
-                else Toast.makeText(TrangTimKiem.this, ""+filter_phim.get(position).getTen(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
         search = (SearchView) findViewById(R.id.search_Phim);
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
+        recy_Phim = (RecyclerView) findViewById(R.id.list_Phim);
 
-            //Hàm xử lý xự kiện khi thay đổi listview theo từ khóa khi search
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                for (Phim x : lstPhim){
-                    if(x.getTen().contains(newText))
-                        filter_phim.add(x);
-                }
-                ((TimKiemAdapter)lvPhim.getAdapter()).Update(filter_phim);
-                return false;
-            }
-        });
+        Menu();
+        Load_data("http://192.168.43.222:8080/WebAdmin/api/phim");
+
     }
-    public void Menu(){
+    public void Load_data(String url) {
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray arr_Phim = new JSONArray(response);
+                            JSONObject item_phim;
+                            lstPhim = new LinkedList<>();
+
+                            int ID, Diem;
+                            String Hinhanh, Tenphim, Theloai;
+                            int len = arr_Phim.length();
+                            for (int i = 0; i < len; i++) {
+                                try {
+                                item_phim = (JSONObject) arr_Phim.get(i);
+                                ID = item_phim.getInt("id");
+                                Diem = item_phim.getInt("Diem");
+                                Hinhanh = item_phim.getString("Hinhanh");
+                                Tenphim = item_phim.getString("Tenphim");
+                                Theloai = item_phim.getString("Tentheloai");
+
+                                lstPhim.add(new Phim(ID, Diem, Hinhanh, Tenphim, Theloai));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            timKiemAdapter = new TimKiemAdapter(lstPhim, getApplicationContext());
+                            recy_Phim.setAdapter(timKiemAdapter);
+                            recy_Phim.setLayoutManager(new LinearLayoutManager(TrangTimKiem.this));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Lỗi kết nối", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(stringRequest);
+    }
+    public void Menu() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawable_timkiem);
         toolbar = (Toolbar) findViewById(R.id.toolbar_timkiem);
         setSupportActionBar(toolbar);
