@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.Model.Phim;
 import com.example.app.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,10 @@ public class TimKiemAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Phim phim = lstPhim.get(position);
-        viewHolder.img.setImageResource(phim.getHinh());
+        Picasso.with(context)
+                .load("http://192.168.7.31:8080/WebAdmin/public/Image/"+lstPhim.get(position).getHinh())
+                .placeholder(R.drawable.em_chua_18)
+                .into(viewHolder.img);
         viewHolder.txtname.setText(phim.getTen());
         viewHolder.txttheloai.setText(phim.getTheLoai());
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.animation_left);

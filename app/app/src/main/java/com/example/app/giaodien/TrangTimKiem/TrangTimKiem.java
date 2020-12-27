@@ -50,16 +50,11 @@ public class TrangTimKiem extends AppCompatActivity {
 
         Menu();
         lstPhim = new ArrayList<>();
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Ròm", "Phim Hành Động"));
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Đại Dịch Xác Sống", "Phim Kinh Dị"));
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Cục Nợ Hóa Cục Cưng", "Phim Tình Cảm"));
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Vì Sao Đưa Bạn Tới", "Phim Hoat Hình"));
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Phi Vụ Hoàn Lương", "Phim Hành Động"));
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Quái Vật Săn Đêm", "Phim Kinh Dị"));
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Chiến Binh Hồi Sinh", "Phim Khoa Học Viễn Tưỡng"));
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Tí Hon Hậu Đậu", "Phim Hoạt Hình"));
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Tay Đấm Mỹ", "Phim Hành Động"));
-        lstPhim.add(new Phim(R.mipmap.cucnohoacuccung, "Sóng Thần", "Phim Hành Động"));
+        lstPhim.add(new Phim(1,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
+        lstPhim.add(new Phim(2,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
+        lstPhim.add(new Phim(3,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
+        lstPhim.add(new Phim(4,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
+        lstPhim.add(new Phim(5,7, "BoGia.jpg", "Ròm", "Phim Hành Động"));
         filter_phim = new ArrayList<>();
 
         lvPhim = (ListView) findViewById(R.id.list_Phim);
