@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,15 +20,54 @@ import com.example.app.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimViewHolder> {
+public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimViewHolder> implements Filterable {
     private List<Phim> lstPhim;
+    private List<Phim> lstPhim_Filter;
     private Context context;
 
     public TimKiemAdapter(List<Phim> lstPhim, Context context) {
         this.lstPhim = lstPhim;
         this.context = context;
+        this.lstPhim_Filter = lstPhim;
+    }
+
+    // --------- Search Filter ----------
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String char_search = constraint.toString(); //Chuỗi nhập vào
+
+                //Kiểm tra chuỗi nhập vào
+                if (char_search.isEmpty()) lstPhim_Filter = lstPhim; // Nếu chuỗi nhập là rỗng thì ds filter = là ds hiện tại
+                else {
+                    List<Phim> filter = new LinkedList<>();
+                    for (Phim item_phim : lstPhim) {
+                        if (item_phim.getTen().toUpperCase().contains(char_search.toUpperCase()) ||
+                                item_phim.getTen().toLowerCase().contains(char_search.toLowerCase())) {
+                            filter.add(item_phim);
+                        }
+                    }
+
+                    lstPhim_Filter = filter; // Ds Filter là ds các item vừa tìm được
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = lstPhim_Filter;
+
+                return filterResults;  // Trả về ds KQ là ds Filter
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                lstPhim_Filter = (List<Phim>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     @NonNull
@@ -39,7 +80,7 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
 
     @Override
     public void onBindViewHolder(@NonNull TimPhimViewHolder holder, int position) {
-        Phim phim = lstPhim.get(position);
+        Phim phim = lstPhim_Filter.get(position);
         Picasso.with(context)
                 .load("http://192.168.43.222:8080/WebAdmin/public/Image/" + phim.getHinh())
                 .placeholder(R.drawable.hai_phuong)
@@ -50,8 +91,9 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
 
     @Override
     public int getItemCount() {
-        return lstPhim.size();
+        return lstPhim_Filter.size();
     }
+
 
     public class TimPhimViewHolder extends RecyclerView.ViewHolder {
         ImageView Hinhanh;

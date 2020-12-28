@@ -61,6 +61,20 @@ public class TrangTimKiem extends AppCompatActivity {
         Menu();
         Load_data("http://192.168.43.222:8080/WebAdmin/api/phim");
 
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                timKiemAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                timKiemAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
     }
     public void Load_data(String url) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
