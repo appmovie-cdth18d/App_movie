@@ -193,12 +193,6 @@ public class DatVeActivity extends AppCompatActivity {
             requestQueue.add(stringRequest);
             //
 
-        girdGio2.setOnItemClickListener(new AdapterView .OnItemClickListener() {
-            public void onItemClick(
-                    AdapterView<?> arg0,View arg1, int arg2,long arg3) {
-
-            }
-        });
     }
 
     @Override

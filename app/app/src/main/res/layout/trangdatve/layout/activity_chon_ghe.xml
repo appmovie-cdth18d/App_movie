@@ -74,7 +74,6 @@
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:listSelector="@drawable/list_selector"
             android:numColumns="5"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"

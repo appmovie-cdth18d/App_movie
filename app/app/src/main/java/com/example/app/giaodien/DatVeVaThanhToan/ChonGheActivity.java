@@ -2,6 +2,8 @@ package com.example.app.giaodien.DatVeVaThanhToan;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.DrawFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -148,9 +151,13 @@ public class ChonGheActivity extends AppCompatActivity {
                         }
 
                         gridView.setAdapter(new GidAdapter(getApplicationContext(), list));
+                        gridView.setBackgroundResource(R.color.nomo);
+                        gridView.invalidate();
                         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             public void onItemClick(
                                     AdapterView<?> arg0,View arg1, int arg2,long arg3) {
+                                gridView.getChildAt(arg2).setBackgroundResource(R.color.noma);
+
                                 if (list.get(arg2).getTrangthai_()==1)
                                 {
                                     list.get(arg2).setTrangthai_(0);

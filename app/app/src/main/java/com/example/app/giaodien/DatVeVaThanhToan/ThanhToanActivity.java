@@ -197,7 +197,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                                     for (int i = 0; i < soluong; i++) {
                                         DatVe(url2, dsve_id + 1,ghe_id.get(i),giatienghe.get(i));
                                     }
-
+                                    Toast.makeText(getApplicationContext(),"Đặt vé thành công!!!", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } catch (JSONException e) {
