@@ -50,12 +50,13 @@ public class ThanhToanActivity extends AppCompatActivity {
     private String tenphim, tenrap, chinhanh, ngaychieu, Ten_ghe;
     private String giochieu, hinhanh, tencacghe = "", giatienghe_="";;
     private int phim_id, suatchieu_id;
-    private int rap_id, tongtien, dsve_id, Ghe_id, GiaTienGhe;
+    private int rap_id, tongtien, dsve_id, Ghe_id, GiaTienGhe, tienconlai, tienhientai = 1000000;
     private int soluong, id_ghe;
     private ArrayList<Integer> ghe_id, giatienghe;
     private ArrayList<String> tenghe;
     String url = "http://192.168.64.2/WebAdmin/api/dsve";
     String url2 = "http://192.168.64.2/WebAdmin/api/ve";
+    String urlUpdateTK = "http://192.168.64.2/WebAdmin/api/taikhoan/2";
     TextView soluongve_, tenphim_, ngaychieu_, rap_, ghe_, giochieu_, tongtienve, tongcong, conlai;
     ImageView hinhanhphim_;
     @Override
@@ -178,7 +179,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         tongcong.setText(tongtien+"");
         conlai.setText(tongtien+"");
         //
-
+        tienconlai = tienhientai - tongtien;
 
 
         //API
@@ -193,11 +194,14 @@ public class ThanhToanActivity extends AppCompatActivity {
                             thanhtoan.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    TaoDsVe(url);
-                                    for (int i = 0; i < soluong; i++) {
-                                        DatVe(url2, dsve_id + 1,ghe_id.get(i),giatienghe.get(i));
-                                    }
-                                    Toast.makeText(getApplicationContext(),"Đặt vé thành công!!!", Toast.LENGTH_SHORT).show();
+                                    if(tienhientai > tongtien) {
+                                        SuaTaiKhoan(urlUpdateTK, tongtien, tienconlai);
+                                        TaoDsVe(url);
+                                        for (int i = 0; i < soluong; i++) {
+                                            DatVe(url2, dsve_id + 1, ghe_id.get(i), giatienghe.get(i));
+                                        }
+                                        Toast.makeText(getApplicationContext(), "Đặt vé thành công!!!", Toast.LENGTH_SHORT).show();
+                                    } else Toast.makeText(getApplicationContext(), "Tiền Trong Tài Khoản Không Đủ!!!", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } catch (JSONException e) {
@@ -288,6 +292,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                     params.put("dsve_id", dsve + "");
                     params.put("ghe_id", gheid +"");
                     params.put("phim_id", phim_id + "");
+                    params.put("suatchieu_id", suatchieu_id+"");
                     params.put("thanhtien", giatien+"");
                     return params;
                 }
@@ -299,4 +304,33 @@ public class ThanhToanActivity extends AppCompatActivity {
             };
             requestQueue.add(stringRequest);
         }
+    private void SuaTaiKhoan(String urlUpdateTK, int tongtien, int tienconlai)
+    {
+        RequestQueue requestQueue = Volley.newRequestQueue(ThanhToanActivity.this);
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, urlUpdateTK,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Tien_TK", tienconlai+"");
+                return params;
+            }
+            @Override
+            public Priority getPriority() {
+                return Priority.NORMAL;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
 }

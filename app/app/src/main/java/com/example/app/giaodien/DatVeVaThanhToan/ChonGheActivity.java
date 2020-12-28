@@ -23,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -44,9 +45,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
+import java.util.function.ToIntBiFunction;
 
 public class ChonGheActivity extends AppCompatActivity {
     NavigationView nav;
@@ -62,6 +66,7 @@ public class ChonGheActivity extends AppCompatActivity {
     private ArrayList<String> tencacghe;
     Button chonghe;
     String url = "http://192.168.64.2/WebAdmin/api/ghe";
+    String urlve = "http://192.168.64.2/WebAdmin/api/ve";
     private ArrayList<Ghe> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +85,7 @@ public class ChonGheActivity extends AppCompatActivity {
         soluongghe = new ArrayList<>();
         tencacghe = new ArrayList<>();
         giatienghe = new ArrayList<>();
+        final ArrayList<Integer> gheid = new ArrayList<>();
         list = new ArrayList<>();
         final GridView gridView = (GridView) findViewById(R.id.gridView);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_chonghe);
@@ -119,6 +125,8 @@ public class ChonGheActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
         //API
         RequestQueue requestQueue = Volley.newRequestQueue(ChonGheActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -149,22 +157,66 @@ public class ChonGheActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                         gridView.setAdapter(new GidAdapter(getApplicationContext(), list));
                         gridView.setBackgroundResource(R.color.nomo);
                         gridView.invalidate();
+                        //API lấy vé đã mua
+                        RequestQueue requestQueue = Volley.newRequestQueue(ChonGheActivity.this);
+                        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlve,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        try {
+                                            JSONArray jr = new JSONArray(response);
+                                            JSONObject jb;
+                                            int n = jr.length();
+                                            int rap_id_, suatchieu_id_;
+                                            int gheid_;
+                                            for (int h = 0; h < n; h++){
+                                                jb = jr.getJSONObject(h);
+                                                rap_id_ = jb.getInt("rap_id");
+                                                suatchieu_id_ = jb.getInt("suatchieu_id");
+                                                if(rap_id_ == rap_id_)
+                                                {
+                                                    if (suatchieu_id_ == suatchieu_id)
+                                                    {
+                                                        gheid_ = jb.getInt("ghe_id");
+                                                        for (int i = 0; i < list.size(); i++)
+                                                        {
+                                                            if (list.get(i).getId() == gheid_) {
+                                                                list.get(i).setTrangthai_(2);
+                                                                gridView.getChildAt(i).setBackgroundResource(R.color.nomi);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                        );
+                        requestQueue.add(stringRequest);
+                        //
                         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             public void onItemClick(
                                     AdapterView<?> arg0,View arg1, int arg2,long arg3) {
-                                gridView.getChildAt(arg2).setBackgroundResource(R.color.noma);
-
                                 if (list.get(arg2).getTrangthai_()==1)
                                 {
                                     list.get(arg2).setTrangthai_(0);
+                                    gridView.getChildAt(arg2).setBackgroundResource(R.color.nomo);
                                 } else if (list.get(arg2).getTrangthai_() == 0)
                                 {
                                     list.get(arg2).setTrangthai_(1);
-                                }
+                                    gridView.getChildAt(arg2).setBackgroundResource(R.color.noma);
+                                } else Toast.makeText(getApplicationContext(), "Chọn ghế khác đi ba!!!",Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -175,7 +227,6 @@ public class ChonGheActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
                     }
                 }
-
         );
         requestQueue.add(stringRequest);
         //
@@ -193,19 +244,20 @@ public class ChonGheActivity extends AppCompatActivity {
                     }
                 }
                 soluong = soluongghe.size();
-                Intent t = new Intent(ChonGheActivity.this, ThanhToanActivity.class);
+                if (soluong < 1) {
+                    Toast.makeText(getApplicationContext(), "Chưa chọn ghế nha!!!",Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent t = new Intent(ChonGheActivity.this, ThanhToanActivity.class);
                     t.putExtra("soluong", soluong);
-                    if (soluong == 1){
+                    if (soluong == 1) {
                         t.putExtra("giatienghe2", giatienghe.get(0));
                         t.putExtra("dsghe_id2", soluongghe.get(0));
                         t.putExtra("dstenghe2", tencacghe.get(0));
-                    }
-                    else{
+                    } else {
                         t.putIntegerArrayListExtra("giatienghe", giatienghe);
                         t.putIntegerArrayListExtra("dsghe_id", soluongghe);
                         t.putStringArrayListExtra("dstenghe", tencacghe);
                     }
-
                     t.putExtra("tenphim", tenphim);
                     t.putExtra("tenrap", tenrap);
                     t.putExtra("chinhanh", chinhanh);
@@ -217,8 +269,8 @@ public class ChonGheActivity extends AppCompatActivity {
                     t.putExtra("hinhanh", "Adios.jpg");
                     t.putExtra("tongtien", tongtien);
 
-                startActivity(t);
-
+                    startActivity(t);
+                }
             }
         });
 
@@ -240,6 +292,52 @@ public class ChonGheActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void LayVeDaMua(String urlve, ArrayList<Ghe> list){
+        RequestQueue requestQueue = Volley.newRequestQueue(ChonGheActivity.this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlve,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+                            JSONArray jr = new JSONArray(response);
+                            JSONObject jb;
+                            int n = jr.length();
+                            int rap_id_, suatchieu_id_;
+                            int gheid_;
+                            for (int h = 0; h < n; h++){
+                                jb = jr.getJSONObject(h);
+                                rap_id_ = jb.getInt("rap_id");
+                                suatchieu_id_ = jb.getInt("suatchieu_id");
+                                if(rap_id_ == rap_id_)
+                                {
+                                    if (suatchieu_id_ == suatchieu_id)
+                                    {
+                                        gheid_ = jb.getInt("ghe_id");
+                                        for (int i = 0; i < list.size(); i++)
+                                        {
+                                                if (list.get(i).getId() == gheid_) {
+                                                    list.get(i).setTrangthai_(2);
+                                                    Toast.makeText(getApplicationContext(),list.get(i).getId()+"",Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+        requestQueue.add(stringRequest);
     }
 
 }

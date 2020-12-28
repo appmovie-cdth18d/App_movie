@@ -115,7 +115,6 @@ public class DatVeActivity extends AppCompatActivity {
                                 JSONObject jb;
                                 int n = jr.length();
 
-
                                 for (int i = 0; i < n; i++) {
                                     jb = jr.getJSONObject(i);
                                     tenphim = jb.getString("Tenphim");
