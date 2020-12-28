@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.app.R;
 
@@ -30,7 +31,11 @@ public class SuatChieuGidAdapter  extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return listData.get(position);
+        if (position < 0 || position >= getCount()) {
+            return null;
+        } else {
+         return listData.get(position);
+        }
     }
 
     @Override
@@ -44,7 +49,7 @@ public class SuatChieuGidAdapter  extends BaseAdapter {
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.grid_item_giochieu_layout, null);
             holder = new ViewHolder();
-            holder.giochieu = (Button) convertView.findViewById(R.id.giochieu);
+            holder.giochieu = (TextView) convertView.findViewById(R.id.giochieu);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -64,6 +69,6 @@ public class SuatChieuGidAdapter  extends BaseAdapter {
     }
 
     static class ViewHolder {
-        Button giochieu;
+        TextView giochieu;
     }
 }

@@ -22,6 +22,7 @@ import com.example.app.R;
 import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
 import com.example.app.giaodien.DatVeVaThanhToan.ChonGheActivity;
 import com.example.app.giaodien.DatVeVaThanhToan.DatVeActivity;
+import com.example.app.giaodien.DatVeVaThanhToan.ThanhToanActivity;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
 

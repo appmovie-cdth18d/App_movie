@@ -112,13 +112,13 @@
                     android:textColor="@color/black"
                     />
                 <TextView
-                    android:id="@+id/txttongthanhtoan"
+                    android:id="@+id/txtgiochieu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
-                    android:text="Tổng Thanh Toán : 0 đ"
+                    android:text="Giờ Chiếu"
                     android:textSize="18sp"
                     />
             </LinearLayout>
@@ -299,9 +299,10 @@
                     app:backgroundTint="#FFFFFF" />
 
                 <Button
+                    android:id="@+id/btnthanhtoan"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:background="@drawable/round_bg"
+                    android:background="@drawable/button"
                     android:text="Tôi Đồng Ý Và Tiếp Tục"
                     android:textSize="20sp"/>
             </LinearLayout>

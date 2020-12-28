@@ -54,199 +54,22 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
-            android:id="@+id/dinhdangphim"
+            android:id="@+id/NgayChieu"
             android:layout_width="170dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:text="Định dạng phim"
             android:textSize="24sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/black"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:text="Thứ 2"
-                android:textColor="#E60F0F"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/th_3"
-                android:textColor="#E80D0D"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#E80D0D"
-                android:gravity="center_vertical"
-                android:text="@string/th_4"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:textColor="#E80D0D"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/th_5"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:textColor="#E80D0D"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/th_6"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:textColor="#E80D0D"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/th_7"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="15dp"
-                android:textColor="#E80D0D"
-                android:layout_marginLeft="15dp"
-                android:gravity="center_vertical"
-                android:text="@string/cn"
-                android:textSize="18sp" />
-        </LinearLayout>
-        <HorizontalScrollView
+        <TextView
+            android:id="@+id/txtchinhanh1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/black"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/btnngay1"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="1"
-                    android:background="@drawable/btn"
-                    android:textSize="20sp" />
-                <Button
-                    android:id="@+id/btnngay2"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/_2"
-                    android:background="@drawable/btn"
-                    android:textSize="20sp" />
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
 
-                <Button
-                    android:id="@+id/btnngay3"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/_3"
-                    android:background="@drawable/btn"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/btnngay4"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn"
-                    android:text="@string/_4"
-                    android:textSize="20sp"
-                     />
-
-                <Button
-                    android:id="@+id/btnngay5"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn"
-                    android:text="@string/_5"
-                    android:textSize="20sp"
-                     />
-
-                <Button
-                    android:id="@+id/btnngay6"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/btn"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/_6"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/btnngay7"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/btn"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/t7"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/btnngay8"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/btn"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/_8"
-                    android:textSize="20sp" />
-                <Button
-                    android:id="@+id/btnngay9"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="9"
-                    android:background="@drawable/btn"
-                    android:textSize="20sp" />
-                <Button
-                    android:id="@+id/btnngay10"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/_10"
-                    android:background="@drawable/btn"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </HorizontalScrollView>
             <TextView
                 android:id="@+id/txtrap1"
                 android:layout_width="wrap_content"
@@ -261,7 +84,6 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:numColumns="5"
-            android:listSelector="@drawable/list_selector"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
@@ -269,6 +91,13 @@
             android:layout_marginRight="4dp"
             android:layout_marginBottom="4dp"
             />
+        <TextView
+            android:id="@+id/txtchinhanh2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
         <TextView
             android:id="@+id/txtrap2"
             android:layout_width="wrap_content"
@@ -283,7 +112,6 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:numColumns="5"
-            android:listSelector="@drawable/list_selector"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"

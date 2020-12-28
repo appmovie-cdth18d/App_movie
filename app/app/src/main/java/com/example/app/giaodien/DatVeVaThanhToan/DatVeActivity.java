@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.app.MainActivity;
 import com.example.app.R;
 import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
+import com.example.app.giaodien.ThongTinKhachHang.CustomListAdapter;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
@@ -40,9 +43,13 @@ public class DatVeActivity extends AppCompatActivity {
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-    TextView rap1, rap2, tenphim_;
-    String tenphim, tenrap1,tenrap2;
+    TextView rap1, rap2, tenphim_, ngaychieu, chinhanh1_,chinhanh2_;
+    String tenphim, tenrap1,tenrap2, chinhanh, chinhanh2;
     String url = "http://192.168.64.2/WebAdmin/api/lichchieu";
+    TextView giochieu;
+    String giochieu_, giochieu_2;
+    private int phim_id;
+    private int rap_id1, rap_id2;
     private ArrayList<SuatChieu> list;
     private ArrayList<SuatChieu> list2;
     @Override
@@ -54,6 +61,10 @@ public class DatVeActivity extends AppCompatActivity {
         rap1 = findViewById(R.id.txtrap1);
         rap2 = findViewById(R.id.txtrap2);
         tenphim_ = findViewById(R.id.toolbar_title_datve);
+        ngaychieu = findViewById(R.id.NgayChieu);
+        chinhanh1_ = findViewById(R.id.txtchinhanh1);
+        chinhanh2_ = findViewById(R.id.txtchinhanh2);
+        giochieu = findViewById(R.id.giochieu);
         final GridView girdGio = (GridView) findViewById(R.id.gridGio);
         final GridView girdGio2 = (GridView) findViewById(R.id.gridGio2);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_datve);
@@ -103,39 +114,72 @@ public class DatVeActivity extends AppCompatActivity {
                                 JSONArray jr = new JSONArray(response);
                                 JSONObject jb;
                                 int n = jr.length();
-                                String giochieu;
-                                int phim_id;
-                                int rap_id;
-                                Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+
+
                                 for (int i = 0; i < n; i++) {
                                     jb = jr.getJSONObject(i);
                                     tenphim = jb.getString("Tenphim");
+                                    ngaychieu.setText(jb.getString("NgayChieu"));
                                     if(jb.getInt("rap_id" )==1) {
                                         if(jb.getInt("phim_id")==1) {
                                             tenrap1 = jb.getString("Tenrap");
-                                            giochieu = jb.getString("GioChieu").toString();
+                                            giochieu_ = jb.getString("GioChieu").toString();
                                             phim_id = jb.getInt("phim_id");
-                                            rap_id = jb.getInt("rap_id");
-                                            list.add(new SuatChieu(giochieu, phim_id, rap_id));
+                                            rap_id1 = jb.getInt("rap_id");
+                                            chinhanh = jb.getString("chinhanh");
+                                            list.add(new SuatChieu(giochieu_, phim_id, rap_id1));
                                         }
                                     } else if(jb.getInt("rap_id" )==2) {
                                         if (jb.getInt("phim_id")==1){
                                             tenrap2 = jb.getString("Tenrap");
-                                            giochieu = jb.getString("GioChieu").toString();
+                                            giochieu_2= jb.getString("GioChieu").toString();
                                             phim_id = jb.getInt("phim_id");
-                                            rap_id = jb.getInt("rap_id");
-                                            list2.add(new SuatChieu(giochieu, phim_id, rap_id));
+                                            rap_id2 = jb.getInt("rap_id");
+                                            chinhanh2 = jb.getString("chinhanh");
+                                            list2.add(new SuatChieu(giochieu_2, phim_id, rap_id2));
                                         }
                                     }
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
+                            chinhanh1_.setText(chinhanh);
+                            chinhanh2_.setText(chinhanh2);
                             tenphim_.setText(tenphim);
-                            rap1.setText(tenrap1);
-                            rap2.setText(tenrap2);
+                            rap1.setText("Phòng : " +tenrap1);
+                            rap2.setText("Phòng : " +tenrap2);
                             girdGio.setAdapter(new SuatChieuGidAdapter(getApplicationContext(), list));
+                            girdGio.setOnItemClickListener(new AdapterView .OnItemClickListener() {
+                                public void onItemClick(
+                                        AdapterView<?> arg0,View arg1, int arg2,long arg3) {
+                                    Intent intent = new Intent(DatVeActivity.this, ChonGheActivity.class);
+                                    intent.putExtra("suatchieu_id", arg2+1);
+                                    intent.putExtra("rap_id", rap_id1);
+                                    intent.putExtra("phim_id", phim_id);
+                                    intent.putExtra("giochieu", giochieu_);
+                                    intent.putExtra("tenphim", tenphim);
+                                    intent.putExtra("tenrap", tenrap1);
+                                    intent.putExtra("ngaychieu", ngaychieu.getText().toString());
+                                    intent.putExtra("chinhanh", chinhanh);
+                                    startActivity(intent);
+                                }
+                            });
                             girdGio2.setAdapter(new SuatChieuGidAdapter(getApplicationContext(), list2));
+                            girdGio2.setOnItemClickListener(new AdapterView .OnItemClickListener() {
+                                public void onItemClick(
+                                        AdapterView<?> arg0,View arg1, int arg2,long arg3) {
+                                    Intent intent = new Intent(DatVeActivity.this, ChonGheActivity.class);
+                                    intent.putExtra("suatchieu_id", arg2+1);
+                                    intent.putExtra("rap_id", rap_id2);
+                                    intent.putExtra("phim_id", phim_id);
+                                    intent.putExtra("giochieu", giochieu_);
+                                    intent.putExtra("tenphim", tenphim);
+                                    intent.putExtra("tenrap", tenrap2);
+                                    intent.putExtra("ngaychieu", ngaychieu.getText().toString());
+                                    intent.putExtra("chinhanh", chinhanh2);
+                                    startActivity(intent);
+                                }
+                            });
                         }
                     },
                     new Response.ErrorListener() {
@@ -149,12 +193,14 @@ public class DatVeActivity extends AppCompatActivity {
             requestQueue.add(stringRequest);
             //
 
+        girdGio2.setOnItemClickListener(new AdapterView .OnItemClickListener() {
+            public void onItemClick(
+                    AdapterView<?> arg0,View arg1, int arg2,long arg3) {
+
+            }
+        });
     }
 
-    public void ChonGio(View view) {
-        Intent intent = new Intent(DatVeActivity.this, ChonGheActivity.class);
-        this.startActivity(intent);
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_khachhang, menu);

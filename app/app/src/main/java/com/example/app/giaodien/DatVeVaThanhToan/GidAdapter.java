@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.app.R;
 
@@ -44,7 +45,7 @@ public class GidAdapter  extends BaseAdapter {
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.grid_item_layout, null);
             holder = new ViewHolder();
-            holder.sogheView = (Button) convertView.findViewById(R.id.soghe);
+            holder.sogheView =  convertView.findViewById(R.id.soghe);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -66,7 +67,7 @@ public class GidAdapter  extends BaseAdapter {
     }
 
     static class ViewHolder {
-        Button sogheView;
+        TextView sogheView;
     }
 
 }

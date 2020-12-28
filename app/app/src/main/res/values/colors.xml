@@ -12,4 +12,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#1C1C1C</color>
     <color name="nomo">#EE7C6B</color>
+    <color name="noma">#00A6AD</color>
+    <color name="nomi">#FCF54C</color>
 </resources>

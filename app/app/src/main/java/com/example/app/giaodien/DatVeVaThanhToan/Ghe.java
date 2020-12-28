@@ -2,15 +2,19 @@ package com.example.app.giaodien.DatVeVaThanhToan;
 
 public class Ghe {
     private String soghe_;
+    private  int id;
     private int loaigheid_;
     private int rap_;
     private int trangthai_;
+    private int gia;
 
-    public Ghe (String soghe, int loaigheid, int rap, int trangthai) {
+    public Ghe (int id, String soghe, int loaigheid, int rap, int trangthai, int giatien) {
         this.setSoghe_(soghe);
         this.setLoaigheid_(loaigheid);
         this.setRap_(rap);
         this.setTrangthai_(trangthai);
+        this.setGia(giatien);
+        this.setId(id);
     }
 
     public String getSoghe_() {
@@ -43,5 +47,21 @@ public class Ghe {
 
     public void setTrangthai_(int trangthai_) {
         this.trangthai_ = trangthai_;
+    }
+
+    public int getGia() {
+        return gia;
+    }
+
+    public void setGia(int gia) {
+        this.gia = gia;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

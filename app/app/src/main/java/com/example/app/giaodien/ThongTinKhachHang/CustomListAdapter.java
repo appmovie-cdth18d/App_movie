@@ -35,7 +35,11 @@ public class CustomListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return listData.get(position);
+        if (position < 0 || position >= getCount()) {
+            return null;
+        } else {
+            return listData.get(position);
+        }
     }
 
     @Override
@@ -65,7 +69,7 @@ public class CustomListAdapter extends BaseAdapter {
         holder.giave.setText("Giá Vé: " + Ve.getGiave());
 
         Picasso.with(context)
-                .load("http://192.168.64.2/WebAdmin/"+ Ve.getHinhanhphim())
+                .load("http://192.168.64.2/WebAdmin/public/Image/"+ Ve.getHinhanhphim())
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
                 .into(holder.flagView);
