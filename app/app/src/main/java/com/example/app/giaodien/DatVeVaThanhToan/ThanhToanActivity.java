@@ -193,7 +193,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                             thanhtoan.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    ThanhToan(url);
+                                    TaoDsVe(url);
                                     for (int i = 0; i < soluong; i++) {
                                         DatVe(url2, dsve_id + 1,ghe_id.get(i),giatienghe.get(i));
                                     }
@@ -234,7 +234,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void ThanhToan(String url1){
+    public void TaoDsVe(String url1){
 
         RequestQueue requestQueue = Volley.newRequestQueue(ThanhToanActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url1,
