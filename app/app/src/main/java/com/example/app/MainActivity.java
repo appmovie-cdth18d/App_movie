@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.app.giaodien.TrangChu.Trangchu;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public void LOGIN(View view) {
         Intent t = new Intent(this, TrangTimKiem.class);
         startActivity(t);
-        /*if (user.getText().toString().equals("")) {
+        if (user.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Chưa nhập User", Toast.LENGTH_SHORT).show();
         }
         if (pass.getText().toString().equals("")) {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
             Toast.makeText(getApplicationContext(), "Đăng nhập thất bại, vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
-    */
+
     }
 
     public void gotoRegister(View view) {
