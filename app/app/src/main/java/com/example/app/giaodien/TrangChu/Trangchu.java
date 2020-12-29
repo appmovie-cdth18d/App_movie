@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -32,7 +33,7 @@ public class Trangchu extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private PageAdapter pageAdapter;
-
+    private int taikhoan_id, tientaikhoan;
     private TextView txtTim;
     private Button btnDatVe;
     @Override
@@ -45,7 +46,10 @@ public class Trangchu extends AppCompatActivity {
         Menu();
         //Khởi tạo trang slide phim
         PagePhim();
-
+        Intent intent = getIntent();
+        taikhoan_id = intent.getIntExtra("taikhoan_id",0);
+        tientaikhoan = intent.getIntExtra("tientaikhoan",0);
+        Toast.makeText(getApplicationContext(),taikhoan_id+" "+tientaikhoan,Toast.LENGTH_LONG).show();
         txtTim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

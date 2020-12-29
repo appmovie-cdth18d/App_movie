@@ -56,7 +56,6 @@ public class DoiMatKhauActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
                             JSONObject jb = new JSONObject(response);
                             mk = jb.getString("Matkhau").toString();
                     } catch (JSONException e) {
