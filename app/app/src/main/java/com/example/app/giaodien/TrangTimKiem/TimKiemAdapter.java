@@ -1,6 +1,7 @@
 package com.example.app.giaodien.TrangTimKiem;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +12,15 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.Model.Phim;
 import com.example.app.R;
+import com.example.app.giaodien.DanhSachPhim.ChitietphimActivity;
+import com.example.app.giaodien.ItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -43,7 +47,8 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
                 String char_search = constraint.toString(); //Chuỗi nhập vào
 
                 //Kiểm tra chuỗi nhập vào
-                if (char_search.isEmpty()) lstPhim_Filter = lstPhim; // Nếu chuỗi nhập là rỗng thì ds filter = là ds hiện tại
+                if (char_search.isEmpty())
+                    lstPhim_Filter = lstPhim; // Nếu chuỗi nhập là rỗng thì ds filter = là ds hiện tại
                 else {
                     List<Phim> filter = new LinkedList<>();
                     for (Phim item_phim : lstPhim) {
@@ -87,6 +92,15 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
                 .into(holder.Hinhanh);
         holder.TenPhim.setText(phim.getTen());
         holder.TheLoai.setText(phim.getTheLoai());
+
+        holder.setItemclickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
+                Intent t = new Intent(context, ChitietphimActivity.class);
+                t.putExtra("ID", phim.getID());
+                context.startActivity(t);
+            }
+        });
     }
 
     @Override
@@ -95,15 +109,27 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
     }
 
 
-    public class TimPhimViewHolder extends RecyclerView.ViewHolder {
+    public class TimPhimViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView Hinhanh;
         TextView TenPhim, TheLoai;
+        ItemClickListener itemClickListener;
 
         public TimPhimViewHolder(@NonNull View itemView) {
             super(itemView);
             Hinhanh = (ImageView) itemView.findViewById(R.id.imgPhim);
             TenPhim = (TextView) itemView.findViewById(R.id.txt_tieude);
             TheLoai = (TextView) itemView.findViewById(R.id.txt_theloai);
+
+            itemView.setOnClickListener(this);
+        }
+
+        public void setItemclickListener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
+
+        @Override
+        public void onClick(View v) {
+            itemClickListener.onClick(v, getAdapterPosition(), false);
         }
     }
 }

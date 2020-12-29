@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MediaController;
 import android.widget.RadioButton;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,10 @@ public class ChitietphimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitietphim);
+
+        Intent t = getIntent();
+        int ID = t.getIntExtra("ID",0);
+        Toast.makeText(getApplicationContext(), ""+ID,Toast.LENGTH_SHORT).show();
 
         videoView = findViewById(R.id.videoView);
         String videoPath = "android.resource://"+ getPackageName() + "/"+ R.raw.cua_lai_vo_bau;

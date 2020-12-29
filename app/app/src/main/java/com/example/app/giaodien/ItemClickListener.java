@@ -1,4 +1,4 @@
-package com.example.app.giaodien.TrangChu;
+package com.example.app.giaodien;
 
 import android.view.View;
 
