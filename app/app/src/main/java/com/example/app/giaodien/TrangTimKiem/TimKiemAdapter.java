@@ -82,7 +82,7 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
     public void onBindViewHolder(@NonNull TimPhimViewHolder holder, int position) {
         Phim phim = lstPhim_Filter.get(position);
         Picasso.with(context)
-                .load("http://192.168.43.222:8080/WebAdmin/public/Image/" + phim.getHinh())
+                .load("http://192.168.137.43:8080/WebAdmin1/public/Image/" + phim.getHinh())
                 .placeholder(R.drawable.hai_phuong)
                 .into(holder.Hinhanh);
         holder.TenPhim.setText(phim.getTen());

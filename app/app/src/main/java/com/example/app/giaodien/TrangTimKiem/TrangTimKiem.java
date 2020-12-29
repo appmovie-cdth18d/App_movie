@@ -59,7 +59,7 @@ public class TrangTimKiem extends AppCompatActivity {
         recy_Phim = (RecyclerView) findViewById(R.id.list_Phim);
 
         Menu();
-        Load_data("http://192.168.43.222:8080/WebAdmin/api/phim");
+        Load_data("http://192.168.137.43:8080/WebAdmin1/api/phim");
 
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
