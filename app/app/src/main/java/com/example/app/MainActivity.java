@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                                                 new Response.ErrorListener() {
                                                     @Override
                                                     public void onErrorResponse(VolleyError error) {
-
+                                                        Toast.makeText(getApplicationContext(),"Error Connection ??",Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
                                         requestQueue.add(stringRequest);
