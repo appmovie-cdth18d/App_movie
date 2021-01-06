@@ -72,6 +72,11 @@
     <string name="top_icon">TOP ICON</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="date">Ngày sinh</string>
+    <string name="phai">Giới tính</string>
+    <string name="sdt">Số điện thoại</string>
+    <string name="diachi">Địa chỉ</string>
     <string name="password">Password</string>
     <string name="confirmpassword">Confirm Password</string>
 

@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     EditText user;
     EditText pass;
     Button login;
-    String url = "http://192.168.137.1:8080/WebAdmin1/api/taikhoan/";
-    String url1 = "http://192.168.137.1:8080/WebAdmin1/api/taikhoan";
+    String url = "http://192.168.43.128:8080/cinema_admin/api/taikhoan/";
+    String url1 = "http://192.168.43.128:8080/cinema_admin/api/taikhoan/";
     private int soluong = 0;
     private ArrayList<String> tentk, mk;
     @Override

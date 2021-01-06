@@ -8,46 +8,46 @@
     tools:context=".giaodien.dangky">
 
 
+    <EditText
+        android:id="@+id/inputEmail"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border_signup"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
-        <EditText
-            android:id="@+id/inputEmail"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/round_border"
-            android:drawablePadding="16dp"
-            android:ems="10"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:padding="16dp"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
-        <EditText
-            android:id="@+id/inputName"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
 
-            android:layout_marginTop="200dp"
-            android:background="@drawable/round_border"
-            android:drawablePadding="16dp"
-            android:ems="10"
-            android:hint="@string/name"
-            android:inputType="textEmailAddress"
-            android:padding="16dp"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/round_border_signup"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 
     <EditText
         android:id="@+id/inputPassword"
         android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/round_border"
+        android:background="@drawable/round_border_signup"
         android:drawablePadding="16dp"
         android:ems="10"
         android:hint="@string/password"
@@ -59,45 +59,58 @@
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
     <EditText
-            android:id="@+id/inputCFPassword"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/round_border"
-            android:drawablePadding="16dp"
-            android:ems="10"
-            android:hint="@string/confirmpassword"
-            android:inputType="textPassword"
-            android:padding="16dp"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+        android:id="@+id/inputCFPassword"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border_signup"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="@string/confirmpassword"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border_signup"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="@string/confirmpassword"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputCFPassword" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
-            android:background="@drawable/round_bg"
-            android:onClick="SINGUP"
-            android:text="@string/signup"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputCFPassword" />
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_bg"
+        android:onClick="SINGUP"
+        android:text="@string/signup"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="565dp" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="188dp"
-            android:layout_height="167dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_person" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="121dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_person" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
