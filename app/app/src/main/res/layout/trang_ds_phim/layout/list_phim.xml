@@ -54,45 +54,22 @@
         android:layout_marginLeft="170dp"
         tools:ignore="HardcodedText,RtlHardcoded" />
 
-    <ImageView
-        android:id="@+id/imgStar1"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
+    <TextView
+        android:id="@+id/txtDiem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
-        android:layout_marginLeft="170dp"
-        tools:ignore="ContentDescription,RtlHardcoded" />
-    <ImageView
-        android:id="@+id/imgStar2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
+        android:layout_marginStart="170dp"
+        android:text="10"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/txtText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
-        android:layout_marginLeft="190dp"
-        tools:ignore="ContentDescription,RtlHardcoded" />
-    <ImageView
-        android:id="@+id/imgStar3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:layout_marginTop="160dp"
-        android:layout_marginLeft="210dp"
-        tools:ignore="ContentDescription,RtlHardcoded" />
-    <ImageView
-        android:id="@+id/imgStar4"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:layout_marginTop="160dp"
-        android:layout_marginLeft="230dp"
-        tools:ignore="ContentDescription,RtlHardcoded" />
-    <ImageView
-        android:id="@+id/imgStar5"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:layout_marginTop="160dp"
-        android:layout_marginLeft="250dp"
-        tools:ignore="ContentDescription,RtlHardcoded"/>
+        android:layout_marginStart="191dp"
+        android:text="đ"
+        android:textSize="15sp"/>
 
 </RelativeLayout>

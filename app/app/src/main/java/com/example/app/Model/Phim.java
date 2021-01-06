@@ -3,10 +3,10 @@ package com.example.app.Model;
 public class Phim {
     private int ID;
     private int Diem;
-    private String Hinh, Ten, TheLoai, Trangthai, Mota, Dinhdang, Trailer, Daodien, Thoiluong;
+    private String Hinh, Ten, TheLoai, Trangthai, Mota, Dinhdang, Trailer, Daodien, Thoiluong, Ngaykhoichieu, DoTuoi;
 
     public Phim(int ID, int diem, String hinh, String ten, String theLoai,
-                String trangthai, String mota, String dinhdang,
+                String trangthai, String mota, String dinhdang, String ngaykhoichieu, String doTuoi,
                 String trailer, String daodien, String thoiluong) {
         this.ID = ID;
         Diem = diem;
@@ -19,6 +19,8 @@ public class Phim {
         Trailer = trailer;
         Daodien = daodien;
         Thoiluong = thoiluong;
+        Ngaykhoichieu = ngaykhoichieu;
+        DoTuoi = doTuoi;
     }
     public Phim(int ID, int diem, String hinh, String ten, String theLoai) {
         this.ID = ID;
@@ -27,6 +29,18 @@ public class Phim {
         Ten = ten;
         TheLoai = theLoai;
     }
+
+    public Phim(int ID,int diem,String hinh,String ten,String thoiluong,String ngaykhoichieu,String dotuoi){
+        this.ID = ID;
+        Diem = diem;
+        Hinh = hinh;
+        Ten = ten;
+        Thoiluong = thoiluong;
+        Ngaykhoichieu = ngaykhoichieu;
+        DoTuoi = dotuoi;
+    }
+
+
     public String getTrangthai() {
         return Trangthai;
     }
@@ -111,4 +125,23 @@ public class Phim {
         TheLoai = theLoai;
     }
 
+    public String getNgaykhoichieu() {
+        return Ngaykhoichieu;
+    }
+
+    public void setNgaykhoichieu(String ngaykhoichieu) {
+        Ngaykhoichieu = ngaykhoichieu;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getDoTuoi() {
+        return DoTuoi;
+    }
+
+    public void setDoTuoi(String doTuoi) {
+        DoTuoi = doTuoi;
+    }
 }
