@@ -60,7 +60,7 @@
                 android:layout_width="150dp"
                 android:layout_height="200dp"
                 android:contentDescription="HinhPhimThanhToan"
-                app:srcCompat="@drawable/tiectrangmau" />
+                app:srcCompat="@drawable/nam" />
 
             <LinearLayout
                 android:layout_width="match_parent"

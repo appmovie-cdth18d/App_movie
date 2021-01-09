@@ -10,7 +10,7 @@
         android:id="@+id/imgPhim"
         android:layout_width="150dp"
         android:layout_height="210dp"
-        app:srcCompat="@drawable/cua_lai_vo_bau"
+        app:srcCompat="@drawable/nam"
         tools:ignore="ContentDescription" />
 
     <TextView

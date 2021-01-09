@@ -21,7 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:background="@drawable/round_bg"
-        android:onClick="Dat_Ve"
         android:text="Đặt vé"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
