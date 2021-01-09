@@ -1,4 +1,4 @@
-package com.example.app.giaodien.DatVeVaThanhToan;
+package com.example.app.Model;
 
 public class Ghe {
     private String soghe_;

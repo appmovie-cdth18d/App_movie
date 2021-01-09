@@ -1,9 +1,6 @@
 package com.example.app.giaodien.DatVeVaThanhToan;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.DrawFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,16 +11,12 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -31,12 +24,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.app.MainActivity;
+import com.example.app.Model.Ghe;
 import com.example.app.R;
 import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
-import com.example.app.giaodien.ThongTinKhachHang.SuaThongTin;
-import com.example.app.giaodien.ThongTinKhachHang.TaiKhoan;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
-import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -44,13 +35,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.function.ToIntBiFunction;
 
 public class ChonGheActivity extends AppCompatActivity {
     NavigationView nav;

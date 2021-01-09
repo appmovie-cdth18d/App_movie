@@ -109,8 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 requestQueue.add(stringRequest);
             }
         });
-
-
+//        startActivity(new Intent(this, Trangchu.class));
     }
 
 

@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,9 +21,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.app.Model.Ve;
 import com.example.app.R;
-import com.example.app.giaodien.DatVeVaThanhToan.DatVeActivity;
-import com.example.app.giaodien.DatVeVaThanhToan.SuatChieu;
-import com.example.app.giaodien.DatVeVaThanhToan.SuatChieuGidAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;

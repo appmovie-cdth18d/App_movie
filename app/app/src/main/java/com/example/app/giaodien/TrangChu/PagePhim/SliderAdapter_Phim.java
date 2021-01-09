@@ -41,7 +41,7 @@ public class SliderAdapter_Phim extends RecyclerView.Adapter<SliderAdapter_Phim.
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder holder, int position) {
         Picasso.with(context)
-                .load("http://192.168.64.2/cinema_admin/public/Image/"+lstPhim.get(position).getHinh())
+                .load("http://192.168.223.2:8080/cinema_admin/public/Image/"+lstPhim.get(position).getHinh())
                 .placeholder(R.drawable.bg_circle)
                 .into(holder.img);
         holder.txtTen.setText(lstPhim.get(position).getTen());

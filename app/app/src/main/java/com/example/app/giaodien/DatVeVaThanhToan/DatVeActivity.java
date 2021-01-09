@@ -1,6 +1,5 @@
 package com.example.app.giaodien.DatVeVaThanhToan;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -28,18 +25,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.app.MainActivity;
+import com.example.app.Model.SuatChieu;
 import com.example.app.R;
 import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
-import com.example.app.giaodien.ThongTinKhachHang.CustomListAdapter;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
-import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Time;
 import java.util.ArrayList;
 
 public class DatVeActivity extends AppCompatActivity {
