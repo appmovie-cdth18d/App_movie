@@ -34,6 +34,16 @@ public class Trangchu extends AppCompatActivity {
     private ViewPager viewPager;
     private PageAdapter pageAdapter;
     private int taikhoan_id, tientaikhoan;
+    private int ID_phim;
+
+    public int getID_phim() {
+        return ID_phim;
+    }
+
+    public void setID_phim(int ID_phim) {
+        this.ID_phim = ID_phim;
+    }
+
     private TextView txtTim;
     private Button btnDatVe;
     @Override
@@ -137,5 +147,10 @@ public class Trangchu extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void Dat_Ve(View view) {
+        int id = getID_phim();
+        Toast.makeText(getApplicationContext(),""+id,Toast.LENGTH_SHORT).show();
     }
 }
