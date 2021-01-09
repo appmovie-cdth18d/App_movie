@@ -5,14 +5,18 @@ public class Ve {
     private String tenphim;
     private String rap;
     private String soghe;
+    private String giochieu;
+    private String ngaychieu;
     private int giave;
 
-    public Ve(String hinhanhphim, String tenphim, String rap, String soghe, int giave) {
+    public Ve(String hinhanhphim, String tenphim, String rap, String soghe, int giave, String giochieu, String ngaychieu) {
         this.setHinhanhphim(hinhanhphim);
         this.setTenphim(tenphim);
         this.setRap(rap);
         this.setSoghe(soghe);
         this.setGiave(giave);
+        this.setGiochieu(giochieu);
+        this.setNgaychieu(ngaychieu);
     }
 
     public String getHinhanhphim() {
@@ -53,6 +57,22 @@ public class Ve {
 
     public void setSoghe(String soghe) {
         this.soghe = soghe;
+    }
+
+    public String getGiochieu() {
+        return giochieu;
+    }
+
+    public void setGiochieu(String giochieu) {
+        this.giochieu = giochieu;
+    }
+
+    public String getNgaychieu() {
+        return ngaychieu;
+    }
+
+    public void setNgaychieu(String ngaychieu) {
+        this.ngaychieu = ngaychieu;
     }
 }
 

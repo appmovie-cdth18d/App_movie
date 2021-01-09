@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -31,12 +32,15 @@ public class ThongTinKhachHang extends AppCompatActivity {
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    private String url;
+    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin_khach_hang);
-        Intent intent = this.getIntent();
-
+        Intent intent = getIntent();
+        id = intent.getIntExtra("taikhoan_id", 0);
+        url = "http://192.168.64.2/cinema_admin/api/taikhoan/"+id+"";
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_khachhang);
         toolbar = (Toolbar) findViewById(R.id.toolbar_khachhang);
         setSupportActionBar(toolbar);
@@ -77,17 +81,23 @@ public class ThongTinKhachHang extends AppCompatActivity {
     }
 
     public void Thongtin(View view) {
+
         Intent t = new Intent(this, SuaThongTin.class);
+        t.putExtra("taikhoan_id", id);
+        t.putExtra("url", url);
         this.startActivity(t);
     }
 
     public void LichSu(View view) {
         Intent t = new Intent(this, GiaoDich.class);
+        t.putExtra("taikhoan_id", id);
         this.startActivity(t);
     }
 
     public void DoiMatKhau(View view) {
         Intent t = new Intent(this, DoiMatKhauActivity.class);
+        t.putExtra("taikhoan_id", id);
+        t.putExtra("url", url);
         this.startActivity(t);
     }
 

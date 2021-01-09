@@ -91,6 +91,7 @@ public class Trangchu extends AppCompatActivity {
                         break;
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
+                        t.putExtra("taikhoan_id", taikhoan_id);
                         startActivity(t);
                         drawerLayout.closeDrawer(nav);
                         break;

@@ -43,7 +43,7 @@ public class fragment_phim_sc extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lstPhim_sc = new LinkedList<>();
-        Load_Ds_Phim("http://192.168.43.222:8080/WebAdmin1/api/topphim_sc");
+        Load_Ds_Phim("http://192.168.64.2/cinema_admin/api/topphim_sc");
     }
 
     @Nullable

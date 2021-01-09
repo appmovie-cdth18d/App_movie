@@ -44,7 +44,7 @@ public class fragment_phim_dc extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lstPhim_dc = new LinkedList<>();
-        Load_phim_dc("http://192.168.43.222:8080/WebAdmin1/api/topphim_dc");
+        Load_phim_dc("http://192.168.64.2/cinema_admin/api/topphim_dc");
     }
 
     @Override

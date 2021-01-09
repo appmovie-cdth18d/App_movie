@@ -1,5 +1,6 @@
 package com.example.app.giaodien.DatVeVaThanhToan;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -47,16 +49,16 @@ public class ThanhToanActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     Button thanhtoan;
-    private String tenphim, tenrap, chinhanh, ngaychieu, Ten_ghe;
+    private String tenphim, tenrap, ngaychieu, Ten_ghe;
     private String giochieu, hinhanh, tencacghe = "", giatienghe_="";;
-    private int phim_id, suatchieu_id;
+    private int phim_id, suatchieu_id, taikhoan_id = 1;
     private int rap_id, tongtien, dsve_id, Ghe_id, GiaTienGhe, tienconlai, tienhientai = 1000000;
     private int soluong, id_ghe;
     private ArrayList<Integer> ghe_id, giatienghe;
     private ArrayList<String> tenghe;
-    String url = "http://192.168.64.2/WebAdmin/api/dsve";
-    String url2 = "http://192.168.64.2/WebAdmin/api/ve";
-    String urlUpdateTK = "http://192.168.64.2/WebAdmin/api/taikhoan/2";
+    String url = "http://192.168.64.2/cinema_admin/api/dsve";
+    String url2 = "http://192.168.64.2/cinema_admin/api/ve";
+    String urlUpdateTK;
     TextView soluongve_, tenphim_, ngaychieu_, rap_, ghe_, giochieu_, tongtienve, tongcong, conlai;
     ImageView hinhanhphim_;
     @Override
@@ -66,6 +68,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         ghe_id = new ArrayList<>();
         tenghe = new ArrayList<>();
         giatienghe = new ArrayList<>();
+        urlUpdateTK = "http://192.168.64.2/cinema_admin/api/taikhoan/"+taikhoan_id;
         hinhanhphim_ = findViewById(R.id.hinhphimthanhtoan);
         soluongve_ = findViewById(R.id.soluong);
         tenphim_ = findViewById(R.id.txttenphimthanhtoan);
@@ -95,6 +98,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                         break;
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
+                        t.putExtra("taikhoan_id", taikhoan_id);
                         startActivity(t);
                         drawerLayout.closeDrawer(nav);
                         break;
@@ -123,7 +127,6 @@ public class ThanhToanActivity extends AppCompatActivity {
         {
             tenphim = intent.getStringExtra("tenphim");
             tenrap = intent.getStringExtra("tenrap");
-            chinhanh = intent.getStringExtra("chinhanh");
             ngaychieu = intent.getStringExtra("ngaychieu");
             giochieu = intent.getStringExtra("giochieu");
             phim_id = intent.getIntExtra("phim_id", 0);
@@ -140,7 +143,6 @@ public class ThanhToanActivity extends AppCompatActivity {
         } else if (soluong > 1) {
             tenphim = intent.getStringExtra("tenphim");
             tenrap = intent.getStringExtra("tenrap");
-            chinhanh = intent.getStringExtra("chinhanh");
             ngaychieu = intent.getStringExtra("ngaychieu");
             giochieu = intent.getStringExtra("giochieu");
             phim_id = intent.getIntExtra("phim_id", 0);
@@ -158,7 +160,7 @@ public class ThanhToanActivity extends AppCompatActivity {
 
         //Truyền dữ liệu
         Picasso.with(getApplicationContext())
-                .load("http://192.168.64.2/WebAdmin/public/Image/"+ hinhanh)
+                .load("http://192.168.64.2/cinema_admin/public/Image/"+ hinhanh)
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
                 .into(hinhanhphim_);
@@ -188,36 +190,52 @@ public class ThanhToanActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            JSONArray jr = new JSONArray(response);
-                            dsve_id = jr.length();
-                            thanhtoan.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if(tienhientai > tongtien) {
-                                        SuaTaiKhoan(urlUpdateTK, tongtien, tienconlai);
-                                        TaoDsVe(url);
-                                        for (int i = 0; i < soluong; i++) {
-                                            DatVe(url2, dsve_id + 1, ghe_id.get(i), giatienghe.get(i));
-                                        }
-                                        Toast.makeText(getApplicationContext(), "Đặt vé thành công!!!", Toast.LENGTH_SHORT).show();
-                                    } else Toast.makeText(getApplicationContext(), "Tiền Trong Tài Khoản Không Đủ!!!", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                            try {
+                                JSONArray jr = new JSONArray(response);
+                                dsve_id = jr.length();
+                                thanhtoan.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (tienhientai > tongtien) {
+                                            AlertDialog.Builder datve = new AlertDialog.Builder(ThanhToanActivity.this);
+                                            datve.setTitle("Xác Nhận!!!");
+                                            datve.setMessage("Bạn Chắc Chắn Đặt Vé Chứ ?");
+                                            datve.setPositiveButton("Đồng Ý",new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    SuaTaiKhoan(urlUpdateTK, tongtien, tienconlai);
+                                                    TaoDsVe(url);
+                                                    for (int i = 0; i < soluong; i++) {
+                                                        DatVe(url2, dsve_id + 1, ghe_id.get(i), giatienghe.get(i));
+                                                    }
+                                                    Toast.makeText(getApplicationContext(), "Đặt vé thành công!!!", Toast.LENGTH_SHORT).show();
+                                                    Intent t = new Intent(ThanhToanActivity.this, ThongTinKhachHang.class);
+                                                    t.putExtra("taikhoan_id", taikhoan_id);
+                                                }
+                                            });
+                                            datve.setNegativeButton("Canel", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+                                            datve.show();
+                                        } else
+                                            Toast.makeText(getApplicationContext(), "Tiền Trong Tài Khoản Không Đủ!!!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
 
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
+
                     }
                 }
         );
-
         requestQueue.add(stringRequest);
         //
 
@@ -259,13 +277,13 @@ public class ThanhToanActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("soluong", soluongve_.getText().toString());
                 params.put("tongtien", conlai.getText().toString());
-                params.put("taikhoan_id", "2");
+                params.put("taikhoan_id", taikhoan_id+"");
                 return params;
             }
 
             @Override
             public Priority getPriority() {
-                return Priority.HIGH;
+                return Priority.NORMAL;
             }
         };
         requestQueue.add(stringRequest);
@@ -293,6 +311,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                     params.put("ghe_id", gheid +"");
                     params.put("phim_id", phim_id + "");
                     params.put("suatchieu_id", suatchieu_id+"");
+                    params.put("ngaychieu", ngaychieu+"");
                     params.put("thanhtien", giatien+"");
                     return params;
                 }

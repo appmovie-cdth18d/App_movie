@@ -58,15 +58,15 @@ public class ChonGheActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView ghe;
     DrawerLayout drawerLayout;
-    String tenphim, tenrap, chinhanh, ngaychieu;
+    String tenphim, tenrap, ngaychieu;
     String giochieu;
-    private int phim_id, suatchieu_id;
-    private int rap_id, tongtien = 0, soluong;
+    private int phim_id, suatchieu_id, taikhoan_id;
+    private int rap_id, tongtien = 0, soluong = 0;
     private ArrayList<Integer> soluongghe, giatienghe;
     private ArrayList<String> tencacghe;
     Button chonghe;
-    String url = "http://192.168.64.2/WebAdmin/api/ghe";
-    String urlve = "http://192.168.64.2/WebAdmin/api/ve";
+    String url = "http://192.168.64.2/cinema_admin/api/ghe";
+    String urlve = "http://192.168.64.2/cinema_admin/api/ve";
     private ArrayList<Ghe> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,6 @@ public class ChonGheActivity extends AppCompatActivity {
         Intent intent = getIntent();;
         tenphim = intent.getStringExtra("tenphim");
         tenrap = intent.getStringExtra("tenrap");
-        chinhanh = intent.getStringExtra("chinhanh");
         ngaychieu = intent.getStringExtra("ngaychieu");
         giochieu = intent.getStringExtra("giochieu");
         phim_id = intent.getIntExtra("phim_id", 0);
@@ -106,6 +105,7 @@ public class ChonGheActivity extends AppCompatActivity {
                         break;
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
+                        t.putExtra("taikhoan_id", taikhoan_id);
                         startActivity(t);
                         drawerLayout.closeDrawer(nav);
                         break;
@@ -138,16 +138,14 @@ public class ChonGheActivity extends AppCompatActivity {
                             JSONObject jb;
                             int n = jr.length();
                             int Loaighe_id;
-                            int rap_id;
                             int trangthai;
                             int giaghe;
                             int id;
                             for (int i = 0; i < n; i++) {
                                 jb = jr.getJSONObject(i);
-                                if(jb.getInt("rap_id") == 1) {
+                                if(jb.getInt("rap_id") == rap_id) {
                                     String Soghe = jb.get("Soghe").toString();
                                     Loaighe_id = jb.getInt("Loaighe_id");
-                                    rap_id = jb.getInt("rap_id");
                                     trangthai = jb.getInt("Trangthai");
                                     giaghe = jb.getInt("giatien");
                                     id = jb.getInt("id");
@@ -159,7 +157,7 @@ public class ChonGheActivity extends AppCompatActivity {
                         }
                         gridView.setAdapter(new GidAdapter(getApplicationContext(), list));
                         gridView.setBackgroundResource(R.color.nomo);
-                        gridView.invalidate();
+                        //gridView.invalidate();
                         //API lấy vé đã mua
                         RequestQueue requestQueue = Volley.newRequestQueue(ChonGheActivity.this);
                         StringRequest stringRequest = new StringRequest(Request.Method.GET, urlve,
@@ -171,21 +169,23 @@ public class ChonGheActivity extends AppCompatActivity {
                                             JSONObject jb;
                                             int n = jr.length();
                                             int rap_id_, suatchieu_id_;
+                                            String NgayChieu;
                                             int gheid_;
                                             for (int h = 0; h < n; h++){
                                                 jb = jr.getJSONObject(h);
                                                 rap_id_ = jb.getInt("rap_id");
                                                 suatchieu_id_ = jb.getInt("suatchieu_id");
-                                                if(rap_id_ == rap_id_)
+                                                NgayChieu = jb.getString("NgayChieu");
+                                                if(rap_id_ == rap_id)
                                                 {
-                                                    if (suatchieu_id_ == suatchieu_id)
-                                                    {
-                                                        gheid_ = jb.getInt("ghe_id");
-                                                        for (int i = 0; i < list.size(); i++)
-                                                        {
-                                                            if (list.get(i).getId() == gheid_) {
-                                                                list.get(i).setTrangthai_(2);
-                                                                gridView.getChildAt(i).setBackgroundResource(R.color.nomi);
+                                                    if (suatchieu_id_ == suatchieu_id) {
+                                                        if (NgayChieu.equals(ngaychieu)) {
+                                                            gheid_ = jb.getInt("ghe_id");
+                                                            for (int i = 0; i < list.size(); i++) {
+                                                                if (list.get(i).getId() == gheid_) {
+                                                                    list.get(i).setTrangthai_(2);
+                                                                    gridView.getChildAt(i).setBackgroundResource(R.color.nomi);
+                                                                }
                                                             }
                                                         }
                                                     }
@@ -216,7 +216,7 @@ public class ChonGheActivity extends AppCompatActivity {
                                 {
                                     list.get(arg2).setTrangthai_(1);
                                     gridView.getChildAt(arg2).setBackgroundResource(R.color.noma);
-                                } else Toast.makeText(getApplicationContext(), "Chọn ghế khác đi ba!!!",Toast.LENGTH_SHORT).show();
+                                } else Toast.makeText(getApplicationContext(), "Ghế Đã Có Người Chọn!!!",Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -246,21 +246,30 @@ public class ChonGheActivity extends AppCompatActivity {
                 soluong = soluongghe.size();
                 if (soluong < 1) {
                     Toast.makeText(getApplicationContext(), "Chưa chọn ghế nha!!!",Toast.LENGTH_SHORT).show();
-                } else {
+                } else if (soluong == 1){
                     Intent t = new Intent(ChonGheActivity.this, ThanhToanActivity.class);
                     t.putExtra("soluong", soluong);
-                    if (soluong == 1) {
-                        t.putExtra("giatienghe2", giatienghe.get(0));
-                        t.putExtra("dsghe_id2", soluongghe.get(0));
+                    t.putExtra("giatienghe2", giatienghe.get(0));
+                    t.putExtra("dsghe_id2", soluongghe.get(0));
                         t.putExtra("dstenghe2", tencacghe.get(0));
-                    } else {
-                        t.putIntegerArrayListExtra("giatienghe", giatienghe);
-                        t.putIntegerArrayListExtra("dsghe_id", soluongghe);
-                        t.putStringArrayListExtra("dstenghe", tencacghe);
-                    }
+                        t.putExtra("tenphim", tenphim);
+                        t.putExtra("tenrap", tenrap);
+                        t.putExtra("ngaychieu", ngaychieu);
+                        t.putExtra("giochieu", giochieu);
+                        t.putExtra("phim_id", phim_id);
+                        t.putExtra("rap_id", rap_id);
+                        t.putExtra("suatchieu_id", suatchieu_id);
+                        t.putExtra("hinhanh", "Adios.jpg");
+                        t.putExtra("tongtien", tongtien);
+                    startActivity(t);
+                    } else if (soluong > 1) {
+                    Intent t = new Intent(ChonGheActivity.this, ThanhToanActivity.class);
+                    t.putExtra("soluong", soluong);
+                    t.putIntegerArrayListExtra("giatienghe", giatienghe);
+                    t.putIntegerArrayListExtra("dsghe_id", soluongghe);
+                    t.putStringArrayListExtra("dstenghe", tencacghe);
                     t.putExtra("tenphim", tenphim);
                     t.putExtra("tenrap", tenrap);
-                    t.putExtra("chinhanh", chinhanh);
                     t.putExtra("ngaychieu", ngaychieu);
                     t.putExtra("giochieu", giochieu);
                     t.putExtra("phim_id", phim_id);
@@ -268,7 +277,6 @@ public class ChonGheActivity extends AppCompatActivity {
                     t.putExtra("suatchieu_id", suatchieu_id);
                     t.putExtra("hinhanh", "Adios.jpg");
                     t.putExtra("tongtien", tongtien);
-
                     startActivity(t);
                 }
             }

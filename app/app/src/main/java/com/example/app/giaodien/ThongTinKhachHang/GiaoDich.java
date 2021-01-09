@@ -35,15 +35,17 @@ import java.util.List;
 
 public class GiaoDich extends AppCompatActivity {
     Toolbar toolbar;
-    String url = "http://192.168.64.2/WebAdmin/api/ve";
+    String url;
     private List<Ve> list;
-    int tongtien = 0;
+    int tongtien = 0, id;
     TextView TongTienThang, TongTienNam;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giao_dich);
         Intent t = getIntent();
+        id = t.getIntExtra("taikhoan_id", 0);
+        url = "http://192.168.64.2/cinema_admin/api/ve";
         list = new ArrayList<>();
         final ListView listView = (ListView) findViewById(R.id.listview);
         TongTienThang = (TextView)  findViewById(R.id.txttongchitieuthang);
@@ -62,16 +64,24 @@ public class GiaoDich extends AppCompatActivity {
                             String tenphim;
                             String rap;
                             String soghe;
+                            String giochieu;
+                            String ngaychieu;
+                            int taikhoan_id;
                             int giave;
                             for (int i = 0; i < n; i++) {
                                 jb = jr.getJSONObject(i);
-                                hinhanhphim = jb.getString("Hinhanh").toString();
-                                tenphim = jb.getString("Tenphim").toString();
-                                rap = jb.getString("Tenrap").toString();
-                                soghe = jb.getString("Soghe").toString();
-                                giave = jb.getInt("Thanhtien");
-                                tongtien += giave;
-                                list.add(new Ve(hinhanhphim, tenphim, rap,soghe,giave));
+                                taikhoan_id = jb.getInt("taikhoan_id");
+                                if (id == taikhoan_id) {
+                                    hinhanhphim = jb.getString("Hinhanh").toString();
+                                    tenphim = jb.getString("Tenphim").toString();
+                                    rap = jb.getString("Tenrap").toString();
+                                    soghe = jb.getString("Soghe").toString();
+                                    giave = jb.getInt("Thanhtien");
+                                    giochieu = jb.getString("GioChieu");
+                                    ngaychieu = jb.getString("NgayChieu");
+                                    tongtien += giave;
+                                    list.add(new Ve(hinhanhphim, tenphim, rap, soghe, giave, giochieu, ngaychieu));
+                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

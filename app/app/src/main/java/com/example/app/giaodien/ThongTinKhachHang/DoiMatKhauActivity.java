@@ -36,7 +36,8 @@ import java.util.Map;
 
 public class DoiMatKhauActivity extends AppCompatActivity {
     Toolbar toolbar;
-    String urlUpdate = "http://192.168.64.2/WebAdmin/api/taikhoan/1";
+    String urlUpdate;
+    int taikhoan_id;
     EditText MK, MKM, CMKM;
     String mk;
     Button DoiMK;
@@ -44,11 +45,15 @@ public class DoiMatKhauActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doi_mat_khau);
+        Intent t = getIntent();
+        taikhoan_id = t.getIntExtra("taikhoan_id", 0);
+        urlUpdate = t.getStringExtra("url");
         toolbar = (Toolbar) findViewById(R.id.toolbar_doimatkhau);
         setSupportActionBar(toolbar);
         MK = (EditText) findViewById(R.id.editmatkhauhientai);
         MKM = (EditText) findViewById(R.id.editmatkhaumoi);
         CMKM = (EditText) findViewById(R.id.editnhaplaimatkhaumoi);
+        Toast.makeText(getApplicationContext(), urlUpdate, Toast.LENGTH_SHORT).show();
         //API
         RequestQueue requestQueue = Volley.newRequestQueue(DoiMatKhauActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, urlUpdate,
@@ -56,8 +61,10 @@ public class DoiMatKhauActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                             JSONObject jb = new JSONObject(response);
-                            mk = jb.getString("Matkhau").toString();
+                            mk = jb.getString("Matkhau");
+                            Toast.makeText(getApplicationContext(), mk, Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -66,7 +73,7 @@ public class DoiMatKhauActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "Erorr!",Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -77,10 +84,10 @@ public class DoiMatKhauActivity extends AppCompatActivity {
         DoiMK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mk = MK.getText().toString().trim();
+                String mkc = MK.getText().toString().trim();
                 String mkm = MKM.getText().toString().trim();
                 String cmkm = CMKM.getText().toString().trim();
-                if(mk.matches("")||mkm.matches("")||cmkm.matches("")){
+                if(mkc.matches("")||mkm.matches("")||cmkm.matches("")){
                     Toast.makeText(getApplicationContext(),"Vui Lòng Nhập Đủ Thông Tin!", Toast.LENGTH_LONG).show();
 
                 }else if(MK.getText().toString().equals(mk)){
@@ -114,14 +121,14 @@ public class DoiMatKhauActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Intent inten = new Intent(DoiMatKhauActivity.this,ThongTinKhachHang.class);
-                        startActivity(inten);
+
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Intent inten = new Intent(DoiMatKhauActivity.this,ThongTinKhachHang.class);
+                        inten.putExtra("taikhoan_id", taikhoan_id);
                         startActivity(inten);
                     }
                 }){

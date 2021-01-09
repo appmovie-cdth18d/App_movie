@@ -36,8 +36,8 @@ public class SuaThongTin extends AppCompatActivity {
     RadioButton nam, nu;
     Button suathongtin;
     int id;
-    String url="http://192.168.64.2/WebAdmin/api/taikhoan";
-    String urlUpdate = "http://192.168.64.2/WebAdmin/api/taikhoan/1";
+    String url="http://192.168.64.2/cinema_admin/api/taikhoan";
+    String urlUpdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +52,8 @@ public class SuaThongTin extends AppCompatActivity {
         tendangnhap = (EditText) findViewById(R.id.edittextTendangnhap);
         nam = (RadioButton) findViewById(R.id.radioNam);
         nu = (RadioButton) findViewById(R.id.radioNu);
+        id = intent.getIntExtra("taikhoan_id", 0);
+        urlUpdate = intent.getStringExtra("url");
         //API
 
         RequestQueue requestQueue = Volley.newRequestQueue(SuaThongTin.this);
@@ -62,11 +64,9 @@ public class SuaThongTin extends AppCompatActivity {
                         try {
                             JSONArray jr = new JSONArray(response);
                             JSONObject jb;
-                            int a = 0;
-                            id = a;
                             int n = jr.length();
                             for (int i = 0; i < n; i++) {
-                                if (a == i) {
+                                if ((id - 1) == i) {
                                     jb = jr.getJSONObject(i);
                                     String ho_ten = jb.getString("HoTen");
                                     hoten.setText(ho_ten);

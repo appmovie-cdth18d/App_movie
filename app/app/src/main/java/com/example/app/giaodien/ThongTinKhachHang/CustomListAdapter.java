@@ -57,6 +57,8 @@ public class CustomListAdapter extends BaseAdapter {
             holder.rap = (TextView) convertView.findViewById(R.id.txtraplichsugiaodich);
             holder.soghe = (TextView) convertView.findViewById(R.id.txtghelichsugiaodich);
             holder.giave = (TextView) convertView.findViewById(R.id.txtgialichsugiaodich);
+            holder.giochieu = (TextView) convertView.findViewById(R.id.txtgiochieulichsugiaodich);
+            holder.ngaychieu = (TextView) convertView.findViewById(R.id.txtngayhieulichsugiaodich);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -67,7 +69,8 @@ public class CustomListAdapter extends BaseAdapter {
         holder.rap.setText("Rạp: " + Ve.getRap());
         holder.soghe.setText("Ghế: " + Ve.getSoghe());
         holder.giave.setText("Giá Vé: " + Ve.getGiave());
-
+        holder.giochieu.setText("Giờ Chiếu :" + Ve.getGiochieu());
+        holder.ngaychieu.setText("Ngày Chiếu :" + Ve.getNgaychieu());
         Picasso.with(context)
                 .load("http://192.168.64.2/WebAdmin/public/Image/"+ Ve.getHinhanhphim())
                 .placeholder(R.drawable.ic_launcher_background)
@@ -92,5 +95,7 @@ public class CustomListAdapter extends BaseAdapter {
         TextView rap;
         TextView soghe;
         TextView giave;
+        TextView giochieu;
+        TextView ngaychieu;
     }
 }
