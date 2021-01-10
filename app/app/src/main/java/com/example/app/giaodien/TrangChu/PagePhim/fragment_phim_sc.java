@@ -53,7 +53,6 @@ public class fragment_phim_sc extends Fragment  implements LoaderManager.LoaderC
         bundle.putString("url", URL_CONNECT);
         loaderManager = LoaderManager.getInstance(this);
         loaderManager.initLoader(1, bundle, this);
-//        Load_Ds_Phim("http://192.168.223.2:8080/cinema_admin/api/topphim_sc");
     }
 
     @Nullable
@@ -65,53 +64,6 @@ public class fragment_phim_sc extends Fragment  implements LoaderManager.LoaderC
 
         return v;
     }
-
-
-//    private void Load_Ds_Phim(String url) {
-//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-//        StringRequest ds_phim_sc = new StringRequest(Request.Method.GET, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        try {
-//                            JSONArray arr_Phim = new JSONArray(response);
-//                            JSONObject phim;
-//                            int ID_phim, Diem;
-//                            String Hinhanh, Tenphim, Theloai;
-//
-//                            int len = arr_Phim.length();
-//                            for (int i = 0; i < len; i++) {
-//
-//                                phim = (JSONObject) arr_Phim.get(i);
-//
-//                                ID_phim = phim.getInt("id");
-//                                Diem = phim.getInt("Diem");
-//                                Hinhanh = phim.getString("Hinhanh");
-//                                Tenphim = phim.getString("Tenphim");
-//                                Theloai = phim.getString("Tentheloai");
-//
-//                                lstPhim_sc.add(new Phim(ID_phim, Diem, Hinhanh, Tenphim, Theloai));
-//                            }
-//                            LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-//                            pager.setLayoutManager(manager);
-//                            sliderAdapterPhim = new SliderAdapter_Phim(lstPhim_sc, getContext());
-//                            pager.setClipToPadding(false);
-//                            pager.setClipChildren(false);
-//                            pager.setAdapter(sliderAdapterPhim);
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(getContext(), "Lỗi kết nối phim sắp chiếu !!", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//        );
-//        requestQueue.add(ds_phim_sc);
-//    }
 
     @NonNull
     @Override

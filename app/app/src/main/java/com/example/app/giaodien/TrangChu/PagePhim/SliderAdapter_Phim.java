@@ -52,7 +52,7 @@ public class SliderAdapter_Phim extends RecyclerView.Adapter<SliderAdapter_Phim.
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
                 Intent t = new Intent(context, ChitietphimActivity.class);
-                t.putExtra("ten",lstPhim.get(position).getTen());
+                t.putExtra("ID",lstPhim.get(position).getID());
                 context.startActivity(t);
             }
         });
