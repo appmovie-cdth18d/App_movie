@@ -2,11 +2,14 @@ package com.example.app.giaodien.TrangTimKiem;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.app.MainActivity;
 import com.example.app.Model.Phim;
+import com.example.app.Networking.MyAsyncTask;
 import com.example.app.R;
 import com.example.app.giaodien.DanhSachPhim.DanhsachphimActivity;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
@@ -37,7 +41,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TrangTimKiem extends AppCompatActivity {
+public class TrangTimKiem extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
+    private static final String URL_CONNECT = "http://10.0.2.2:8080/cinema_admin/api/phim";
+    private LoaderManager loaderManager;
+
     private List<Phim> filter_phim;
     private List<Phim> lstPhim;
 
@@ -59,7 +66,12 @@ public class TrangTimKiem extends AppCompatActivity {
         recy_Phim = (RecyclerView) findViewById(R.id.list_Phim);
 
         Menu();
-        Load_data("http://192.168.137.43:8080/WebAdmin1/api/phim");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("url", URL_CONNECT);
+        loaderManager = LoaderManager.getInstance(this);
+        loaderManager.initLoader(1, bundle, this);
+//        Load_data("http://10.0.2.2:8080/cinema_admin/api/phim");
 
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -76,53 +88,7 @@ public class TrangTimKiem extends AppCompatActivity {
         });
 
     }
-    public void Load_data(String url) {
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray arr_Phim = new JSONArray(response);
-                            JSONObject item_phim;
-                            lstPhim = new LinkedList<>();
 
-                            int ID, Diem;
-                            String Hinhanh, Tenphim, Theloai;
-                            int len = arr_Phim.length();
-                            for (int i = 0; i < len; i++) {
-                                try {
-                                item_phim = (JSONObject) arr_Phim.get(i);
-                                ID = item_phim.getInt("id");
-                                Diem = item_phim.getInt("Diem");
-                                Hinhanh = item_phim.getString("Hinhanh");
-                                Tenphim = item_phim.getString("Tenphim");
-                                Theloai = item_phim.getString("Tentheloai");
-
-                                lstPhim.add(new Phim(ID, Diem, Hinhanh, Tenphim, Theloai));
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-
-                            timKiemAdapter = new TimKiemAdapter(lstPhim, getApplicationContext());
-                            recy_Phim.setAdapter(timKiemAdapter);
-                            recy_Phim.setLayoutManager(new LinearLayoutManager(TrangTimKiem.this));
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Lỗi kết nối", Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
-        requestQueue.add(stringRequest);
-    }
     public void Menu() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawable_timkiem);
         toolbar = (Toolbar) findViewById(R.id.toolbar_timkiem);
@@ -165,4 +131,48 @@ public class TrangTimKiem extends AppCompatActivity {
         });
     }
 
+    @NonNull
+    @Override
+    public Loader<String> onCreateLoader(int id, @Nullable Bundle args) {
+        return new MyAsyncTask(this, args.getString("url"));
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<String> loader, String data) {
+        try {
+            JSONArray arr_Phim = new JSONArray(data);
+            JSONObject item_phim;
+            lstPhim = new LinkedList<>();
+
+            int ID, Diem;
+            String Hinhanh, Tenphim, Theloai;
+            int len = arr_Phim.length();
+            for (int i = 0; i < len; i++) {
+                try {
+                    item_phim = (JSONObject) arr_Phim.get(i);
+                    ID = item_phim.getInt("id");
+                    Diem = item_phim.getInt("Diem");
+                    Hinhanh = item_phim.getString("Hinhanh");
+                    Tenphim = item_phim.getString("Tenphim");
+                    Theloai = item_phim.getString("Tentheloai");
+
+                    lstPhim.add(new Phim(ID, Diem, Hinhanh, Tenphim, Theloai));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            timKiemAdapter = new TimKiemAdapter(lstPhim, getApplicationContext());
+            recy_Phim.setAdapter(timKiemAdapter);
+            recy_Phim.setLayoutManager(new LinearLayoutManager(TrangTimKiem.this));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<String> loader) {
+
+    }
 }
