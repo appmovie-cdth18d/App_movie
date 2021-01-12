@@ -1,61 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawable_dsPhim"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".giaodien.DanhSachPhim.DanhsachphimActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".giaodien.DanhSachPhim.DanhsachphimActivity"
+    tools:openDrawer="right">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbListFiml"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#D5D3DA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/left"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="10dp"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chọn phim của bạn"
-            android:textStyle="bold"
-            android:textColor="#F40D3C"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-    </androidx.appcompat.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/txt1"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="✓ Đang chiếu   "
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:background="#F63747"
-        android:gravity="center|right"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbListFiml"
-        tools:ignore="HardcodedText,RtlHardcoded" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:fitsSystemWindows="true"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/tbListFiml"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#D5D3DA"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Chọn phim của bạn"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="#F40D3C"
+                        android:textSize="20sp"
+                        tools:ignore="HardcodedText" />
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_timkiem"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:hint="Tìm kiếm phim..."
+                        android:textSize="20sp"
+                        android:textColor="@color/gray"
+                        android:background="#EFEAEA"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tbListFiml"
+                        tools:ignore="HardcodedText,RtlHardcoded" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/purple_500"
+                        app:tabTextColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_timkiem" />
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/pagePhim"
+                        android:layout_width="match_parent"
+                        android:layout_height="605dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+                </LinearLayout>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView_dsPhim"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_head"
+        app:menu="@menu/navitem" />
+</androidx.drawerlayout.widget.DrawerLayout>

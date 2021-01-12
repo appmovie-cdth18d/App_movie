@@ -50,6 +50,7 @@ public class Trangchu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trangchu);
+
         //Ánh xạ dữ liệu
         Anhxa();
         //Khởi tạo menu drawable
@@ -60,6 +61,7 @@ public class Trangchu extends AppCompatActivity {
         taikhoan_id = intent.getIntExtra("taikhoan_id",0);
         tientaikhoan = intent.getIntExtra("tientaikhoan",0);
         Toast.makeText(getApplicationContext(),taikhoan_id+" "+tientaikhoan,Toast.LENGTH_LONG).show();
+
         txtTim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
