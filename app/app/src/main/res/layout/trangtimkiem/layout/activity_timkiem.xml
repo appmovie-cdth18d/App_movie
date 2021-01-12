@@ -34,6 +34,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#C3FFFFFF"
                 android:orientation="vertical">
                 <androidx.appcompat.widget.SearchView
                     android:layout_marginTop="10dp"
@@ -45,7 +46,6 @@
                     android:iconifiedByDefault="false"
                     android:queryHint="Search name ..." />
                 <androidx.recyclerview.widget.RecyclerView
-                    android:background="#E1DDDD"
                     android:id="@+id/list_Phim"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
