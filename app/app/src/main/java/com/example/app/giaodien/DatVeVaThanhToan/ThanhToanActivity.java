@@ -63,6 +63,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     String urlUpdateTK;
     TextView soluongve_, tenphim_, ngaychieu_, rap_, ghe_, giochieu_, tongtienve, tongcong, conlai, tien_tk;
     ImageView hinhanhphim_;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +114,13 @@ public class ThanhToanActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(nav);
                         break;
                     case R.id.dangxuat:
+                        taikhoan = getSharedPreferences("TK", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = taikhoan.edit();
+                        editor.remove("ID_TK");
+                        editor.remove("Email");
+                        editor.remove("Pass");
+                        editor.remove("Name");
+                        editor.commit();
                         t = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(t);
                         drawerLayout.closeDrawer(nav);

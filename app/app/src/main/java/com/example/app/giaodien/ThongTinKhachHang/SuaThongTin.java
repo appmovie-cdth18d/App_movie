@@ -26,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.app.Model.TaiKhoan;
 import com.example.app.R;
 
 import org.json.JSONArray;
@@ -65,7 +66,6 @@ public class SuaThongTin extends AppCompatActivity {
         id = taikhoan.getInt("ID_TK",0);
         urlUpdate = intent.getStringExtra("url");
         //API
-        Toast.makeText(getApplicationContext(),urlUpdate, Toast.LENGTH_SHORT).show();
         RequestQueue requestQueue = Volley.newRequestQueue(SuaThongTin.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

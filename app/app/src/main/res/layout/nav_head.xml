@@ -6,42 +6,33 @@
     android:layout_height="270dp"
     android:background="#E53935">
 
-    <ImageView
-        android:id="@+id/nav_avt"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/nam"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtName_TK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/baloo"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nav_avt" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/txtEmail_TK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
+        android:inputType="textMultiLine"
         android:layout_marginTop="8dp"
         android:text="nguyenthanhtam@gmail.com"
         android:textColor="@color/white"
         android:textSize="23sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtName_TK" />
 </androidx.constraintlayout.widget.ConstraintLayout>

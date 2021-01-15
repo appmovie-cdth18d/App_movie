@@ -121,7 +121,7 @@
         android:layoutDirection = "ltr"
         android:id="@+id/navView_datve"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_head"

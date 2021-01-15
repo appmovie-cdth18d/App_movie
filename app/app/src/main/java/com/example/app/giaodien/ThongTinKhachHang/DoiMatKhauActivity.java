@@ -56,7 +56,6 @@ public class DoiMatKhauActivity extends AppCompatActivity {
         MK = (EditText) findViewById(R.id.editmatkhauhientai);
         MKM = (EditText) findViewById(R.id.editmatkhaumoi);
         CMKM = (EditText) findViewById(R.id.editnhaplaimatkhaumoi);
-        Toast.makeText(getApplicationContext(), urlUpdate, Toast.LENGTH_SHORT).show();
         //API
         RequestQueue requestQueue = Volley.newRequestQueue(DoiMatKhauActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, urlUpdate,
@@ -64,10 +63,8 @@ public class DoiMatKhauActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                             JSONObject jb = new JSONObject(response);
                             mk = jb.getString("Matkhau");
-                            Toast.makeText(getApplicationContext(), mk, Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                             e.printStackTrace();
                         }

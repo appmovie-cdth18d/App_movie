@@ -17,9 +17,6 @@
                     android:id="@+id/ve_phim"
                     android:icon="@drawable/datve_icon"
                     android:title="Đặt vé theo Phim" />
-                <item
-                    android:id="@+id/ve_rap"
-                    android:title="Đặt vé theo Rạp" />
             </group>
         </menu>
     </item>

@@ -28,7 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class Trangchu extends AppCompatActivity {
-    private SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences;
 
     private NavigationView nav;
     private ActionBarDrawerToggle toggle;
@@ -40,7 +40,7 @@ public class Trangchu extends AppCompatActivity {
     private PageAdapter pageAdapter;
     private int taikhoan_id;
     private int ID_phim;
-    private TextView txtTim;
+    private TextView txtTim, txt_name_TK, txt_email_TK;
 
     public int getTaikhoan_id() {
         return taikhoan_id;
@@ -79,7 +79,6 @@ public class Trangchu extends AppCompatActivity {
                 startActivity(t);
             }
         });
-
     }
     public void Anhxa(){
         txtTim = (TextView) findViewById(R.id.txt_timkiem);
@@ -96,7 +95,6 @@ public class Trangchu extends AppCompatActivity {
 
     }
     public void Menu(){
-
         setSupportActionBar(toolbar);
         nav.bringToFront();
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
@@ -113,7 +111,6 @@ public class Trangchu extends AppCompatActivity {
                         break;
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
-                        t.putExtra("taikhoan_id", taikhoan_id);
                         startActivity(t);
                         drawerLayout.closeDrawer(nav);
                         break;

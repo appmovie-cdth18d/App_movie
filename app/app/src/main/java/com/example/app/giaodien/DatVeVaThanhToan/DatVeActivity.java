@@ -1,6 +1,7 @@
 package com.example.app.giaodien.DatVeVaThanhToan;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,6 +55,8 @@ public class DatVeActivity extends AppCompatActivity {
     private ArrayList<SuatChieu> list;
     private ArrayList<SuatChieu> list2;
     private ArrayList<String> NgayChieu;
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +98,13 @@ public class DatVeActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(nav);
                         break;
                     case R.id.dangxuat:
+                        sharedPreferences = getSharedPreferences("TK", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.remove("ID_TK");
+                        editor.remove("Email");
+                        editor.remove("Pass");
+                        editor.remove("Name");
+                        editor.commit();
                         t = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(t);
                         drawerLayout.closeDrawer(nav);

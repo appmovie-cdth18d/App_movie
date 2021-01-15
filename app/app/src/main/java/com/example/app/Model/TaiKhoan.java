@@ -1,4 +1,4 @@
-package com.example.app.giaodien.ThongTinKhachHang;
+package com.example.app.Model;
 
 
 public class TaiKhoan {

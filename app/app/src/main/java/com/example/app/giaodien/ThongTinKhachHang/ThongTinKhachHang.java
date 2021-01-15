@@ -35,6 +35,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
     DrawerLayout drawerLayout;
     private String url;
     private int id;
+    TextView name;
     SharedPreferences taikhoan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
         url = "http://192.168.0.10:8080/cinema_admin/api/taikhoan/"+id+"";
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_khachhang);
         toolbar = (Toolbar) findViewById(R.id.toolbar_khachhang);
+        name = findViewById(R.id.txtName_TK);
         setSupportActionBar(toolbar);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -71,6 +73,13 @@ public class ThongTinKhachHang extends AppCompatActivity {
                         drawerLayout.closeDrawer(nav);
                         break;
                     case R.id.dangxuat:
+                        taikhoan = getSharedPreferences("TK", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = taikhoan.edit();
+                        editor.remove("ID_TK");
+                        editor.remove("Email");
+                        editor.remove("Pass");
+                        editor.remove("Name");
+                        editor.commit();
                         t = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(t);
                         drawerLayout.closeDrawer(nav);
