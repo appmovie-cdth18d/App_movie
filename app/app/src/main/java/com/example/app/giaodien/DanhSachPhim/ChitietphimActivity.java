@@ -164,7 +164,7 @@ public class ChitietphimActivity extends AppCompatActivity {
 
                                 }
                             };
-                            youTubePlayerView.initialize(getApiKey(), onInitializedListener);
+//                            youTubePlayerView.initialize(getApiKey(), onInitializedListener);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

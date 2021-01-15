@@ -33,8 +33,18 @@ public class Trangchu extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private PageAdapter pageAdapter;
-    private int taikhoan_id, tientaikhoan;
+    private int taikhoan_id;
     private int ID_phim;
+    private TextView txtTim;
+    private Button btnDatVe;
+
+    public int getTaikhoan_id() {
+        return taikhoan_id;
+    }
+
+    public void setTaikhoan_id(int taikhoan_id) {
+        this.taikhoan_id = taikhoan_id;
+    }
 
     public int getID_phim() {
         return ID_phim;
@@ -44,8 +54,6 @@ public class Trangchu extends AppCompatActivity {
         this.ID_phim = ID_phim;
     }
 
-    private TextView txtTim;
-    private Button btnDatVe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +67,6 @@ public class Trangchu extends AppCompatActivity {
         PagePhim();
         Intent intent = getIntent();
         taikhoan_id = intent.getIntExtra("taikhoan_id",0);
-        tientaikhoan = intent.getIntExtra("tientaikhoan",0);
-        Toast.makeText(getApplicationContext(),taikhoan_id+" "+tientaikhoan,Toast.LENGTH_LONG).show();
 
         txtTim.setOnClickListener(new View.OnClickListener() {
             @Override
