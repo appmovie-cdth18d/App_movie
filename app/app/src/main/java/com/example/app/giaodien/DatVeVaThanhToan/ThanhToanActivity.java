@@ -51,15 +51,15 @@ public class ThanhToanActivity extends AppCompatActivity {
     Button thanhtoan;
     private String tenphim, tenrap, ngaychieu, Ten_ghe;
     private String giochieu, hinhanh, tencacghe = "", giatienghe_="";;
-    private int phim_id, suatchieu_id, taikhoan_id = 1;
-    private int rap_id, tongtien, dsve_id, Ghe_id, GiaTienGhe, tienconlai, tienhientai = 1000000;
+    private int phim_id, suatchieu_id, taikhoan_id = 1,rap_id, dsve_id, Ghe_id;
+    int  tongtien, GiaTienGhe, tienconlai, tienhientai;
     private int soluong, id_ghe;
     private ArrayList<Integer> ghe_id, giatienghe;
     private ArrayList<String> tenghe;
     String url = "http://192.168.1.4:8080/cinema_admin/api/dsve";
     String url2 = "http://192.168.1.4:8080/cinema_admin/api/ve";
     String urlUpdateTK;
-    TextView soluongve_, tenphim_, ngaychieu_, rap_, ghe_, giochieu_, tongtienve, tongcong, conlai;
+    TextView soluongve_, tenphim_, ngaychieu_, rap_, ghe_, giochieu_, tongtienve, tongcong, conlai, tien_tk;
     ImageView hinhanhphim_;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +79,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         tongtienve = findViewById(R.id.tongtien);
         tongcong = findViewById(R.id.tongcong);
         conlai = findViewById(R.id.conlai);
+        tien_tk = findViewById(R.id.tien_tk);
         thanhtoan = findViewById(R.id.btnthanhtoan);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_thanhtoan);
         toolbar = (Toolbar) findViewById(R.id.toolbar_thanhtoan);
@@ -179,9 +180,9 @@ public class ThanhToanActivity extends AppCompatActivity {
         giochieu_.setText(giochieu+"");
         tongtienve.setText(tongtien+"");
         tongcong.setText(tongtien+"");
-        conlai.setText(tongtien+"");
+        LayTienTrongTaiKhoan(urlUpdateTK);
         //
-        tienconlai = tienhientai - tongtien;
+
 
 
         //API
@@ -207,9 +208,10 @@ public class ThanhToanActivity extends AppCompatActivity {
                                                     for (int i = 0; i < soluong; i++) {
                                                         DatVe(url2, dsve_id + 1, ghe_id.get(i), giatienghe.get(i));
                                                     }
-                                                    Toast.makeText(getApplicationContext(), "Đặt vé thành công!!!", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(ThanhToanActivity.this, "Đặt vé thành công!!!", Toast.LENGTH_SHORT).show();
                                                     Intent t = new Intent(ThanhToanActivity.this, ThongTinKhachHang.class);
                                                     t.putExtra("taikhoan_id", taikhoan_id);
+                                                    startActivity(t);
                                                 }
                                             });
                                             datve.setNegativeButton("Canel", new DialogInterface.OnClickListener() {
@@ -276,7 +278,7 @@ public class ThanhToanActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("soluong", soluongve_.getText().toString());
-                params.put("tongtien", conlai.getText().toString());
+                params.put("tongtien", tongtienve.getText().toString());
                 params.put("taikhoan_id", taikhoan_id+"");
                 return params;
             }
@@ -350,6 +352,33 @@ public class ThanhToanActivity extends AppCompatActivity {
                 return Priority.NORMAL;
             }
         };
+        requestQueue.add(stringRequest);
+    }
+    private void LayTienTrongTaiKhoan(String urlTaiKhoan)
+    {
+        RequestQueue requestQueue = Volley.newRequestQueue(ThanhToanActivity.this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlTaiKhoan,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jb = new JSONObject(response);
+                            int tien = jb.getInt("Tien_TK");
+                            tien_tk.setText(tien+"");
+                            tienconlai = tien - tongtien;
+                            tienhientai = tien;
+                            conlai.setText(tienconlai+"");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
         requestQueue.add(stringRequest);
     }
 }

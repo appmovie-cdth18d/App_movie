@@ -1,5 +1,7 @@
 package com.example.app.giaodien.ThongTinKhachHang;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,8 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,12 +31,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SuaThongTin extends AppCompatActivity {
     Toolbar toolbar;
-    EditText hoten, sdt,email, ngay, tendangnhap;
+    EditText hoten, sdt,email, ngay, tendangnhap, diachi;
     RadioButton nam, nu;
     Button suathongtin;
     int id;
@@ -52,10 +58,11 @@ public class SuaThongTin extends AppCompatActivity {
         tendangnhap = (EditText) findViewById(R.id.edittextTendangnhap);
         nam = (RadioButton) findViewById(R.id.radioNam);
         nu = (RadioButton) findViewById(R.id.radioNu);
+        diachi = (EditText) findViewById(R.id.editDiachi);
         id = intent.getIntExtra("taikhoan_id", 0);
         urlUpdate = intent.getStringExtra("url");
         //API
-
+        Toast.makeText(getApplicationContext(),urlUpdate, Toast.LENGTH_SHORT).show();
         RequestQueue requestQueue = Volley.newRequestQueue(SuaThongTin.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -82,7 +89,9 @@ public class SuaThongTin extends AppCompatActivity {
                                     if (phai.equals("nam"))
                                         nam.setChecked(true);
                                     else nu.setChecked(true);
-                                    TaiKhoan taiKhoan = new TaiKhoan(id, hoten.getText().toString(),tendangnhap.getText().toString(),sdt.getText().toString(),jb.getString("DiaChi"),ngay.getText().toString(),jb.getString("Phai"));
+                                    String DiaChi = jb.getString("Diachi");
+                                    diachi.setText(DiaChi);
+                                    TaiKhoan taiKhoan = new TaiKhoan(id, hoten.getText().toString(),tendangnhap.getText().toString(),sdt.getText().toString(),diachi.getText().toString(),ngay.getText().toString(),jb.getString("Phai"));
                                 }
                             }
                         } catch (JSONException e) {
@@ -138,7 +147,6 @@ public class SuaThongTin extends AppCompatActivity {
     private void SuaThongTin(String urlUpdate)
     {
         RequestQueue requestQueue = Volley.newRequestQueue(SuaThongTin.this);
-
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, urlUpdate,
                 new Response.Listener<String>() {
                     @Override
@@ -159,7 +167,9 @@ public class SuaThongTin extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("Ten_TK", tendangnhap.getText().toString());
                 params.put("HoTen", hoten.getText().toString());
-                params.put("Matkhau", sdt.getText().toString());
+                params.put("SDT", sdt.getText().toString());
+                params.put("Email", email.getText().toString());
+                params.put("Diachi", diachi.getText().toString());
                 if (nam.isChecked()) {
                     params.put("Phai", "Nam");
                 } else {

@@ -16,10 +16,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.app.giaodien.ThongTinKhachHang.SuaThongTin;
+
+import com.example.app.giaodien.ThongTinKhachHang.DoiMatKhauActivity;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangChu.Trangchu;
-import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
+
 import com.example.app.giaodien.dangky;
 
 import org.json.JSONArray;
@@ -30,12 +31,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class MainActivity extends AppCompatActivity {
     EditText user;
     EditText pass;
     Button login;
-    String url = "http://192.168.0.10:8080/cinema_admin/api/taikhoan/";
-    String url1 = "http://192.168.0.10:8080/cinema_admin/api/taikhoan";
+    String url = "http://192.168.64.2/cinema_admin/api/taikhoan/";
+    String url1 = "http://192.168.64.2/cinema_admin/api/taikhoan";
     private int soluong = 0;
     private ArrayList<String> tentk, mk;
     @Override
@@ -44,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         user = (EditText) findViewById(R.id.inputEmail);
         pass = (EditText) findViewById(R.id.inputPassword);
-        login = findViewById(R.id.btnLogin);
+        login = (Button) findViewById(R.id.btnLogin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url1,
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url1,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -74,10 +76,8 @@ public class MainActivity extends AppCompatActivity {
                                                                 if (pass.getText().toString().equals(Matkhau))
                                                                 {
                                                                     taikhoan_id = jb.getInt("id");
-                                                                    tientrongtaikhoan = jb.getInt("Tien_TK");
                                                                     Intent intent = new Intent(MainActivity.this, Trangchu.class);
                                                                     intent.putExtra("taikhoan_id", taikhoan_id);
-                                                                    intent.putExtra("tientaikhoan", tientrongtaikhoan);
                                                                     startActivity(intent);
                                                                 }
                                                             }
@@ -106,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         });
-                requestQueue.add(stringRequest);
+                    requestQueue.add(stringRequest);
             }
         });
-//        startActivity(new Intent(this, Trangchu.class));
+
     }
 
 
