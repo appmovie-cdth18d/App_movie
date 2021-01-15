@@ -76,10 +76,8 @@ public class MainActivity extends AppCompatActivity {
                                                                 if (pass.getText().toString().equals(Matkhau))
                                                                 {
                                                                     taikhoan_id = jb.getInt("id");
-                                                                    tientrongtaikhoan = jb.getInt("Tien_TK");
                                                                     Intent intent = new Intent(MainActivity.this, Trangchu.class);
                                                                     intent.putExtra("taikhoan_id", taikhoan_id);
-                                                                    intent.putExtra("tientaikhoan", tientrongtaikhoan);
                                                                     startActivity(intent);
                                                                 }
                                                             }
