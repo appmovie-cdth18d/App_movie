@@ -43,7 +43,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
         Intent intent = getIntent();
         taikhoan = getSharedPreferences("TK",MODE_PRIVATE);
         id = taikhoan.getInt("ID_TK",0);
-        url = "http://192.168.64.2/cinema_admin/api/taikhoan/"+id+"";
+        url = "http://192.168.0.10:8080/cinema_admin/api/taikhoan/"+id+"";
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_khachhang);
         toolbar = (Toolbar) findViewById(R.id.toolbar_khachhang);
         setSupportActionBar(toolbar);

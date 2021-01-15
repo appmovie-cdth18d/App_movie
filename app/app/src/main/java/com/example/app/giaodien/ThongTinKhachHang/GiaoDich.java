@@ -44,7 +44,7 @@ public class GiaoDich extends AppCompatActivity {
         Intent t = getIntent();
         taikhoan = getSharedPreferences("TK",MODE_PRIVATE);
         id = taikhoan.getInt("ID_TK",0);
-        url = "http://192.168.64.2/cinema_admin/api/ve";
+        url = "http://192.168.0.10:8080/cinema_admin/api/ve";
         list = new ArrayList<>();
         final ListView listView = (ListView) findViewById(R.id.listview);
         TongTienThang = (TextView)  findViewById(R.id.txttongchitieuthang);

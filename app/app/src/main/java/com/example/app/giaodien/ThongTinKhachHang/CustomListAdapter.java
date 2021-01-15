@@ -72,7 +72,7 @@ public class CustomListAdapter extends BaseAdapter {
         holder.giochieu.setText("Giờ Chiếu :" + Ve.getGiochieu());
         holder.ngaychieu.setText("Ngày Chiếu :" + Ve.getNgaychieu());
         Picasso.with(context)
-                .load("http://192.168.64.2/WebAdmin/public/Image/"+ Ve.getHinhanhphim())
+                .load("http://192.168.0.10:8080/cinema_admin/public/Image/"+ Ve.getHinhanhphim())
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
                 .into(holder.flagView);

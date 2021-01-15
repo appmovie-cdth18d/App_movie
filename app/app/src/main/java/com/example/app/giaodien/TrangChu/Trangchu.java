@@ -1,6 +1,7 @@
 package com.example.app.giaodien.TrangChu;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class Trangchu extends AppCompatActivity {
+    private SharedPreferences sharedPreferences;
+
     private NavigationView nav;
     private ActionBarDrawerToggle toggle;
     private DrawerLayout drawerLayout;
@@ -119,8 +122,15 @@ public class Trangchu extends AppCompatActivity {
                         drawerLayout.closeDrawer(nav);
                         break;
                     case R.id.dangxuat:
-                        t = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(t);
+                        sharedPreferences = getSharedPreferences("TK", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.remove("ID_TK");
+                        editor.remove("Email");
+                        editor.remove("Pass");
+                        editor.remove("Name");
+                        editor.commit();
+
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         drawerLayout.closeDrawer(nav);
                         break;
                     default:

@@ -49,8 +49,8 @@ public class ChonGheActivity extends AppCompatActivity {
     private ArrayList<Integer> soluongghe, giatienghe;
     private ArrayList<String> tencacghe;
     Button chonghe;
-    String url = "http://192.168.64.2/cinema_admin/api/ghe";
-    String urlve = "http://192.168.64.2/cinema_admin/api/ve";
+    String url = "http://192.168.0.10:8080/cinema_admin/api/ghe";
+    String urlve = "http://192.168.0.10:8080/cinema_admin/api/ve";
     private ArrayList<Ghe> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

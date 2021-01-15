@@ -44,12 +44,12 @@ public class DatVeActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     TextView rap1, rap2, tenphim_, ngaychieu;
     String tenphim, tenrap1,tenrap2;
-    String url = "http://192.168.1.4:8080/cinema_admin/api/lichchieu";
+    String url = "http://192.168.0.10:8080/cinema_admin/api/lichchieu";
     TextView giochieu;
     String giochieu_, giochieu_2;
     GridView girdGio;
     GridView girdGio2;
-    private int phim_id, taikhoan_id;
+    private int phim_id;
     private int rap_id1, rap_id2;
     private ArrayList<SuatChieu> list;
     private ArrayList<SuatChieu> list2;
@@ -86,7 +86,6 @@ public class DatVeActivity extends AppCompatActivity {
                         break;
                     case R.id.canhan:
                         t = new Intent(getApplicationContext(), ThongTinKhachHang.class);
-                        t.putExtra("taikhoan_id", taikhoan_id);
                         startActivity(t);
                         drawerLayout.closeDrawer(nav);
                         break;

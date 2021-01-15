@@ -44,7 +44,7 @@ public class SuaThongTin extends AppCompatActivity {
     RadioButton nam, nu;
     Button suathongtin;
     int id;
-    String url="http://192.168.64.2/cinema_admin/api/taikhoan";
+    String url="http://192.168.0.10:8080/cinema_admin/api/taikhoan";
     String urlUpdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
