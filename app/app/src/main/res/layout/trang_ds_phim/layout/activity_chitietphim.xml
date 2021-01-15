@@ -36,13 +36,13 @@
             tools:ignore="HardcodedText" />
     </androidx.appcompat.widget.Toolbar>
 
-    <VideoView
-        android:id="@+id/videoView"
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="220dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbFiml" />
+        app:layout_constraintTop_toBottomOf="@+id/tbFiml"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:background="#FFFFFF">
 
                 <Button
@@ -71,6 +71,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/button"
+                    android:onClick="Datve"
                     android:text="Đặt vé"
                     android:textColor="#F9F8FA"
                     android:textSize="20sp"
@@ -80,13 +81,26 @@
                     tools:ignore="HardcodedText" />
 
                 <TextView
+                    android:id="@+id/txtTenPhim"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="110dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="App "
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
                     android:id="@+id/txtNoidung"
                     android:layout_width="match_parent"
-                    android:layout_height="235dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
                     android:text="App "
                     android:textSize="20sp"
                     tools:ignore="HardcodedText" />
@@ -94,7 +108,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="15dp"
                 android:background="#FFFFFF">
 
@@ -102,9 +116,9 @@
                     android:id="@+id/txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="47dp"
                     android:layout_marginTop="10dp"
-                    android:text="Kiểm duyệt"
+                    android:text="Diễn Viên"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
@@ -113,7 +127,7 @@
                     android:id="@+id/txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
+                    android:layout_marginStart="35dp"
                     android:layout_marginTop="60dp"
                     android:text="Khởi chiếu"
                     android:textSize="20sp"
@@ -124,7 +138,7 @@
                     android:id="@+id/txt3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="60dp"
+                    android:layout_marginStart="57dp"
                     android:layout_marginTop="90dp"
                     android:text="Thể loại"
                     android:textSize="20sp"
@@ -135,7 +149,7 @@
                     android:id="@+id/txt4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="53dp"
+                    android:layout_marginStart="52dp"
                     android:layout_marginTop="120dp"
                     android:text="Đạo diễn"
                     android:textSize="20sp"
@@ -146,9 +160,9 @@
                     android:id="@+id/txt5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="49dp"
+                    android:layout_marginStart="42dp"
                     android:layout_marginTop="150dp"
-                    android:text="Diễn viên"
+                    android:text="Định dạng"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
@@ -170,36 +184,37 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="45dp"
                     android:layout_marginTop="210dp"
+                    android:layout_marginBottom="10dp"
                     android:text="Ngôn ngữ"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
 
                 <TextView
-                    android:id="@+id/txtKiemDuyet"
-                    android:layout_width="200dp"
+                    android:id="@+id/txtDienVien"
+                    android:layout_width="230dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="160dp"
+                    android:layout_marginStart="150dp"
                     android:layout_marginTop="12dp"
-                    android:text="TextViewaaaaaaaaaaaaaaa"
+                    android:text="TextViewaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     android:textSize="18sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtKhoiChieu"
-                    android:layout_width="200dp"
+                    android:layout_width="230dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="160dp"
+                    android:layout_marginStart="150dp"
                     android:layout_marginTop="61dp"
-                    android:text="TextView"
+                    android:text="TextViewaaaaaaa"
                     android:textSize="18sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtTheLoai"
-                    android:layout_width="200dp"
+                    android:layout_width="230dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="160dp"
+                    android:layout_marginStart="150dp"
                     android:layout_marginTop="91dp"
                     android:text="TextView"
                     android:textSize="18sp"
@@ -207,19 +222,19 @@
 
                 <TextView
                     android:id="@+id/txtDaoDien"
-                    android:layout_width="200dp"
+                    android:layout_width="230dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="160dp"
+                    android:layout_marginStart="150dp"
                     android:layout_marginTop="121dp"
                     android:text="TextView"
                     android:textSize="18sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
-                    android:id="@+id/txtDienVien"
-                    android:layout_width="200dp"
+                    android:id="@+id/txtDinhDang"
+                    android:layout_width="230dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="160dp"
+                    android:layout_marginStart="150dp"
                     android:layout_marginTop="152dp"
                     android:text="TextView"
                     android:textSize="18sp"
@@ -227,9 +242,9 @@
 
                 <TextView
                     android:id="@+id/txtThoiLuong"
-                    android:layout_width="200dp"
+                    android:layout_width="230dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="160dp"
+                    android:layout_marginStart="150dp"
                     android:layout_marginTop="182dp"
                     android:text="TextView"
                     android:textSize="18sp"
@@ -237,10 +252,11 @@
 
                 <TextView
                     android:id="@+id/txtNgonNgu"
-                    android:layout_width="200dp"
+                    android:layout_width="230dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="160dp"
+                    android:layout_marginStart="150dp"
                     android:layout_marginTop="212dp"
+                    android:layout_marginBottom="10dp"
                     android:text="TextView"
                     android:textSize="18sp"
                     tools:ignore="HardcodedText" />
@@ -248,7 +264,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="1dp"
                 android:background="#FFFFFF">
 
@@ -257,10 +273,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Tin mới"
-                    android:textSize="20sp"
+                    android:text="Bình Luận"
+                    android:textSize="25sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_binhluan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="10dp"/>
+
+
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

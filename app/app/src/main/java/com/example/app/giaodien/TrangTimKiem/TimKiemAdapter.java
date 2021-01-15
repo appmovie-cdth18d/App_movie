@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimViewHolder> implements Filterable {
+public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimViewHolder>  implements Filterable {
     private List<Phim> lstPhim;
     private List<Phim> lstPhim_Filter;
     private Context context;
@@ -44,7 +44,7 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-                String char_search = constraint.toString(); //Chuỗi nhập vào
+                String char_search = constraint.toString().trim(); //Chuỗi nhập vào
 
                 //Kiểm tra chuỗi nhập vào
                 if (char_search.isEmpty())
@@ -87,11 +87,12 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
     public void onBindViewHolder(@NonNull TimPhimViewHolder holder, int position) {
         Phim phim = lstPhim_Filter.get(position);
         Picasso.with(context)
-                .load("http://192.168.137.43:8080/WebAdmin1/public/Image/" + phim.getHinh())
+                .load("http://10.0.2.2:8080/cinema_admin/public/Image/" + phim.getHinh())
                 .placeholder(R.drawable.nam)
                 .into(holder.Hinhanh);
         holder.TenPhim.setText(phim.getTen());
         holder.TheLoai.setText(phim.getTheLoai());
+        holder.Diem.setText("" + phim.getDiem());
 
         holder.setItemclickListener(new ItemClickListener() {
             @Override
@@ -111,7 +112,7 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
 
     public class TimPhimViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView Hinhanh;
-        TextView TenPhim, TheLoai;
+        TextView TenPhim, TheLoai, Diem;
         ItemClickListener itemClickListener;
 
         public TimPhimViewHolder(@NonNull View itemView) {
@@ -119,6 +120,7 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimPhimV
             Hinhanh = (ImageView) itemView.findViewById(R.id.imgPhim);
             TenPhim = (TextView) itemView.findViewById(R.id.txt_tieude);
             TheLoai = (TextView) itemView.findViewById(R.id.txt_theloai);
+            Diem = (TextView) itemView.findViewById(R.id.txtdiem);
 
             itemView.setOnClickListener(this);
         }

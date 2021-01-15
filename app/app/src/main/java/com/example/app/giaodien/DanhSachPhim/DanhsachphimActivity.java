@@ -3,6 +3,8 @@ package com.example.app.giaodien.DanhSachPhim;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,12 +25,15 @@ import com.android.volley.toolbox.Volley;
 import com.example.app.MainActivity;
 import com.example.app.Model.Phim;
 import com.example.app.R;
+import com.example.app.giaodien.DanhSachPhim.TrangPhim.dsAdapter;
 import com.example.app.giaodien.DanhSachPhim.TrangPhim.fimlAdapter;
 import com.example.app.giaodien.ThongTinKhachHang.ThongTinKhachHang;
 import com.example.app.giaodien.TrangChu.Trangchu;
+import com.example.app.giaodien.DanhSachPhim.TrangPhim.dsAdapter;
 import com.example.app.giaodien.TrangTimKiem.TimKiemAdapter;
 import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,86 +44,82 @@ import java.util.List;
 
 public class DanhsachphimActivity extends AppCompatActivity {
 
-    private List<Phim> filter_phim;
-    private List<Phim> lstPhim;
-
-    private RecyclerView rcl_phim;
-    private fimlAdapter fimlAdapter;
-
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     private NavigationView nav;
     private ActionBarDrawerToggle toggle;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
+    private dsAdapter dsAdapter;
 
+    private int ID_Phim;
+
+    public int getID_phim() {
+        return ID_Phim;
+    }
+
+    public void setID_phim(int ID_phim) {
+        this.ID_Phim = ID_phim;
+    }
+    private TextView txtTim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danhsachphim);
 
-        rcl_phim = (RecyclerView) findViewById(R.id.recycler);
+        txtTim = (TextView) findViewById(R.id.txt_timkiem);
+        //Ánh xạ menu
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawable_dsPhim);
+        nav = (NavigationView) findViewById(R.id.navView_dsPhim);
+        toolbar = (Toolbar) findViewById(R.id.tbListFiml);
 
+        //Ánh xạ Page chuyển trang
+        tabLayout = (TabLayout)findViewById(R.id.tabLayout);
+        viewPager = (ViewPager)findViewById(R.id.pagePhim);
         Menu();
-        Load_data("http://192.168.137.43:8080/WebAdmin1/api/phim");
 
+
+
+        txtTim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent t = new Intent(getApplicationContext(), TrangTimKiem.class);
+                startActivity(t);
+            }
+        });
     }
 
-    public void Load_data(String url) {
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray arr_Phim = new JSONArray(response);
-                            JSONObject item_phim;
-                            lstPhim = new LinkedList<>();
+    public void PagePhim() {
+        tabLayout.addTab(tabLayout.newTab().setText("Phim Đang Chiếu"));
+        tabLayout.addTab(tabLayout.newTab().setText("Phim Sắp Chiếu"));
 
-                            int ID, Diem;
-                            String Hinhanh, Tenphim, ThoiGianChieu, NgayKhoiChieu, DoTuoi;
-                            int len = arr_Phim.length();
-                            for (int i = 0; i < len; i++) {
-                                try {
-                                    item_phim = (JSONObject) arr_Phim.get(i);
-                                    ID = item_phim.getInt("id");
-                                    Diem = item_phim.getInt("Diem");
-                                    Hinhanh = item_phim.getString("Hinhanh");
-                                    Tenphim = item_phim.getString("Tenphim");
-                                    ThoiGianChieu = item_phim.getString("ThoiGianChieu");
-                                    NgayKhoiChieu = item_phim.getString("NgayKhoiChieu");
-                                    DoTuoi = item_phim.getString("DoTuoi");
+        tabLayout.setTabGravity(tabLayout.GRAVITY_FILL);
 
-                                    lstPhim.add(new Phim(ID, Diem, Hinhanh, Tenphim, ThoiGianChieu,NgayKhoiChieu,DoTuoi));
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
+        dsAdapter = new dsAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(dsAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
 
-                            fimlAdapter = new fimlAdapter(lstPhim, getApplicationContext());
-                            rcl_phim.setAdapter(fimlAdapter);
-                            rcl_phim.setLayoutManager(new LinearLayoutManager(DanhsachphimActivity.this));
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Lỗi kết nối", Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
-        requestQueue.add(stringRequest);
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
     }
+
     public void Menu() {
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawable_timkiem);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_timkiem);
         setSupportActionBar(toolbar);
+        nav.bringToFront();
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        nav = (NavigationView) findViewById(R.id.navView_timkiem);
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

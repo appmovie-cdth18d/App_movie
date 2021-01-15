@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
         <activity android:name=".giaodien.dangky" />
-        <activity android:name=".giaodien.ThongTinKhachHang.DoiMatKhauActivity"></activity>
+        <activity android:name=".giaodien.ThongTinKhachHang.DoiMatKhauActivity"/>
         <activity android:name=".giaodien.DanhSachPhim.DanhsachphimActivity" />
         <activity android:name=".giaodien.DanhSachPhim.ChitietphimActivity" />
         <activity android:name=".giaodien.TrangChu.Trangchu" />

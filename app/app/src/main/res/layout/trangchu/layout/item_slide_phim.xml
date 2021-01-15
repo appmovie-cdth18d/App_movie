@@ -2,26 +2,26 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_itemPhim"
     android:layout_width="match_parent"
-    android:layout_height="670dp"
-    android:background="@color/gray">
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="20dp"
+    android:background="@color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHinh"
         android:layout_width="wrap_content"
-        android:layout_height="550dp"
+        android:layout_height="480dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv"
-            android:layout_width="350dp"
-            android:layout_height="500dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            app:cardCornerRadius="20dp"
+            android:layout_width="300dp"
+            android:layout_height="450dp"
+            app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,13 +38,13 @@
         <TextView
             android:id="@+id/txtDiem"
             android:layout_width="100dp"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/bg_circle"
             android:gravity="center"
             android:text="10"
             android:textColor="@color/white"
-            android:textSize="50sp"
+            android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
