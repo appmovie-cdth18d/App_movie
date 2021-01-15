@@ -3,6 +3,7 @@ package com.example.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
     EditText user;
     EditText pass;
     Button login;
@@ -49,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         user = (EditText) findViewById(R.id.inputEmail);
         pass = (EditText) findViewById(R.id.inputPassword);
         login = (Button) findViewById(R.id.btnLogin);
+
+        sharedPreferences = getSharedPreferences("TK", MODE_PRIVATE);
+        if(sharedPreferences.getInt("ID_TK",-1) != -1)
+        {
+            startActivity(new Intent(MainActivity.this, Trangchu.class));
+        }
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,9 +88,20 @@ public class MainActivity extends AppCompatActivity {
                                                                 {
                                                                     dangnhap = 1;
                                                                     taikhoan_id = jb.getInt("id");
+
+                                                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                                    editor.putInt("ID_TK", taikhoan_id);
+                                                                    editor.putString("Email", Tentaikhoan);
+                                                                    editor.putString("Pass", Matkhau);
+                                                                    editor.putString("Name", Tentaikhoan);
+
+                                                                    editor.commit();
+
                                                                     Intent intent = new Intent(MainActivity.this, Trangchu.class);
                                                                     intent.putExtra("taikhoan_id", taikhoan_id);
                                                                     startActivity(intent);
+
+
                                                                 }
                                                             }
                                                             else if (user.getText().toString().equals(Email))
@@ -91,8 +110,18 @@ public class MainActivity extends AppCompatActivity {
                                                                 {
                                                                     dangnhap = 1;
                                                                     taikhoan_id = jb.getInt("id");
+
+                                                                    //////////
+                                                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                                    editor.putInt("ID_TK", taikhoan_id);
+                                                                    editor.putString("Email", Email);
+                                                                    editor.putString("Pass", Matkhau);
+                                                                    editor.putString("Name", Tentaikhoan);
+
+                                                                    editor.commit();
+
+
                                                                     Intent intent = new Intent(MainActivity.this, Trangchu.class);
-                                                                    intent.putExtra("taikhoan_id", taikhoan_id);
                                                                     startActivity(intent);
                                                                 }
                                                             } else dangnhap = 2;
