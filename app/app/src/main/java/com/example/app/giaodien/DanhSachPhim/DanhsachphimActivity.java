@@ -52,41 +52,22 @@ public class DanhsachphimActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private dsAdapter dsAdapter;
 
-    private int ID_Phim;
-
-    public int getID_phim() {
-        return ID_Phim;
-    }
-
-    public void setID_phim(int ID_phim) {
-        this.ID_Phim = ID_phim;
-    }
-    private TextView txtTim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danhsachphim);
 
-        txtTim = (TextView) findViewById(R.id.txt_timkiem);
         //Ánh xạ menu
         drawerLayout = (DrawerLayout) findViewById(R.id.drawable_dsPhim);
         nav = (NavigationView) findViewById(R.id.navView_dsPhim);
         toolbar = (Toolbar) findViewById(R.id.tbListFiml);
 
         //Ánh xạ Page chuyển trang
-        tabLayout = (TabLayout)findViewById(R.id.tabLayout);
-        viewPager = (ViewPager)findViewById(R.id.pagePhim);
+        tabLayout = (TabLayout)findViewById(R.id.tabdsLayout);
+        viewPager = (ViewPager)findViewById(R.id.pagedsPhim);
         Menu();
+        PagePhim();
 
-
-
-        txtTim.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent t = new Intent(getApplicationContext(), TrangTimKiem.class);
-                startActivity(t);
-            }
-        });
     }
 
     public void PagePhim() {

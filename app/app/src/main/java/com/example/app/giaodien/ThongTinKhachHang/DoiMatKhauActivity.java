@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.view.Menu;
@@ -36,6 +37,7 @@ import java.util.Map;
 
 public class DoiMatKhauActivity extends AppCompatActivity {
     Toolbar toolbar;
+    SharedPreferences taikhoan;
     String urlUpdate;
     int taikhoan_id;
     EditText MK, MKM, CMKM;
@@ -46,7 +48,8 @@ public class DoiMatKhauActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doi_mat_khau);
         Intent t = getIntent();
-        taikhoan_id = t.getIntExtra("taikhoan_id", 0);
+        taikhoan = getSharedPreferences("TK",MODE_PRIVATE);
+        taikhoan_id = taikhoan.getInt("ID_TK",0);
         urlUpdate = t.getStringExtra("url");
         toolbar = (Toolbar) findViewById(R.id.toolbar_doimatkhau);
         setSupportActionBar(toolbar);

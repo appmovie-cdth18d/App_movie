@@ -2,6 +2,7 @@ package com.example.app.giaodien.DatVeVaThanhToan;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,9 +50,10 @@ public class ThanhToanActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     Button thanhtoan;
+    SharedPreferences taikhoan;
     private String tenphim, tenrap, ngaychieu, Ten_ghe;
     private String giochieu, hinhanh, tencacghe = "", giatienghe_="";;
-    private int phim_id, suatchieu_id, taikhoan_id = 1,rap_id, dsve_id, Ghe_id;
+    private int phim_id, suatchieu_id, taikhoan_id,rap_id, dsve_id, Ghe_id;
     int  tongtien, GiaTienGhe, tienconlai, tienhientai;
     private int soluong, id_ghe;
     private ArrayList<Integer> ghe_id, giatienghe;
@@ -65,6 +67,8 @@ public class ThanhToanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanh_toan);
+        taikhoan = getSharedPreferences("TK",MODE_PRIVATE);
+        taikhoan_id = taikhoan.getInt("ID_TK",0);
         ghe_id = new ArrayList<>();
         tenghe = new ArrayList<>();
         giatienghe = new ArrayList<>();

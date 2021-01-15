@@ -1,6 +1,7 @@
 package com.example.app.giaodien.ThongTinKhachHang;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +33,7 @@ import java.util.List;
 public class GiaoDich extends AppCompatActivity {
     Toolbar toolbar;
     String url;
+    SharedPreferences taikhoan;
     private List<Ve> list;
     int tongtien = 0, id;
     TextView TongTienThang, TongTienNam;
@@ -40,7 +42,8 @@ public class GiaoDich extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giao_dich);
         Intent t = getIntent();
-        id = t.getIntExtra("taikhoan_id", 0);
+        taikhoan = getSharedPreferences("TK",MODE_PRIVATE);
+        id = taikhoan.getInt("ID_TK",0);
         url = "http://192.168.64.2/cinema_admin/api/ve";
         list = new ArrayList<>();
         final ListView listView = (ListView) findViewById(R.id.listview);

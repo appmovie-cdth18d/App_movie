@@ -1,5 +1,6 @@
 package com.example.app.giaodien;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,14 +18,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import com.example.app.MainActivity;
 import com.example.app.R;
-import com.example.app.giaodien.ThongTinKhachHang.SuaThongTin;
-import com.example.app.giaodien.ThongTinKhachHang.TaiKhoan;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +30,7 @@ public class dangky extends AppCompatActivity {
     EditText email, user, pass, cfpass, hoten, ngaysinh, sdt, diachi;
     RadioButton nam, nu;
     Button signup;
-    String url = "http://192.168.0.10:8080/cinema_admin/api/taikhoan";
+    String url = "http://192.168.64.2/cinema_admin/api/taikhoan";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +75,10 @@ public class dangky extends AppCompatActivity {
                             params.put("Ngaysinh",ngaysinh.getText().toString());
                             String phai=null;
                             if (nam.isChecked()){
-                                phai="nam";}
-                            else  if (nu.isChecked()){
-                                phai="nữ";}
-                            params.put("Phai",phai);
+                                params.put("Phai", "Nam"); }
+                            else  if (nu.isChecked()) {
+                                params.put("Phai", "Nu");
+                            }
                             params.put("SDT",sdt.getText().toString());
                             params.put("Diachi",diachi.getText().toString());
                             return params;
@@ -158,7 +155,7 @@ public class dangky extends AppCompatActivity {
                 else
                     phai="nữ";
 
-                params.put("phai",phai);
+                params.put("Phai",phai);
                 params.put("SDT",sdt.getText().toString());
                 params.put("Diachi",diachi.getText().toString());
                 return params;

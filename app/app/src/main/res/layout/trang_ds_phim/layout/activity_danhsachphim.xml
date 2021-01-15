@@ -67,7 +67,7 @@
                         tools:ignore="HardcodedText,RtlHardcoded" />
 
                     <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tabLayout"
+                        android:id="@+id/tabdsLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/purple_500"
@@ -77,7 +77,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/txt_timkiem" />
 
                     <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/pagePhim"
+                        android:id="@+id/pagedsPhim"
                         android:layout_width="match_parent"
                         android:layout_height="605dp"
                         app:layout_constraintEnd_toEndOf="parent"

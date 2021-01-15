@@ -1,6 +1,7 @@
 package com.example.app.giaodien.ThongTinKhachHang;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -34,12 +35,14 @@ public class ThongTinKhachHang extends AppCompatActivity {
     DrawerLayout drawerLayout;
     private String url;
     private int id;
+    SharedPreferences taikhoan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin_khach_hang);
         Intent intent = getIntent();
-        id = intent.getIntExtra("taikhoan_id", 0);
+        taikhoan = getSharedPreferences("TK",MODE_PRIVATE);
+        id = taikhoan.getInt("ID_TK",0);
         url = "http://192.168.64.2/cinema_admin/api/taikhoan/"+id+"";
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_khachhang);
         toolbar = (Toolbar) findViewById(R.id.toolbar_khachhang);
@@ -83,20 +86,17 @@ public class ThongTinKhachHang extends AppCompatActivity {
     public void Thongtin(View view) {
 
         Intent t = new Intent(this, SuaThongTin.class);
-        t.putExtra("taikhoan_id", id);
         t.putExtra("url", url);
         this.startActivity(t);
     }
 
     public void LichSu(View view) {
         Intent t = new Intent(this, GiaoDich.class);
-        t.putExtra("taikhoan_id", id);
         this.startActivity(t);
     }
 
     public void DoiMatKhau(View view) {
         Intent t = new Intent(this, DoiMatKhauActivity.class);
-        t.putExtra("taikhoan_id", id);
         t.putExtra("url", url);
         this.startActivity(t);
     }

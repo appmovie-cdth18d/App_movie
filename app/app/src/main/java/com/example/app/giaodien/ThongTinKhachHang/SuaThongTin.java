@@ -3,6 +3,7 @@ package com.example.app.giaodien.ThongTinKhachHang;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -37,6 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SuaThongTin extends AppCompatActivity {
+    SharedPreferences taikhoan;
     Toolbar toolbar;
     EditText hoten, sdt,email, ngay, tendangnhap, diachi;
     RadioButton nam, nu;
@@ -59,7 +61,8 @@ public class SuaThongTin extends AppCompatActivity {
         nam = (RadioButton) findViewById(R.id.radioNam);
         nu = (RadioButton) findViewById(R.id.radioNu);
         diachi = (EditText) findViewById(R.id.editDiachi);
-        id = intent.getIntExtra("taikhoan_id", 0);
+        taikhoan = getSharedPreferences("TK",MODE_PRIVATE);
+        id = taikhoan.getInt("ID_TK",0);
         urlUpdate = intent.getStringExtra("url");
         //API
         Toast.makeText(getApplicationContext(),urlUpdate, Toast.LENGTH_SHORT).show();

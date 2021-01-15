@@ -25,15 +25,10 @@ import com.android.volley.toolbox.Volley;
 import com.example.app.Model.BinhLuan;
 import com.example.app.Model.Phim;
 import com.example.app.R;
-import com.example.app.giaodien.DanhSachPhim.TrangPhim.YoutubeAPI;
+
 import com.example.app.giaodien.DanhSachPhim.TrangPhim.binhluanAdapter;
-import com.example.app.giaodien.DatVeVaThanhToan.ChonGheActivity;
+
 import com.example.app.giaodien.DatVeVaThanhToan.DatVeActivity;
-import com.example.app.giaodien.TrangTimKiem.TimKiemAdapter;
-import com.example.app.giaodien.TrangTimKiem.TrangTimKiem;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,8 +42,7 @@ import static com.example.app.giaodien.DanhSachPhim.TrangPhim.YoutubeAPI.getApiK
 public class ChitietphimActivity extends AppCompatActivity {
 
     private TextView txtTenPhim, txtNoiDung,txtDienVien, txtKhoiChieu, txtTheLoai, txtDaodien, txtDinhDang, txtThoiLuong, txtNgonNgu;
-    private YouTubePlayerView youTubePlayerView;
-    private YouTubePlayer.OnInitializedListener onInitializedListener;
+    //private YouTubePlayerView youTubePlayerView;
 
     private RecyclerView rcl;
     private binhluanAdapter binhluanAdapter;
@@ -68,12 +62,12 @@ public class ChitietphimActivity extends AppCompatActivity {
         txtDinhDang = (TextView)findViewById(R.id.txtDinhDang);
         txtThoiLuong = (TextView)findViewById(R.id.txtThoiLuong);
         txtNgonNgu = (TextView)findViewById(R.id.txtNgonNgu);
-
+        //youTubePlayerView = (YouTubePlayerView)findViewById(R.id.youtube);
 
         if (getIntent() != null) {
             Intent t = getIntent();
-            int ID = t.getIntExtra("ID", 1);
-            GetData("http://192.168.0.103:8080/cinema_admin/api/phim" + ID);
+            int ID = t.getIntExtra("ID_Phim", 1);
+            GetData("http://192.168.0.8:8080/cinema_admin/api/phim" + ID);
         }
 
 
@@ -82,7 +76,7 @@ public class ChitietphimActivity extends AppCompatActivity {
     }
 
     public void Load_BinhLuan() {
-        String url = "http://192.168.223.2:8080/";
+        String url = "http://192.168.1.5:8080/";
         RequestQueue requestQueue = Volley.newRequestQueue(ChitietphimActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -149,22 +143,20 @@ public class ChitietphimActivity extends AppCompatActivity {
                             txtThoiLuong.setText("Thời lượng: "+ p.getString("ThoiLuong"));
                             txtNgonNgu.setText("Ngôn ngữ" + p.getString("Ngonngu"));
 
-                            onInitializedListener = new YouTubePlayer.OnInitializedListener() {
-                                @Override
-                                public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+
+                            /*youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                                public void onReady(YouTubePlayer youTubePlayer) {
                                     try {
-                                        youTubePlayer.loadVideo(p.getString("Trailer"));
+                                        youTubePlayer.loadVideo(p.getString("Trailer").toString(),0);
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
+                                    youTubePlayer.pause();
                                 }
 
-                                @Override
-                                public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 
-                                }
-                            };
-//                            youTubePlayerView.initialize(getApiKey(), onInitializedListener);
+                            });*/
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
