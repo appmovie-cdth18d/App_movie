@@ -46,7 +46,7 @@ public class fimlAdapter extends RecyclerView.Adapter<fimlAdapter.fimViewHolder>
     @Override
     public void onBindViewHolder(@NonNull fimlAdapter.fimViewHolder holder, int position) {
         Picasso.with(context)
-                .load("http://192.168.137.43:8080/WebAdmin1/public/Image/" + lstPhim.get(position).getHinh())
+                .load("http://192.168.1.4:8080/WebAdmin1/public/Image/" + lstPhim.get(position).getHinh())
                 .placeholder(R.drawable.nam)
                 .into(holder.Hinhanh);
         holder.TenPhim.setText(lstPhim.get(position).getTen());

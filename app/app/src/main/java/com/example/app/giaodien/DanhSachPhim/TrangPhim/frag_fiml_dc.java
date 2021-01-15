@@ -27,7 +27,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class frag_fiml_dc extends Fragment implements LoaderManager.LoaderCallbacks<String>{
-    private static final String URL_CONNECT = "http://10.0.2.2:8080/cinema_admin/api/topphim_dc";
+    private static final String URL_CONNECT = "http://192.168.1.4:8080/cinema_admin/api/topphim_dc";
     private LoaderManager loaderManager;
 
     private RecyclerView pager;

@@ -44,7 +44,7 @@ public class DatVeActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     TextView rap1, rap2, tenphim_, ngaychieu;
     String tenphim, tenrap1,tenrap2;
-    String url = "http://192.168.64.2/cinema_admin/api/lichchieu";
+    String url = "http://192.168.1.4:8080/cinema_admin/api/lichchieu";
     TextView giochieu;
     String giochieu_, giochieu_2;
     GridView girdGio;

@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.LinkedList;
 
 public class frag_fiml_sc extends Fragment implements LoaderManager.LoaderCallbacks<String> {
-    private static final String URL_CONNECT = "http://10.0.2.2:8080/cinema_admin/api/topphim_sc";
+    private static final String URL_CONNECT = "http://192.168.1.4:8080/cinema_admin/api/topphim_sc";
     private LoaderManager loaderManager;
     private RecyclerView pager;
     private LinkedList<Phim> lstPhim_sc;

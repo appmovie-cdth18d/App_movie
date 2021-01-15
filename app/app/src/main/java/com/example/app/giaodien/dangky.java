@@ -33,8 +33,7 @@ public class dangky extends AppCompatActivity {
     EditText email, user, pass, cfpass, hoten, ngaysinh, sdt, diachi;
     RadioButton nam, nu;
     Button signup;
-    String url = "http://192.168.64.2/cinema_admin/api/taikhoan";
-    String urlUpdate;
+    String url = "http://192.168.0.10:8080/cinema_admin/api/taikhoan";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +50,50 @@ public class dangky extends AppCompatActivity {
         nam = (RadioButton) findViewById(R.id.radioNam);
         nu = (RadioButton) findViewById(R.id.radioNu);
         signup = findViewById(R.id.btnSignup);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Check()){
+                    RequestQueue requestQueue = Volley.newRequestQueue(dangky.this);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+
+                                }
+                            }){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("Ten_TK",user.getText().toString());
+                            params.put("Email", email.getText().toString());
+                            params.put("Matkhau",pass.getText().toString());
+                            params.put("HoTen",hoten.getText().toString());
+                            params.put("Ngaysinh",ngaysinh.getText().toString());
+                            String phai=null;
+                            if (nam.isChecked()){
+                                phai="nam";}
+                            else  if (nu.isChecked()){
+                                phai="nữ";}
+                            params.put("Phai",phai);
+                            params.put("SDT",sdt.getText().toString());
+                            params.put("Diachi",diachi.getText().toString());
+                            return params;
+                        }
+                    };
+                    requestQueue.add(stringRequest);
+                    Toast.makeText(getApplicationContext(),"Sussces!", Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getApplicationContext()," Nhập Chua Đủ Thông Tin!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public boolean Check (){
@@ -84,9 +127,9 @@ public class dangky extends AppCompatActivity {
         }
         return true;
     }
-    public void Dang_ky(View view) {
+    public void Dang_ky(String url) {
         RequestQueue requestQueue = Volley.newRequestQueue(dangky.this);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -117,10 +160,6 @@ public class dangky extends AppCompatActivity {
                 params.put("SDT",sdt.getText().toString());
                 params.put("Diachi",diachi.getText().toString());
                 return params;
-            }
-            @Override
-            public Priority getPriority() {
-                return Priority.HIGH;
             }
         };
         requestQueue.add(stringRequest);

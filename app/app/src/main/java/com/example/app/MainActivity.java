@@ -34,82 +34,82 @@ public class MainActivity extends AppCompatActivity {
     EditText user;
     EditText pass;
     Button login;
-    String url = "http://192.168.64.2/cinema_admin/api/taikhoan/";
-    String url1 = "http://192.168.64.2/cinema_admin/api/taikhoan";
+    String url = "http://192.168.0.10:8080/cinema_admin/api/taikhoan/";
+    String url1 = "http://192.168.0.10:8080/cinema_admin/api/taikhoan";
     private int soluong = 0;
     private ArrayList<String> tentk, mk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        user = (EditText) findViewById(R.id.inputEmail);
-//        pass = (EditText) findViewById(R.id.inputPassword);
-//        login = findViewById(R.id.btnLogin);
-//        login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-//                StringRequest stringRequest = new StringRequest(Request.Method.GET, url1,
-//                        new Response.Listener<String>() {
-//                            @Override
-//                            public void onResponse(String response) {
-//                                try {
-//                                    JSONArray jr = new JSONArray(response);
-//                                    int i = jr.length();
-//                                    for (int j = 1; j <= i; j++){
-//                                        //
-//                                        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-//                                        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+j+"",
-//                                                new Response.Listener<String>() {
-//                                                    @Override
-//                                                    public void onResponse(String response) {
-//                                                        try {
-//                                                            int taikhoan_id, tientrongtaikhoan;
-//                                                            String Tentaikhoan, Matkhau;
-//                                                            JSONObject jb = new JSONObject(response);
-//                                                            Tentaikhoan = jb.getString("Ten_TK");
-//                                                            Matkhau = jb.getString("Matkhau");
-//                                                            if (user.getText().toString().equals(Tentaikhoan))
-//                                                            {
-//                                                                if (pass.getText().toString().equals(Matkhau))
-//                                                                {
-//                                                                    taikhoan_id = jb.getInt("id");
-//                                                                    tientrongtaikhoan = jb.getInt("Tien_TK");
-//                                                                    Intent intent = new Intent(MainActivity.this, Trangchu.class);
-//                                                                    intent.putExtra("taikhoan_id", taikhoan_id);
-//                                                                    intent.putExtra("tientaikhoan", tientrongtaikhoan);
-//                                                                    startActivity(intent);
-//                                                                }
-//                                                            }
-//                                                        } catch (JSONException e) {
-//                                                            e.printStackTrace();
-//                                                        }
-//                                                    }
-//                                                },
-//                                                new Response.ErrorListener() {
-//                                                    @Override
-//                                                    public void onErrorResponse(VolleyError error) {
-//                                                        Toast.makeText(getApplicationContext(),"Error Connection ??",Toast.LENGTH_SHORT).show();
-//                                                    }
-//                                                });
-//                                        requestQueue.add(stringRequest);
-//                                        //
-//                                    }
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        },
-//                        new Response.ErrorListener() {
-//                            @Override
-//                            public void onErrorResponse(VolleyError error) {
-//
-//                            }
-//                        });
-//                requestQueue.add(stringRequest);
-//            }
-//        });
-        startActivity(new Intent(this, TrangTimKiem.class));
+        user = (EditText) findViewById(R.id.inputEmail);
+        pass = (EditText) findViewById(R.id.inputPassword);
+        login = findViewById(R.id.btnLogin);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url1,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONArray jr = new JSONArray(response);
+                                    int i = jr.length();
+                                    for (int j = 1; j <= i; j++){
+                                        //
+                                        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+                                        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+j+"",
+                                                new Response.Listener<String>() {
+                                                    @Override
+                                                    public void onResponse(String response) {
+                                                        try {
+                                                            int taikhoan_id, tientrongtaikhoan;
+                                                            String Tentaikhoan, Matkhau;
+                                                            JSONObject jb = new JSONObject(response);
+                                                            Tentaikhoan = jb.getString("Ten_TK");
+                                                            Matkhau = jb.getString("Matkhau");
+                                                            if (user.getText().toString().equals(Tentaikhoan))
+                                                            {
+                                                                if (pass.getText().toString().equals(Matkhau))
+                                                                {
+                                                                    taikhoan_id = jb.getInt("id");
+                                                                    tientrongtaikhoan = jb.getInt("Tien_TK");
+                                                                    Intent intent = new Intent(MainActivity.this, Trangchu.class);
+                                                                    intent.putExtra("taikhoan_id", taikhoan_id);
+                                                                    intent.putExtra("tientaikhoan", tientrongtaikhoan);
+                                                                    startActivity(intent);
+                                                                }
+                                                            }
+                                                        } catch (JSONException e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                    }
+                                                },
+                                                new Response.ErrorListener() {
+                                                    @Override
+                                                    public void onErrorResponse(VolleyError error) {
+                                                        Toast.makeText(getApplicationContext(),"Error Connection ??",Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                        requestQueue.add(stringRequest);
+                                        //
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        });
+                requestQueue.add(stringRequest);
+            }
+        });
+//        startActivity(new Intent(this, Trangchu.class));
     }
 
 

@@ -56,8 +56,8 @@ public class ThanhToanActivity extends AppCompatActivity {
     private int soluong, id_ghe;
     private ArrayList<Integer> ghe_id, giatienghe;
     private ArrayList<String> tenghe;
-    String url = "http://192.168.64.2/cinema_admin/api/dsve";
-    String url2 = "http://192.168.64.2/cinema_admin/api/ve";
+    String url = "http://192.168.1.4:8080/cinema_admin/api/dsve";
+    String url2 = "http://192.168.1.4:8080/cinema_admin/api/ve";
     String urlUpdateTK;
     TextView soluongve_, tenphim_, ngaychieu_, rap_, ghe_, giochieu_, tongtienve, tongcong, conlai;
     ImageView hinhanhphim_;
@@ -68,7 +68,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         ghe_id = new ArrayList<>();
         tenghe = new ArrayList<>();
         giatienghe = new ArrayList<>();
-        urlUpdateTK = "http://192.168.64.2/cinema_admin/api/taikhoan/"+taikhoan_id;
+        urlUpdateTK = "http://192.168.1.4:8080/cinema_admin/api/taikhoan/"+taikhoan_id;
         hinhanhphim_ = findViewById(R.id.hinhphimthanhtoan);
         soluongve_ = findViewById(R.id.soluong);
         tenphim_ = findViewById(R.id.txttenphimthanhtoan);
