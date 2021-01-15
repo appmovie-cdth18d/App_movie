@@ -1,5 +1,6 @@
 package com.example.app.giaodien.TrangChu;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -39,7 +41,6 @@ public class Trangchu extends AppCompatActivity {
     private int taikhoan_id;
     private int ID_phim;
     private TextView txtTim;
-    private Button btnDatVe;
 
     public int getTaikhoan_id() {
         return taikhoan_id;
@@ -167,8 +168,29 @@ public class Trangchu extends AppCompatActivity {
         });
     }
 
-    public void Dat_Ve(View view) {
-        int id = getID_phim();
-        Toast.makeText(getApplicationContext(),""+id,Toast.LENGTH_SHORT).show();
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Thoát ứng dụng ");
+        alertDialogBuilder
+                .setMessage("Bạn có chắc muốn thoát ?!")
+                .setCancelable(false)
+                .setPositiveButton("Đồng ý",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                moveTaskToBack(true);
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                                System.exit(1);
+                            }
+                        })
+
+                .setNegativeButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
