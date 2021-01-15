@@ -89,6 +89,8 @@ public class dangky extends AppCompatActivity {
                     };
                     requestQueue.add(stringRequest);
                     Toast.makeText(getApplicationContext(),"Sussces!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(dangky.this, MainActivity.class);
+                    startActivity(intent);
                 }else {
                     Toast.makeText(getApplicationContext()," Nhập Chua Đủ Thông Tin!", Toast.LENGTH_LONG).show();
                 }
@@ -164,4 +166,5 @@ public class dangky extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
+
 }

@@ -36,14 +36,16 @@ public class MainActivity extends AppCompatActivity {
     EditText user;
     EditText pass;
     Button login;
-    String url = "http://192.168.64.2/cinema_admin/api/taikhoan/";
-    String url1 = "http://192.168.64.2/cinema_admin/api/taikhoan";
+    String url = "http://192.168.0.10:8080/cinema_admin/api/taikhoan/";
+    String url1 = "http://192.168.0.10:8080/cinema_admin/api/taikhoan";
     private int soluong = 0;
+    int dangnhap;
     private ArrayList<String> tentk, mk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dangnhap = 0;
         user = (EditText) findViewById(R.id.inputEmail);
         pass = (EditText) findViewById(R.id.inputPassword);
         login = (Button) findViewById(R.id.btnLogin);
@@ -67,20 +69,33 @@ public class MainActivity extends AppCompatActivity {
                                                     public void onResponse(String response) {
                                                         try {
                                                             int taikhoan_id, tientrongtaikhoan;
-                                                            String Tentaikhoan, Matkhau;
+                                                            String Tentaikhoan, Matkhau, Email;
                                                             JSONObject jb = new JSONObject(response);
                                                             Tentaikhoan = jb.getString("Ten_TK");
                                                             Matkhau = jb.getString("Matkhau");
+                                                            Email = jb.getString("Email");
                                                             if (user.getText().toString().equals(Tentaikhoan))
                                                             {
                                                                 if (pass.getText().toString().equals(Matkhau))
                                                                 {
+                                                                    dangnhap = 1;
                                                                     taikhoan_id = jb.getInt("id");
                                                                     Intent intent = new Intent(MainActivity.this, Trangchu.class);
                                                                     intent.putExtra("taikhoan_id", taikhoan_id);
                                                                     startActivity(intent);
                                                                 }
                                                             }
+                                                            else if (user.getText().toString().equals(Email))
+                                                            {
+                                                                if (pass.getText().toString().equals(Matkhau))
+                                                                {
+                                                                    dangnhap = 1;
+                                                                    taikhoan_id = jb.getInt("id");
+                                                                    Intent intent = new Intent(MainActivity.this, Trangchu.class);
+                                                                    intent.putExtra("taikhoan_id", taikhoan_id);
+                                                                    startActivity(intent);
+                                                                }
+                                                            } else dangnhap = 2;
                                                         } catch (JSONException e) {
                                                             e.printStackTrace();
                                                         }
@@ -93,11 +108,12 @@ public class MainActivity extends AppCompatActivity {
                                                     }
                                                 });
                                         requestQueue.add(stringRequest);
-                                        //
                                     }
+                                    if (dangnhap == 2) {Toast.makeText(getApplicationContext(),"Sai Tai Khoan Hoac Mat Khau",Toast.LENGTH_SHORT).show();}
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
+
                             }
                         },
                         new Response.ErrorListener() {
@@ -109,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     requestQueue.add(stringRequest);
             }
         });
+
 
     }
 
